@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Define a custom TextAppearance style with the "Inter" font -->
+    <style name="CustomTextAppearance">
+        <item name="android:fontFamily">@font/interbold</item> <!-- Set the path to your "Inter" font -->
+        <item name="android:textSize">24sp</item> <!-- Set the desired text size (e.g., 16sp) -->
+    </style>
+</resources>

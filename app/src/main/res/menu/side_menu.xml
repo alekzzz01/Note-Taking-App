@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn = "navigation_view">
+
+    <group
+        android:checkableBehavior="single">
+
+
+
+
+        <item
+            android:id="@+id/nav_home"
+
+            android:title="Profile"
+
+            android:textAppearance="@style/CustomTextAppearance"
+           />
+
+        <item
+            android:id="@+id/nav_settings"
+
+            android:title="Folders"
+            android:textAppearance="@style/CustomTextAppearance"/>
+
+        <item
+            android:id="@+id/nav_share"
+
+            android:title="Dark Mode"
+            android:textAppearance="@style/CustomTextAppearance"/>
+
+        <item
+            android:id="@+id/nav_about"
+
+            android:title="Settings"
+            android:textAppearance="@style/CustomTextAppearance"/>
+    </group>
+
+
+    <item
+        android:title="">
+
+        <menu>
+            <item
+                android:id="@+id/nav_logout"
+
+                android:title="Logout"
+                android:textAppearance="@style/CustomTextAppearance"/>
+        </menu>
+
+    </item>
+
+</menu>
