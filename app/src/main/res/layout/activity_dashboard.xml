@@ -67,7 +67,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Hi, Alexander"
-                        android:textSize="21sp"
+                        android:textSize="24sp"
                         android:fontFamily="@font/interbold"
                         android:textColor="@color/text_color"
                         />
@@ -76,7 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Welcome back!"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         android:fontFamily="@font/interregular"
                         android:textColor="@color/text_color2"
                         />
@@ -96,7 +96,7 @@
                 android:fontFamily="@font/intersemibold"
 
                 android:text="Daily Tasks"
-                android:textSize="16sp"
+                android:textSize="20sp"
 
                 android:textColor="@color/text_color"/>
 
@@ -118,7 +118,7 @@
                         android:text="All Notes"
                         android:fontFamily="@font/internedium"
                         android:textColor="@color/text_color"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         />
 
 
@@ -129,7 +129,7 @@
                         android:text="School"
                         android:fontFamily="@font/internedium"
                         android:textColor="#919191"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         />
 
                     <TextView
@@ -139,7 +139,7 @@
                         android:text="Home"
                         android:fontFamily="@font/internedium"
                         android:textColor="#919191"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         />
 
 
@@ -179,6 +179,9 @@
 
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginRight="8dp"
+                            android:layout_marginLeft="8dp"
+
 
                             android:layout_centerInParent="true"
                             android:fontFamily="@font/intersemibold"
@@ -210,7 +213,7 @@
                                     android:fontFamily="@font/interregular"
                                     android:text="Progress"
                                     android:textColor="@color/text_color"
-                                    android:textSize="8sp" />
+                                    android:textSize="9sp" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
@@ -219,7 +222,7 @@
                                     android:fontFamily="@font/interregular"
                                     android:text="12%"
                                     android:textColor="@color/text_color"
-                                    android:textSize="8sp" />
+                                    android:textSize="9sp" />
 
 
                             </RelativeLayout>
@@ -262,7 +265,7 @@
                             android:text="New note"
                             android:fontFamily="@font/interregular"
                             android:textColor="@color/text_color"
-                            android:textSize="12sp"
+                            android:textSize="16sp"
                             android:gravity="center"
                             android:textAlignment="center"
 
@@ -300,7 +303,7 @@
                 android:fontFamily="@font/intersemibold"
 
                 android:text="Friends"
-                android:textSize="16sp"
+                android:textSize="20sp"
 
                 android:textColor="@color/text_color"/>
 
@@ -323,7 +326,7 @@
                         android:text="All"
                         android:fontFamily="@font/internedium"
                         android:textColor="@color/text_color"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         />
 
 
@@ -334,7 +337,7 @@
                         android:text="Close Friends"
                         android:fontFamily="@font/internedium"
                         android:textColor="#919191"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         />
 
 
@@ -387,7 +390,7 @@
                             android:text="Alexander F."
                             android:textAlignment="center"
                             android:textColor="@color/text_color"
-                            android:textSize="10sp" />
+                            android:textSize="12sp" />
 
 
 
@@ -419,7 +422,7 @@
                             android:text="Alexander F."
                             android:textAlignment="center"
                             android:textColor="@color/text_color"
-                            android:textSize="10sp" />
+                            android:textSize="12sp" />
 
 
 
@@ -451,7 +454,7 @@
                             android:text="Alexander F."
                             android:textAlignment="center"
                             android:textColor="@color/text_color"
-                            android:textSize="10sp" />
+                            android:textSize="12sp" />
 
 
 
@@ -483,7 +486,7 @@
                             android:text="Alexander F."
                             android:textAlignment="center"
                             android:textColor="@color/text_color"
-                            android:textSize="10sp" />
+                            android:textSize="12sp"/>
 
 
 
@@ -515,7 +518,7 @@
                             android:text="Alexander F."
                             android:textAlignment="center"
                             android:textColor="@color/text_color"
-                            android:textSize="10sp" />
+                            android:textSize="12sp" />
 
 
 
@@ -547,7 +550,7 @@
                             android:text="Alexander F."
                             android:textAlignment="center"
                             android:textColor="@color/text_color"
-                            android:textSize="10sp" />
+                            android:textSize="12sp" />
 
 
 
@@ -588,7 +591,7 @@
                 android:fontFamily="@font/intersemibold"
 
                 android:text="Lessons"
-                android:textSize="16sp"
+                android:textSize="20sp"
 
                 android:textColor="@color/text_color"/>
 
@@ -611,7 +614,7 @@
                         android:text="All"
                         android:fontFamily="@font/internedium"
                         android:textColor="@color/text_color"
-                        android:textSize="12sp"
+                        android:textSize="16sp"
                         />
 
 
