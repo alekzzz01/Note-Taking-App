@@ -6,10 +6,12 @@ import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.RelativeLayout;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -43,6 +45,17 @@ public class Dashboard extends AppCompatActivity {
         setSupportActionBar(toolbar);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle( this, drawerLayout, toolbar, R.string.open_nav, R.string.close_nav  );
         toggle.syncState();
+
+
+        RelativeLayout firstNoteLayout = findViewById(R.id.first_note);
+        firstNoteLayout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Dashboard.this, Notes_Edit.class);
+                startActivity(intent);
+            }
+        });
+
 
 
     }

@@ -42,7 +42,7 @@
 
 
                     <ImageButton
-                        android:id="@+id/notificationButton"
+                        android:id="@+id/settingsButton"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_alignParentEnd="true"
@@ -187,6 +187,7 @@
 
 
                     <RelativeLayout
+                        android:id="@+id/first_note"
                         android:layout_width="120dp"
                         android:layout_height="150dp"
                         android:layout_marginEnd="16dp"

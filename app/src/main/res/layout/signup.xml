@@ -1,0 +1,248 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FAFAFA"
+    tools:context=".Signup_Page">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:ignore="UselessParent">
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            tools:ignore="UseCompoundDrawables">
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+                android:layout_marginTop="100dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="@font/interbold"
+                android:text="Create your Account"
+
+                android:textColor="#333333"
+
+                android:textSize="27sp">
+
+
+            </TextView>
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="16dp"
+                android:autofillHints=""
+
+                android:background="@drawable/input_background"
+
+
+                android:drawableEnd="@drawable/username_icon"
+                android:fontFamily="@font/interregular"
+                android:hint="Username"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="@color/black"
+
+                android:textColorHighlight="#5C469B"
+                android:textColorHint="@color/text_color"
+
+                android:textColorLink="#5C469B">
+
+
+            </EditText>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/input_background"
+
+                android:drawableEnd="@drawable/password_icon"
+
+
+                android:fontFamily="@font/interregular"
+                android:hint="Password"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="#5C469B"
+
+                android:textColorHint="@color/text_color"
+                android:textColorLink="#5C469B"
+
+                >
+
+
+            </EditText>
+
+
+            <EditText
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/input_background"
+
+                android:drawableEnd="@drawable/password_icon"
+
+
+                android:fontFamily="@font/interregular"
+                android:hint="Confirm Password"
+                android:inputType="text"
+                android:padding="16dp"
+                android:textColor="@color/black"
+                android:textColorHighlight="#5C469B"
+
+                android:textColorHint="@color/text_color"
+                android:textColorLink="#5C469B"
+
+                >
+
+
+            </EditText>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="28dp"
+                android:layout_marginRight="16dp"
+
+
+                android:background="@drawable/button_color"
+                android:fontFamily="@font/intersemibold"
+
+
+                android:text="Sign Up"
+                android:textAllCaps="false"
+                android:textColor="@color/white"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText">
+
+
+            </Button>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="36dp"
+
+                android:layout_gravity="center"
+
+                android:layout_marginTop="16dp"
+                android:fontFamily="@font/interregular"
+                android:gravity="center"
+                android:text="Or sign up with"
+                android:textAlignment="center"
+                android:textColor="@color/text_color2"
+
+                android:textSize="14sp">
+
+
+            </TextView>
+
+            <Button
+                android:layout_width="match_parent"
+
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+
+
+                android:padding="12dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/intersemibold"
+
+
+                android:text="google"
+                android:textAllCaps="false"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText">
+
+
+            </Button>
+
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginRight="16dp"
+
+
+                android:padding="12dp"
+                android:backgroundTint="@color/white"
+                android:fontFamily="@font/intersemibold"
+
+
+                android:text="facebook"
+                android:textAllCaps="false"
+                android:textColor="@color/text_color"
+                android:textSize="16sp"
+                tools:ignore="HardcodedText">
+
+
+            </Button>
+
+
+
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
+                android:gravity="center">
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Already have an account?"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/text_color2"
+                    />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="4dp"
+                    android:text="Sign in"
+                    android:textSize="16sp"
+                    android:textAlignment="center"
+                    android:textColor="@color/primary_color"
+                    android:fontFamily="@font/intersemibold"/>
+            </LinearLayout>
+
+
+
+
+
+
+        </LinearLayout>
+
+
+    </ScrollView>
+
+
+
+</RelativeLayout>
