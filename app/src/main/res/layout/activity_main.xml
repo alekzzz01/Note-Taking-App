@@ -8,15 +8,47 @@
 
     tools:context=".MainActivity">
 
+<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/frame_layout">
 
-    <FrameLayout
-        android:id="@+id/frame_layout"
+    <androidx.drawerlayout.widget.DrawerLayout
+        android:id="@+id/drawer_layout"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        tools:openDrawer="start">
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <androidx.appcompat.widget.Toolbar
+                android:id="@+id/toolbar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@color/white"
+                app:contentInsetStartWithNavigation="0dp"
+                app:title="">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="16dp">
+
+
+                    <ImageButton
+                        android:id="@+id/settingsButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:background="@drawable/notification"
+                        tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
+                </RelativeLayout>
+
+
+            </androidx.appcompat.widget.Toolbar>
 
 
             <androidx.coordinatorlayout.widget.CoordinatorLayout
@@ -77,8 +109,18 @@
 
         </RelativeLayout>
 
+        <com.google.android.material.navigation.NavigationView
+            android:id="@+id/nav_view"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_gravity="start"
 
-    </FrameLayout>
+            app:headerLayout="@layout/nav_header"
+            app:itemTextColor="@color/text_color"
+
+            app:menu="@menu/side_menu" />
+
+    </androidx.drawerlayout.widget.DrawerLayout>
 
 
 
@@ -86,6 +128,6 @@
 
 
 
-
+</RelativeLayout>
 
 </FrameLayout>
