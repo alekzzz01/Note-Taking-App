@@ -17,9 +17,7 @@
             android:exported="false"
             android:label="@string/title_activity_notes_edit"
             android:theme="@style/Theme.INFOTECH" />
-        <activity
-            android:name=".Dashboard"
-            android:exported="false" />
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
