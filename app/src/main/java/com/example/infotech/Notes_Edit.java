@@ -53,7 +53,7 @@ public class Notes_Edit extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 // Create an intent to go back to the previous activity
-                Intent intent = new Intent(Notes_Edit.this, DashboardFragment.class);
+                Intent intent = new Intent(Notes_Edit.this, Dashboard_Fragment.class);
                 startActivity(intent);
             }
         });

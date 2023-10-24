@@ -25,7 +25,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-    final DrawerLayout drawerLayout = findViewById(R.id.drawer_layout);
+    final DrawerLayout drawerLayout = findViewById(R.id.drawerLayout);
 
     findViewById(R.id.menuButton).setOnClickListener(new View.OnClickListener() {
         @Override
@@ -36,8 +36,8 @@ public class MainActivity extends AppCompatActivity {
 
         NavigationView navigationView = findViewById(R.id.nav_view);
 
-        NavController navController = Navigation.findNavController(this, R.id.fragment);
-        NavigationUI.setupWithNavController(navigationView, navController);
+       // NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
+      //  NavigationUI.setupWithNavController(navigationView, navController);
 
 
 
