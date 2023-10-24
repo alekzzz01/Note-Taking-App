@@ -1,23 +1,19 @@
 package com.example.infotech;
 
-import android.content.Intent;
 import android.os.Bundle;
 
-
-import androidx.appcompat.app.ActionBarDrawerToggle;
-import androidx.appcompat.widget.Toolbar;
-import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.RelativeLayout;
 
-import com.google.android.material.navigation.NavigationView;
-
-
-public class DashboardFragment extends Fragment {
+/**
+ * A simple {@link Fragment} subclass.
+ * Use the {@link Dashboard_Fragment#newInstance} factory method to
+ * create an instance of this fragment.
+ */
+public class Dashboard_Fragment extends Fragment {
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -28,14 +24,9 @@ public class DashboardFragment extends Fragment {
     private String mParam1;
     private String mParam2;
 
-
-
-    public DashboardFragment() {
+    public Dashboard_Fragment() {
         // Required empty public constructor
     }
-
-
-
 
     /**
      * Use this factory method to create a new instance of
@@ -43,11 +34,11 @@ public class DashboardFragment extends Fragment {
      *
      * @param param1 Parameter 1.
      * @param param2 Parameter 2.
-     * @return A new instance of fragment DashboardFragment.
+     * @return A new instance of fragment Dashboard_Fragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static DashboardFragment newInstance(String param1, String param2) {
-        DashboardFragment fragment = new DashboardFragment();
+    public static Dashboard_Fragment newInstance(String param1, String param2) {
+        Dashboard_Fragment fragment = new Dashboard_Fragment();
         Bundle args = new Bundle();
         args.putString(ARG_PARAM1, param1);
         args.putString(ARG_PARAM2, param2);
@@ -68,23 +59,6 @@ public class DashboardFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-       View view = inflater.inflate(R.layout.activity_dashboard, container, false);
-
-
-
-
-       return view;
+        return inflater.inflate(R.layout.fragment_dashboard_, container, false);
     }
-
-
-
-
-
-  
-
-
-
-
-
-
 }
