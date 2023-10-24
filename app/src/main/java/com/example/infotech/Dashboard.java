@@ -30,8 +30,7 @@ public class Dashboard extends AppCompatActivity {
         setContentView(R.layout.activity_dashboard);
 
 
-        bottomNavigationView = findViewById(R.id.bottom_nav_view);
-        fab = findViewById(R.id.floatingActionButton);
+
         drawerLayout = findViewById(R.id.drawer_layout);
 
         NavigationView navigationView = findViewById(R.id.nav_view);

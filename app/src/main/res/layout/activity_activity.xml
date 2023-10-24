@@ -1,19 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingLeft="16dp"
-    android:paddingRight="16dp"
+
     android:background="@color/white"
     android:textAlignment="center"
-    tools:context=".Activity">
+    tools:context=".ActivityFragment">
 
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         tools:ignore="UselessParent">
 
         <LinearLayout
@@ -30,6 +31,16 @@
 
                 android:layout_marginBottom="16dp">
 
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerHorizontal="true"
+                    android:layout_centerVertical="true"
+                    android:fontFamily="@font/interbold"
+                    android:text="Activity"
+                    android:textColor="@color/text_color"
+                    android:textSize="24sp" />
+
 
 
                 <ImageButton
@@ -37,9 +48,254 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-                    android:background="@drawable/setting_button"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/search"
                     tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" />
             </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Notes"
+                android:textSize="20sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/internedium"/>
+
+
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/new_note"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/add_note"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="New note"
+                    android:fontFamily="@font/interregular"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Flashcards"
+                android:textSize="20sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/internedium"/>
+
+
+
+            <LinearLayout
+                android:layout_width="120dp"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/new_note"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                android:gravity="center">
+
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="8dp"
+                    android:background="@drawable/add_note"
+                    tools:ignore="SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+                <TextView
+
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+
+                    android:text="New Flashcard"
+                    android:fontFamily="@font/interregular"
+                    android:textColor="@color/text_color"
+                    android:textSize="14sp"
+                    android:gravity="center"
+                    android:textAlignment="center"
+
+                    />
+
+
+
+            </LinearLayout>
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Lessons"
+                android:textSize="20sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/internedium"/>
+
+
+
+            <LinearLayout
+                android:layout_width="160dp"
+                android:layout_height="180dp"
+                android:layout_marginTop="16dp"
+                android:padding="16dp"
+                android:background="@drawable/background_note"
+                android:layout_marginRight="16dp"
+                android:orientation="vertical"
+                >
+
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+
+                        android:text="Intro"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/interregular"
+                        />
+
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_centerVertical="true"
+
+
+                        android:background="@drawable/favorite_icon"/>
+
+
+                </RelativeLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="vertical"
+
+                    >
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+
+                        android:text="Title of the lesson"
+                        android:textSize="12sp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/intersemibold"
+                        />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:fontFamily="@font/interregular"
+
+
+                        android:lineSpacingExtra="4sp"
+                        android:text="Lorem Ipsum has been the industry's standard"
+
+                        android:textColor="@color/text_color"
+                        android:textSize="12sp" />
+
+
+
+
+
+                </LinearLayout>
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+
+
+
+                    >
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentLeft="true"
+                        android:layout_alignParentBottom="true"
+
+                        android:text="0 min(s)."
+                        android:textSize="12sp"
+                        android:textColor="@color/text_color"
+                        android:fontFamily="@font/internedium"
+                        />
+
+
+                    <ImageButton
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentEnd="true"
+                        android:layout_alignParentBottom="true"
+
+
+
+                        android:background="@drawable/play"/>
+
+
+                </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+            </LinearLayout>
+
+
+
+
+
+
+
 
 
 
@@ -51,13 +307,9 @@
     </ScrollView>
 
 
-    <Button
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
 
-        android:layout_marginBottom="32dp"
 
-        android:text="Save" />
 
-</RelativeLayout>
+
+
+</FrameLayout>
