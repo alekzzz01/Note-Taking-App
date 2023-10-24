@@ -61,14 +61,7 @@
 
 
 
-
-
-
-
-
-
-
-    <fragment
+        <!-- <fragment
         android:id="@+id/navHostFragment"
         android:name="androidx.navigation.fragment.NavHostFragment"
         android:layout_width="match_parent"
@@ -79,12 +72,7 @@
         app:layout_constraintVertical_bias="0.0"
         app:navGraph="@navigation/main"
         tools:layout_editor_absoluteX="0dp"
-        tools:layout="@layout/fragment_dashboard_" />
-
-
-
-
-
+        tools:layout="@layout/fragment_dashboard_" /> -->
 
 
 
