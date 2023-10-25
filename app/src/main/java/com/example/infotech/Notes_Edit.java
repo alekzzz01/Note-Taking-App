@@ -12,37 +12,40 @@ import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+
+import io.realm.Realm;
 
 public class Notes_Edit extends AppCompatActivity {
 
     TextView dateTimeTextView;
 
     Button saveButton;
-    EditText titleEditText, bodyEditText;
+    EditText titleInput, descriptionInput;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_edit);
 
-
         ImageButton settingsButton = findViewById(R.id.settingsButton);
         ImageButton backbutton = findViewById(R.id.backButton);
 
-        dateTimeTextView = findViewById(R.id.date_time);
+       /* dateTimeTextView = findViewById(R.id.date_time);
 
-        Calendar calendar = Calendar.getInstance();
+       Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
         String formattedDate = dateFormat.format(date);
-        dateTimeTextView.setText(formattedDate);
-        saveButton = findViewById(R.id.save);
-        titleEditText = findViewById(R.id.title);
-        bodyEditText = findViewById(R.id.body);
+        dateTimeTextView.setText(formattedDate);*/
+
+        saveButton = findViewById(R.id.savebtn);
+        titleInput = findViewById(R.id.titleinput);
+        descriptionInput = findViewById(R.id.descriptioninput);
 
 
         // Set an onClickListener for the ImageButton
@@ -90,11 +93,24 @@ public class Notes_Edit extends AppCompatActivity {
         });
 
 
+            Realm.init(getApplicationContext());
+            Realm realm = Realm.getDefaultInstance();
+
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent a = new Intent(Notes_Edit.this, Dashboard_Fragment.class);
-                startActivity(a);
+                String title = titleInput.getText().toString();
+                String description = descriptionInput.getText().toString();
+                long createdTime = System.currentTimeMillis();
+
+                realm.beginTransaction();
+                Note note = realm.createObject(Note.class);
+                note.setTitle(title);
+                note.setDescription(description);
+                note.setCreatedTime(createdTime);
+                realm.commitTransaction();
+                Toast.makeText(getApplicationContext(),"Note Saved", Toast.LENGTH_SHORT).show();
+                finish();
             }
         });
 

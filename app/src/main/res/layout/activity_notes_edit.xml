@@ -49,18 +49,18 @@
 
 
             <EditText
-                android:id="@+id/title"
+                android:id="@+id/titleinput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+
+
                 android:backgroundTint="@color/white"
-
-
                 android:fontFamily="@font/intersemibold"
                 android:hint="Title "
-                android:textColor="@color/text_color"
 
+                android:textColor="@color/text_color"
                 android:textSize="24sp" />
 
             <TextView
@@ -78,17 +78,17 @@
                 android:textSize="16sp" />
 
             <EditText
-                android:id="@+id/body"
+                android:id="@+id/descriptioninput"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
+
                 android:background="@color/white"
-
                 android:fontFamily="@font/interregular"
-                android:hint="Body"
-                android:lineSpacingExtra="8sp"
+                android:hint="Description"
 
+                android:lineSpacingExtra="8sp"
                 android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
@@ -101,7 +101,7 @@
 
 
     <Button
-        android:id="@+id/save"
+        android:id="@+id/savebtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
 

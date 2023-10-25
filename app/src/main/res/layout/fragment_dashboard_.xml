@@ -151,14 +151,10 @@
 
 
                         <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerview"
                             android:layout_width="wrap_content"
                             android:layout_height="150dp"
                             android:layout_marginEnd="16dp" />
-
-
-
-
-
 
 
                         <LinearLayout
@@ -172,7 +168,7 @@
 
                             <ImageButton
 
-                                android:id="@+id/newnote"
+                                android:id="@+id/addnewnotebtn"
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
                                 android:layout_marginBottom="8dp"
