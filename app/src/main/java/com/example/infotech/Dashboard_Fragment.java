@@ -1,7 +1,5 @@
 package com.example.infotech;
 
-import static io.realm.Realm.getApplicationContext;
-
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -51,13 +49,13 @@ public class Dashboard_Fragment extends Fragment {
                 startActivity(a);
             }
         });
-        Realm.init(getApplicationContext());
+        Realm.init(getContext());
         Realm realm = Realm.getDefaultInstance();
 
         RealmResults<Note> notesList = realm.where(Note.class).findAll();
 
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        MyAdapter myAdapter = new MyAdapter(getApplicationContext(), notesList);
+        MyAdapter myAdapter = new MyAdapter(getContext(), notesList);
         recyclerView.setAdapter(myAdapter);
 
         notesList.addChangeListener(new RealmChangeListener<RealmResults<Note>>() {

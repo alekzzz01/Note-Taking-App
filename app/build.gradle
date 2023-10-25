@@ -1,9 +1,9 @@
 plugins {
     id 'com.android.application'
     id 'com.google.gms.google-services'
-
-
 }
+
+apply plugin: "realm-android"
 
 android {
     namespace 'com.example.infotech'
@@ -53,7 +53,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-auth:22.2.0'
     implementation 'com.google.firebase:firebase-database:20.3.0'
 
-
+    implementation 'io.realm:realm-gradle-plugin:10.10.1'
 
 
     testImplementation 'junit:junit:4.13.2'
