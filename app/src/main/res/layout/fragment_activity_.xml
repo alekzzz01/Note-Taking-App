@@ -7,7 +7,7 @@
 
     android:background="@color/white"
     android:textAlignment="center"
-    tools:context=".ActivityFragment">
+    tools:context=".Activity_Fragment">
 
 
     <ScrollView
