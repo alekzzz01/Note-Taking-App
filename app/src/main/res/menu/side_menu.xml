@@ -13,7 +13,7 @@
         <item
             android:id="@+id/nav_home"
 
-            android:title="Profile"
+            android:title="Home"
 
             android:textAppearance="@style/CustomTextAppearance"
            />
