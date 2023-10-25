@@ -49,48 +49,47 @@
 
 
             <EditText
+                android:id="@+id/title"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:backgroundTint="@color/white"
+
+
                 android:fontFamily="@font/intersemibold"
-
-
-                android:text="Lorem ipsum is placeholder text commonly used in the graphic, print and..."
+                android:hint="Title "
                 android:textColor="@color/text_color"
-                android:textSize="24sp"
 
-                />
+                android:textSize="24sp" />
 
             <TextView
+                android:id="@+id/date_time"
                 android:layout_width="match_parent"
+
                 android:layout_height="wrap_content"
 
+
                 android:fontFamily="@font/internedium"
-
-
-
-
-                android:text="May 21,2020"
+                android:hint="May 21,2020"
                 android:textColor="@color/text_color2"
-                android:textSize="16sp"
 
 
-                />
+                android:textSize="16sp" />
 
             <EditText
+                android:id="@+id/body"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:layout_marginBottom="16dp"
                 android:background="@color/white"
+
                 android:fontFamily="@font/interregular"
-
+                android:hint="Body"
                 android:lineSpacingExtra="8sp"
-                android:text="Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget dolor morbi non arcu risus. Adipiscing elit ut aliquam purus. Ac auctor augue mauris augue neque gravida in fermentum. Laoreet sit amet cursus sit amet dictum sit amet. Cras ornare arcu dui vivamus arcu felis. Tempor nec feugiat nisl pretium. Eleifend mi in nulla posuere sollicitudin aliquam ultrices sagittis. Gravida cum sociis natoque penatibus et magnis dis parturient. Enim sit amet venenatis urna. Scelerisque eu ultrices vitae auctor eu. Ac felis donec et odio pellentesque diam volutpat commodo sed. Non quam lacus suspendisse faucibus interdum. Pulvinar elementum integer enim neque volutpat ac tincidunt vitae semper. Venenatis tellus in metus vulputate eu. Pellentesque habitant morbi tristique senectus et netus et. Nibh nisl condimentum id venenatis a condimentum vitae. Lacus sed viverra tellus in hac habitasse platea."
-                android:textAlignment="textStart"
 
+                android:textAlignment="textStart"
                 android:textColor="@color/black"
                 android:textSize="16sp" />
 
@@ -102,12 +101,13 @@
 
 
     <Button
+        android:id="@+id/save"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+
         android:layout_alignParentBottom="true"
 
         android:layout_marginBottom="32dp"
-
         android:text="Save" />
 
 </RelativeLayout>
