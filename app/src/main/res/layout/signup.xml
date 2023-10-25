@@ -38,19 +38,47 @@
             </TextView>
 
             <EditText
+                android:id="@+id/etemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginRight="16dp"
+
                 android:autofillHints=""
+
+
+                android:background="@drawable/input_background"
+                android:drawableEnd="@drawable/profile1"
+                android:fontFamily="@font/interregular"
+                android:hint="Email"
+                android:inputType="text"
+                android:padding="16dp"
+
+                android:textColor="@color/black"
+                android:textColorHighlight="#5C469B"
+
+                android:textColorHint="@color/text_color"
+                android:textColorLink="#5C469B">
+
+
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/etpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="16dp"
 
                 android:background="@drawable/input_background"
 
 
-                android:drawableEnd="@drawable/profile1"
+                android:drawableEnd="@drawable/password_icon"
                 android:fontFamily="@font/interregular"
-                android:hint="Username"
+                android:hint="Password"
                 android:inputType="text"
                 android:padding="16dp"
                 android:textColor="@color/black"
@@ -65,70 +93,44 @@
 
 
             <EditText
+                android:id="@+id/etrepass"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginRight="16dp"
+
                 android:background="@drawable/input_background"
 
-                android:drawableEnd="@drawable/password_icon"
-
-
-                android:fontFamily="@font/interregular"
-                android:hint="Password"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="#5C469B"
-
-                android:textColorHint="@color/text_color"
-                android:textColorLink="#5C469B"
-
-                >
-
-
-            </EditText>
-
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/input_background"
 
                 android:drawableEnd="@drawable/password_icon"
-
-
                 android:fontFamily="@font/interregular"
                 android:hint="Confirm Password"
                 android:inputType="text"
                 android:padding="16dp"
                 android:textColor="@color/black"
+
                 android:textColorHighlight="#5C469B"
-
                 android:textColorHint="@color/text_color"
-                android:textColorLink="#5C469B"
 
-                >
+                android:textColorLink="#5C469B">
 
 
             </EditText>
 
             <Button
+                android:id="@+id/signinbtn"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="28dp"
+
+
                 android:layout_marginRight="16dp"
-
-
                 android:background="@drawable/button_color"
+
+
                 android:fontFamily="@font/intersemibold"
-
-
                 android:text="Sign Up"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
