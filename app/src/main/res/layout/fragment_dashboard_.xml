@@ -44,7 +44,7 @@
 
                         android:layout_width="48dp"
                         android:layout_height="48dp"
-                        android:background="@drawable/profile1"
+                        android:background="@drawable/profile"
 
                         tools:ignore="SpeakableTextPresentCheck" />
 
@@ -150,6 +150,9 @@
                         android:orientation="horizontal">
 
 
+
+
+
                         <RelativeLayout
                             android:id="@+id/first_note"
                             android:layout_width="120dp"
@@ -164,15 +167,15 @@
 
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
+
+
                                 android:layout_centerInParent="true"
-
-
                                 android:layout_marginStart="8dp"
                                 android:layout_marginLeft="8dp"
                                 android:layout_marginTop="8dp"
                                 android:layout_marginEnd="8dp"
-                                android:layout_marginRight="8dp"
 
+                                android:layout_marginRight="8dp"
                                 android:layout_marginBottom="8dp"
                                 android:fontFamily="@font/intersemibold"
                                 android:gravity="center"
@@ -348,7 +351,7 @@
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile1"
+                                android:background="@drawable/profile"
 
                                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -377,7 +380,7 @@
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile1"
+                                android:background="@drawable/profile"
 
                                 tools:ignore="SpeakableTextPresentCheck" />
 
@@ -406,7 +409,7 @@
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile1"
+                                android:background="@drawable/profile"
 
                                 android:importantForAccessibility="no"
                                 tools:ignore="SpeakableTextPresentCheck" />
@@ -436,7 +439,7 @@
                                 android:layout_width="48dp"
                                 android:layout_height="48dp"
                                 android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile1"
+                                android:background="@drawable/profile"
 
                                 android:importantForAccessibility="no" />
 
