@@ -15,7 +15,7 @@
         <ImageView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/profile" >
+            android:background="@drawable/profile1" >
 
 
         </ImageView>
