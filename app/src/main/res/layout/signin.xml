@@ -42,25 +42,54 @@
                 android:textAlignment="center"
                 android:textColor="#333333"
 
-                android:textSize="24sp">
+                android:textSize="24sp"
+                tools:ignore="RtlCompat">
 
 
             </TextView>
 
             <EditText
+                android:id="@+id/logemail"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="24dp"
                 android:layout_marginRight="16dp"
+
                 android:autofillHints=""
+
+
+                android:background="@drawable/input_background"
+                android:drawableEnd="@drawable/username_icon"
+                android:fontFamily="@font/interregular"
+                android:hint="Email"
+                android:inputType="text"
+                android:padding="16dp"
+
+                android:textColor="@color/black"
+                android:textColorHighlight="#5C469B"
+
+                android:textColorHint="@color/text_color"
+                android:textColorLink="#5C469B">
+
+
+            </EditText>
+
+
+            <EditText
+                android:id="@+id/logpassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="24dp"
+                android:layout_marginRight="16dp"
 
                 android:background="@drawable/input_background"
 
 
-                android:drawableEnd="@drawable/username_icon"
+                android:drawableEnd="@drawable/password_icon"
                 android:fontFamily="@font/interregular"
-                android:hint="Username"
+                android:hint="Password"
                 android:inputType="text"
                 android:padding="16dp"
                 android:textColor="@color/black"
@@ -73,45 +102,19 @@
 
             </EditText>
 
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="24dp"
-                android:layout_marginRight="16dp"
-                android:background="@drawable/input_background"
-
-                android:drawableEnd="@drawable/password_icon"
-
-
-                android:fontFamily="@font/interregular"
-                android:hint="Password"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textColor="@color/black"
-                android:textColorHighlight="#5C469B"
-
-                android:textColorHint="@color/text_color"
-                android:textColorLink="#5C469B"
-
-                >
-
-
-            </EditText>
-
             <Button
+                android:id="@+id/signinbtn"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginTop="16dp"
+
+
                 android:layout_marginRight="16dp"
-
-
                 android:background="@drawable/button_color"
+
+
                 android:fontFamily="@font/intersemibold"
-
-
                 android:text="Sign In"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
