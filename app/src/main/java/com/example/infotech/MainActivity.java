@@ -6,14 +6,18 @@ import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
-import androidx.viewpager2.widget.ViewPager2;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.os.Bundle;
 import android.view.View;
 
-import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
+
+import io.realm.Realm;
+import io.realm.RealmChangeListener;
+import io.realm.RealmResults;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -44,7 +48,22 @@ public class MainActivity extends AppCompatActivity {
        NavigationUI.setupWithNavController(navigationView, navController);
 
 
+        Realm.init(getApplicationContext());
+        Realm realm = Realm.getDefaultInstance();
 
+        RealmResults<Note> notesList = realm.where(Note.class).findAll();
+
+        RecyclerView recyclerView = findViewById(R.id.recyclerview);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+        MyAdapter myAdapter = new MyAdapter(getApplicationContext(), notesList);
+        recyclerView.setAdapter(myAdapter);
+
+        notesList.addChangeListener(new RealmChangeListener<RealmResults<Note>>() {
+            @Override
+            public void onChange(RealmResults<Note> notes) {
+                myAdapter.notifyDataSetChanged();
+            }
+        });
 
     }
 
