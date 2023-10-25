@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "509182373177",
+    "project_id": "infotech-6690b",
+    "storage_bucket": "infotech-6690b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:509182373177:android:62c677096bb5b911010ce8",
+        "android_client_info": {
+          "package_name": "com.example.infotech"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBxmSGtlAi1BdlCSpPxkvNk98paIglu31s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
