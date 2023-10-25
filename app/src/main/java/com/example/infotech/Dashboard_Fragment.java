@@ -31,10 +31,6 @@ public class Dashboard_Fragment extends Fragment {
 
         newNoteButton = v.findViewById(R.id.newnote);
 
-        mainTitleEditText = v.findViewById(R.id.main_title);
-
-        firstNoteLayout = v.findViewById(R.id.first_note);
-
         newNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -45,15 +41,9 @@ public class Dashboard_Fragment extends Fragment {
         });
 
 
-        firstNoteLayout.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent b = new Intent(getActivity(), Notes_Edit.class);
-                startActivity(b);
-            }
-        });
 
-        return v;
+
+    return v;
 
     }
 }
