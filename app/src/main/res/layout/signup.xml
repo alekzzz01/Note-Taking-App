@@ -48,7 +48,7 @@
                 android:background="@drawable/input_background"
 
 
-                android:drawableEnd="@drawable/username_icon"
+                android:drawableEnd="@drawable/profile1"
                 android:fontFamily="@font/interregular"
                 android:hint="Username"
                 android:inputType="text"
