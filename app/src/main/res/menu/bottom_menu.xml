@@ -3,14 +3,14 @@
 
     <item
 
-        android:id="@+id/home"
+        android:id="@+id/nav_home"
         android:title="Home"
 
         android:icon="@drawable/home_bottom" />
 
     <item
 
-        android:id="@+id/activity"
+        android:id="@+id/nav_activity"
         android:title="Activity"
         android:icon="@drawable/calendar_bottom" />
 
@@ -21,13 +21,13 @@
 
     <item
 
-        android:id="@+id/message"
+        android:id="@+id/nav_message"
         android:title="Message"
         android:icon="@drawable/message_bottom" />
 
     <item
 
-        android:id="@+id/profile"
+        android:id="@+id/nav_profile"
         android:title="Profile"
         android:icon="@drawable/profile_bottom" />
 

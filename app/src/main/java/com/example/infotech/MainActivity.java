@@ -3,16 +3,17 @@ package com.example.infotech;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.NavigationUI;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 
 import android.os.Bundle;
 import android.view.View;
 
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationView;
 
 
@@ -40,19 +41,16 @@ public class MainActivity extends AppCompatActivity {
         }
     });
 
-        NavigationView navigationView = findViewById(R.id.nav_view);
 
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
-       NavigationUI.setupWithNavController(navigationView, navController);
+        // Set up navigation drawer
+        NavigationView navigationView = findViewById(R.id.nav_view);
+        NavigationUI.setupWithNavController(navigationView, navController);
 
-       
-        
-        
+        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_nav_view);
+        NavigationUI.setupWithNavController(bottomNavigationView, navController);
+
 
     }
-
 }
-
-
-
 
