@@ -16,9 +16,7 @@ import android.widget.ImageButton;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import io.realm.Realm;
-import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
+//import io.realm.Realm;
 
 
 public class Dashboard_Fragment extends Fragment {
@@ -49,21 +47,8 @@ public class Dashboard_Fragment extends Fragment {
                 startActivity(a);
             }
         });
-        Realm.init(getContext());
-        Realm realm = Realm.getDefaultInstance();
 
-        RealmResults<Note> notesList = realm.where(Note.class).findAll();
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-        MyAdapter myAdapter = new MyAdapter(getContext(), notesList);
-        recyclerView.setAdapter(myAdapter);
-
-        notesList.addChangeListener(new RealmChangeListener<RealmResults<Note>>() {
-            @Override
-            public void onChange(RealmResults<Note> notes) {
-                myAdapter.notifyDataSetChanged();
-            }
-        });
 
 
 

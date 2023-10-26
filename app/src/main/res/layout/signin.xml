@@ -103,7 +103,7 @@
             </EditText>
 
             <Button
-                android:id="@+id/signinbtn"
+                android:id="@+id/signinbtn2"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
@@ -206,14 +206,15 @@
 
                 <TextView
 
+                    android:id="@+id/newaccount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
+                    android:fontFamily="@font/intersemibold"
                     android:text="Create Account"
-                    android:textSize="16sp"
                     android:textAlignment="center"
                     android:textColor="@color/primary_color"
-                    android:fontFamily="@font/intersemibold"/>
+                    android:textSize="16sp" />
             </LinearLayout>
 
 

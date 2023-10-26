@@ -18,7 +18,6 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import io.realm.Realm;
 
 public class Notes_Edit extends AppCompatActivity {
 
@@ -93,26 +92,8 @@ public class Notes_Edit extends AppCompatActivity {
         });
 
 
-            Realm.init(getApplicationContext());
-            Realm realm = Realm.getDefaultInstance();
 
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String title = titleInput.getText().toString();
-                String description = descriptionInput.getText().toString();
-                long createdTime = System.currentTimeMillis();
 
-                realm.beginTransaction();
-                Note note = realm.createObject(Note.class);
-                note.setTitle(title);
-                note.setDescription(description);
-                note.setCreatedTime(createdTime);
-                realm.commitTransaction();
-                Toast.makeText(getApplicationContext(),"Note Saved", Toast.LENGTH_SHORT).show();
-                finish();
-            }
-        });
 
 
     }

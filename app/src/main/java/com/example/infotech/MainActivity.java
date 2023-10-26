@@ -15,9 +15,7 @@ import android.view.View;
 
 import com.google.android.material.navigation.NavigationView;
 
-import io.realm.Realm;
-import io.realm.RealmChangeListener;
-import io.realm.RealmResults;
+
 
 
 public class MainActivity extends AppCompatActivity {
@@ -47,23 +45,9 @@ public class MainActivity extends AppCompatActivity {
         NavController navController = Navigation.findNavController(this, R.id.navHostFragment);
        NavigationUI.setupWithNavController(navigationView, navController);
 
-
-        Realm.init(getApplicationContext());
-        Realm realm = Realm.getDefaultInstance();
-
-        RealmResults<Note> notesList = realm.where(Note.class).findAll();
-
-        RecyclerView recyclerView = findViewById(R.id.recyclerview);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        MyAdapter myAdapter = new MyAdapter(getApplicationContext(), notesList);
-        recyclerView.setAdapter(myAdapter);
-
-        notesList.addChangeListener(new RealmChangeListener<RealmResults<Note>>() {
-            @Override
-            public void onChange(RealmResults<Note> notes) {
-                myAdapter.notifyDataSetChanged();
-            }
-        });
+       
+        
+        
 
     }
 

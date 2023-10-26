@@ -1,5 +1,6 @@
 package com.example.infotech;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.NonNull;
@@ -10,11 +11,11 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.navigation.ui.AppBarConfiguration;
 
-import com.example.infotech.databinding.SigninBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -23,20 +24,21 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Signin_Page extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
-    private SigninBinding binding;
     FirebaseAuth auth;
     EditText email, password;
     Button signin;
+    TextView newacc;
     Handler h = new Handler();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin);
 
+        auth = FirebaseAuth.getInstance();
         email = findViewById(R.id.logemail);
         password = findViewById(R.id.logpassword);
-        signin = findViewById(R.id.signinbtn);
-
+        signin = findViewById(R.id.signinbtn2);
+        newacc = findViewById(R.id.newaccount);
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -55,7 +57,7 @@ public class Signin_Page extends AppCompatActivity {
                 }
 
                 if (password.length() < 7) {
-                    email.setError("Password must be 8 characters long");
+                    password.setError("Password must be 8 characters long");
                     return;
                 }
 
@@ -64,11 +66,25 @@ public class Signin_Page extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Signin_Page.this, "Logged in Successfuly", Toast.LENGTH_SHORT).show();
+                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
                         } else {
                             Toast.makeText(Signin_Page.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
                         }
                     }
                 });
+            }
+        });
+
+        newacc.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                h.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        Intent i = new Intent(Signin_Page.this, Register_Page.class);
+                        startActivity(i);
+                    }
+                },0);
             }
         });
     }
