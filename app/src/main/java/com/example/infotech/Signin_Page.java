@@ -19,6 +19,7 @@ import androidx.navigation.ui.AppBarConfiguration;
 import com.example.infotech.databinding.SigninBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
@@ -43,6 +44,7 @@ public class Signin_Page extends AppCompatActivity {
         signin = findViewById(R.id.signinbtn);
 
         auth = FirebaseAuth.getInstance();
+
 
 
 
@@ -112,5 +114,7 @@ public class Signin_Page extends AppCompatActivity {
 
 
     }
+
+
 
 }

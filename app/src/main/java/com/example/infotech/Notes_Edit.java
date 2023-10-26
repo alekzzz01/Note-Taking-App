@@ -1,10 +1,13 @@
 package com.example.infotech;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
-import android.content.SharedPreferences;
+import android.annotation.SuppressLint;
+
+
 import android.os.Bundle;
+
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -13,6 +16,12 @@ import android.widget.ImageButton;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -34,13 +43,13 @@ public class Notes_Edit extends AppCompatActivity {
         ImageButton settingsButton = findViewById(R.id.settingsButton);
         ImageButton backbutton = findViewById(R.id.backButton);
 
-       /* dateTimeTextView = findViewById(R.id.date_time);
+      dateTimeTextView = findViewById(R.id.date_time);
 
        Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
-        SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
+        @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
         String formattedDate = dateFormat.format(date);
-        dateTimeTextView.setText(formattedDate);*/
+        dateTimeTextView.setText(formattedDate);
 
         saveButton = findViewById(R.id.savebtn);
         titleInput = findViewById(R.id.titleinput);
@@ -85,9 +94,8 @@ public class Notes_Edit extends AppCompatActivity {
         backbutton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to go back to the previous activity
-                Intent intent = new Intent(Notes_Edit.this, Dashboard_Fragment.class);
-                startActivity(intent);
+                // Finish the current activity (Notes_Edit) to go back to the previous activity (Dashboard_Fragment)
+                finish();
             }
         });
 
@@ -95,6 +103,63 @@ public class Notes_Edit extends AppCompatActivity {
 
 
 
+        // Get a reference to the Firebase Database
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
+// Get the current user's UID from Firebase Authentication
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+// Get a reference to the "notes" node under the user's UID
+        DatabaseReference userNotesRef = databaseReference.child("users").child(userId).child("notes");
+
+// Use push() to automatically generate a unique key for the new note
+        DatabaseReference newNoteRef = userNotesRef.push();
+
+// Get the title, time, and description from the EditText fields
+        String title = titleInput.getText().toString();
+        String description = descriptionInput.getText().toString();
+        long timestamp = System.currentTimeMillis();
+
+// Create a Note object
+        Note note = new Note(title, timestamp, description);
+
+
+        saveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Get a reference to the Firebase Database
+                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+                // Get the current user's UID from Firebase Authentication
+                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+                // Get a reference to the "notes" node under the user's UID
+                DatabaseReference userNotesRef = databaseReference.child("users").child(userId).child("notes");
+
+                // Get the title, time, and description from the EditText fields
+                String title = titleInput.getText().toString();
+                String description = descriptionInput.getText().toString();
+                long timestamp = System.currentTimeMillis();
+
+                // Create a Note object
+                Note note = new Note(title, timestamp, description);
+
+                // Save the note to the database under a unique key
+                DatabaseReference newNoteRef = userNotesRef.push();
+                newNoteRef.setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            // Note saved successfully
+                            Toast.makeText(Notes_Edit.this, "Note saved to Firebase", Toast.LENGTH_SHORT).show();
+                            finish(); // Finish the activity
+                        } else {
+                            // Handle the error, if any
+                            Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }
+        });
     }
 }
