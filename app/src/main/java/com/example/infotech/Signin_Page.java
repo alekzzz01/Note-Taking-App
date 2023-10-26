@@ -16,6 +16,7 @@ import android.widget.Toast;
 
 import androidx.navigation.ui.AppBarConfiguration;
 
+import com.example.infotech.databinding.SigninBinding;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
@@ -24,21 +25,29 @@ import com.google.firebase.auth.FirebaseAuth;
 public class Signin_Page extends AppCompatActivity {
 
     private AppBarConfiguration appBarConfiguration;
+    private SigninBinding binding;
+
+    private TextView signupView;
     FirebaseAuth auth;
     EditText email, password;
     Button signin;
-    TextView newacc;
     Handler h = new Handler();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.signin);
 
-        auth = FirebaseAuth.getInstance();
         email = findViewById(R.id.logemail);
         password = findViewById(R.id.logpassword);
-        signin = findViewById(R.id.signinbtn2);
-        newacc = findViewById(R.id.newaccount);
+        signin = findViewById(R.id.signinbtn);
+
+        auth = FirebaseAuth.getInstance();
+
+
+
+
+
         signin.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -61,31 +70,47 @@ public class Signin_Page extends AppCompatActivity {
                     return;
                 }
 
+
                 auth.signInWithEmailAndPassword(emaill, pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
                             Toast.makeText(Signin_Page.this, "Logged in Successfuly", Toast.LENGTH_SHORT).show();
-                            startActivity(new Intent(getApplicationContext(), MainActivity.class));
+
+                            Intent intent = new Intent(Signin_Page.this, MainActivity.class);
+                            startActivity(intent);
+                            finish();
                         } else {
-                            Toast.makeText(Signin_Page.this, "Error" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            Toast.makeText(Signin_Page.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+
                         }
                     }
                 });
+
+
             }
         });
 
-        newacc.setOnClickListener(new View.OnClickListener() {
+
+        signupView = findViewById(R.id.Signupview);
+
+        // Add a click listener to the signupView
+        signupView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                h.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        Intent i = new Intent(Signin_Page.this, Register_Page.class);
-                        startActivity(i);
-                    }
-                },0);
+                // Create an intent to navigate to Signup_Page
+                Intent intent = new Intent(Signin_Page.this, Register_Page.class);
+                startActivity(intent);
             }
         });
+
+
+
+
+
+
+
+
     }
+
 }

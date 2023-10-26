@@ -48,62 +48,103 @@
 
             </TextView>
 
-            <EditText
-                android:id="@+id/logemail"
+
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
 
-                android:autofillHints=""
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:boxStrokeColor="#000000"
 
-
-                android:background="@drawable/input_background"
-                android:drawableEnd="@drawable/username_icon"
-                android:fontFamily="@font/interregular"
-                android:hint="Email"
-                android:inputType="text"
-                android:padding="16dp"
-
-                android:textColor="@color/black"
-                android:textColorHighlight="#5C469B"
-
-                android:textColorHint="@color/text_color"
-                android:textColorLink="#5C469B">
+                app:passwordToggleTint="@color/text_color" >
 
 
-            </EditText>
+                <EditText
+                    android:id="@+id/logemail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
 
-            <EditText
-                android:id="@+id/logpassword"
+                    android:autofillHints=""
+
+
+                    android:background="@drawable/input_background"
+                    android:fontFamily="@font/interregular"
+                    android:hint="Email"
+                    android:inputType="text"
+
+
+
+                    android:textColor="@color/black"
+                    android:textColorHighlight="#5C469B"
+
+                    android:textColorHint="@color/text_color"
+                    android:textColorLink="#5C469B">
+
+
+                </EditText>
+
+
+
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+
+
+            <com.google.android.material.textfield.TextInputLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
+                android:layout_marginStart="16dp"
                 android:layout_marginTop="24dp"
-                android:layout_marginRight="16dp"
+                android:layout_marginEnd="16dp"
 
-                android:background="@drawable/input_background"
+                app:boxStrokeWidth="0dp"
+                app:boxStrokeWidthFocused="0dp"
+                app:boxStrokeColor="#000000"
+                app:passwordToggleEnabled="true"
+                app:passwordToggleTint="@color/text_color" >
 
+                <EditText
+                    android:id="@+id/logpassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
 
-                android:drawableEnd="@drawable/password_icon"
-                android:fontFamily="@font/interregular"
-                android:hint="Password"
-                android:inputType="text"
-                android:padding="16dp"
-                android:textColor="@color/black"
-
-                android:textColorHighlight="#5C469B"
-                android:textColorHint="@color/text_color"
-
-                android:textColorLink="#5C469B">
+                    android:background="@drawable/input_background"
 
 
-            </EditText>
+                    android:drawableEnd="@drawable/password_icon"
+                    android:fontFamily="@font/interregular"
+                    android:hint="Password"
+                    android:inputType="text"
+
+                    android:textColor="@color/black"
+
+                    android:textColorHighlight="#5C469B"
+                    android:textColorHint="@color/text_color"
+
+                    android:textColorLink="#5C469B">
+
+
+                </EditText>
+
+
+
+
+
+
+            </com.google.android.material.textfield.TextInputLayout>
+
 
             <Button
-                android:id="@+id/signinbtn2"
+                android:id="@+id/signinbtn"
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
@@ -150,10 +191,10 @@
                 android:layout_marginRight="16dp"
 
 
-                android:background="@drawable/socials_button"
+
                 android:fontFamily="@font/intersemibold"
 
-
+                android:backgroundTint="@color/white"
                 android:text="google"
                 android:textAllCaps="false"
                 android:textColor="@color/text_color"
@@ -171,7 +212,7 @@
                 android:layout_marginRight="16dp"
 
 
-                android:background="@drawable/socials_button"
+                android:backgroundTint="@color/white"
                 android:fontFamily="@font/intersemibold"
 
 
@@ -206,7 +247,7 @@
 
                 <TextView
 
-                    android:id="@+id/newaccount"
+                    android:id="@+id/Signupview"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="4dp"
