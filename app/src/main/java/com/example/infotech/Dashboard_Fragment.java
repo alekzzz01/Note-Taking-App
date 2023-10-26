@@ -13,6 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -33,6 +34,8 @@ public class Dashboard_Fragment extends Fragment {
     ImageButton newNoteButton;
     RecyclerView recyclerView;
     NoteAdapter noteAdapter; // Custom RecyclerView adapter for notes
+
+    ProgressBar PB;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -95,6 +98,7 @@ public class Dashboard_Fragment extends Fragment {
                 // Handle any errors or exceptions
             }
         });
+
     }
 
 }

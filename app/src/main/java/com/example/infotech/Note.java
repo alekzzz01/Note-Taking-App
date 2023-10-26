@@ -16,6 +16,7 @@ public class Note {
     }
 
     public String getTitle() {
+
         return title;
     }
 
