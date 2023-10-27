@@ -149,7 +149,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
 
 
                 android:layout_marginRight="16dp"
@@ -172,7 +172,7 @@
 
                 android:layout_gravity="center"
 
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="24dp"
                 android:fontFamily="@font/interregular"
                 android:gravity="center"
                 android:text="Or sign in with"
@@ -184,26 +184,31 @@
 
             </TextView>
 
+
             <Button
+
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
+
+
                 android:layout_marginRight="16dp"
-                android:padding="8dp"
+                android:background="@drawable/button_color"
+
 
                 android:fontFamily="@font/intersemibold"
-                android:text="Sign in with Google"
+                android:text="Sign In with Google"
                 android:textAllCaps="false"
                 android:textColor="@color/white"
                 android:textSize="16sp"
-
-                app:icon="@drawable/google"
-
-                tools:ignore="HardcodedText">
+                tools:ignore="HardcodedText"
+                app:icon="@drawable/google">
 
 
             </Button>
+
+
 
 
 
