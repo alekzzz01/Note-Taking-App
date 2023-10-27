@@ -232,50 +232,32 @@
 
             </TextView>
 
+
+
             <Button
+
                 android:layout_width="match_parent"
-
-                android:layout_height="wrap_content"
+                android:layout_height="48dp"
                 android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
+
+
                 android:layout_marginRight="16dp"
+                android:background="@drawable/button_color"
 
 
-                android:backgroundTint="@color/white"
                 android:fontFamily="@font/intersemibold"
-                android:padding="12dp"
-
-
-                android:text="google"
+                android:text="Sign In with Google"
                 android:textAllCaps="false"
-                android:textColor="@color/text_color"
+                android:textColor="@color/white"
                 android:textSize="16sp"
-                tools:ignore="HardcodedText">
+                tools:ignore="HardcodedText"
+                app:icon="@drawable/google">
 
 
             </Button>
 
-            <Button
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="16dp"
-                android:layout_marginTop="16dp"
-                android:layout_marginRight="16dp"
 
-
-                android:backgroundTint="@color/white"
-                android:fontFamily="@font/intersemibold"
-                android:padding="12dp"
-
-
-                android:text="facebook"
-                android:textAllCaps="false"
-                android:textColor="@color/text_color"
-                android:textSize="16sp"
-                tools:ignore="HardcodedText">
-
-
-            </Button>
 
 
             <LinearLayout
