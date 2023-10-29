@@ -41,6 +41,12 @@ public class Dashboard_Fragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View v = inflater.inflate(R.layout.fragment_dashboard_, container, false);
 
+
+
+
+
+
+
         recyclerView = v.findViewById(R.id.recyclerview);
         newNoteButton = v.findViewById(R.id.addnewnotebtn);
 
@@ -51,7 +57,7 @@ public class Dashboard_Fragment extends Fragment {
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(noteAdapter);
 
-        // In Dashboard_Fragment
+
         newNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
