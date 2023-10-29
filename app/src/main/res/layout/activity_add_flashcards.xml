@@ -69,17 +69,17 @@
                 />
 
             <EditText
+                android:id="@+id/etquestion"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
+
                 android:background="@drawable/background_note"
-
-                android:textSize="16sp"
-                android:textColor="@color/text_color"
                 android:fontFamily="@font/internedium"
+                android:textColor="@color/text_color"
 
 
-                />
+                android:textSize="16sp" />
 
 
 
@@ -97,16 +97,16 @@
                 />
 
             <EditText
+                android:id="@+id/etanswer"
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
                 android:background="@drawable/background_note"
-                android:textSize="16sp"
-                android:textColor="@color/text_color"
                 android:fontFamily="@font/internedium"
+                android:textColor="@color/text_color"
 
 
-                />
+                android:textSize="16sp" />
 
 
 
@@ -138,13 +138,14 @@
         <Button
 
 
+            android:id="@+id/addbtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+
             android:layout_marginBottom="16dp"
 
+
             android:backgroundTint="@color/primary_color"
-
-
             android:fontFamily="@font/intersemibold"
             android:text="ADD"
             android:textAllCaps="false"
@@ -154,28 +155,6 @@
 
 
         </Button>
-
-
-        <Button
-
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-
-           android:backgroundTint="#FFE396"
-
-
-            android:fontFamily="@font/intersemibold"
-            android:text="NEW"
-            android:textAllCaps="false"
-            android:textColor="@color/text_color"
-            android:textSize="16sp"
-            tools:ignore="HardcodedText">
-
-
-        </Button>
-
-
-
 
 
     </LinearLayout>
