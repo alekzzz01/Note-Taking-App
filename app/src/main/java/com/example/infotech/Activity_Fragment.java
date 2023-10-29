@@ -32,6 +32,7 @@ public class Activity_Fragment extends Fragment {
                 Dialog customDialog = new Dialog(context);
                 customDialog.setContentView(R.layout.dialog_layout);
 
+
                 customDialog.setTitle("Custom Dialog Title");
                  customDialog.show();
             }
