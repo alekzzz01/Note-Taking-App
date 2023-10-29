@@ -83,15 +83,15 @@
                 android:fontFamily="@font/internedium"/>
 
 
-
             <LinearLayout
+                android:id="@+id/newflashcardbtn"
                 android:layout_width="120dp"
                 android:layout_height="150dp"
                 android:layout_marginTop="16dp"
-                android:background="@drawable/new_note"
                 android:layout_marginRight="16dp"
-                android:orientation="vertical"
-                android:gravity="center">
+                android:background="@drawable/new_note"
+                android:gravity="center"
+                android:orientation="vertical">
 
 
                 <ImageButton
@@ -106,15 +106,14 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
 
-                    android:text="New Flashcard"
                     android:fontFamily="@font/interregular"
+                    android:gravity="center"
+                    android:text="New Flashcard"
+                    android:textAlignment="center"
                     android:textColor="@color/text_color"
                     android:textSize="14sp"
-                    android:gravity="center"
-                    android:textAlignment="center"
 
                     />
-
 
 
             </LinearLayout>
