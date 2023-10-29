@@ -2,6 +2,7 @@ package com.example.infotech;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
@@ -9,6 +10,7 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.LinearLayout;
 
 
@@ -32,12 +34,27 @@ public class Activity_Fragment extends Fragment {
                 Dialog customDialog = new Dialog(context);
                 customDialog.setContentView(R.layout.dialog_layout);
 
+                Button New = customDialog.findViewById(R.id.addtitlebtn);
+
+                New.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent(context, Add_Flashcards.class);
+                        context.startActivity(intent);
+                    }
+                });
+
 
                 customDialog.setTitle("Custom Dialog Title");
                 customDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                  customDialog.show();
+
+
+
             }
         });
+
+
         return v;
     }
 }
