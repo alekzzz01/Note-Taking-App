@@ -13,8 +13,8 @@
 
 
         <ImageView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
             android:background="@drawable/profile" >
 
 
@@ -28,6 +28,7 @@
             android:layout_marginStart="12dp">
 
             <TextView
+                android:id="@+id/header_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/intersemibold"
@@ -36,6 +37,8 @@
                 android:textSize="14sp"/>
 
             <TextView
+
+                android:id="@+id/header_username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textColor="@color/text_color2"

@@ -9,14 +9,14 @@
 
         android:id="@+id/nav_home"
         android:name="com.example.infotech.Dashboard_Fragment"
-        android:label="Profile"
+        android:label="Dashboard"
         tools:layout="@layout/fragment_dashboard_"/>
 
     <fragment
 
         android:id="@+id/nav_activity"
         android:name="com.example.infotech.Activity_Fragment"
-        android:label="Profile"
+        android:label="Activity"
         tools:layout="@layout/fragment_activity_"/>
 
     <fragment
@@ -75,63 +75,22 @@
 
 
 
-
-
-
-    <fragment
-
-        android:id="@+id/nav_DarkMode"
-        android:name="com.example.infotech.DarkMode_Fragment"
-        android:label="Profile"
-        tools:layout="@layout/fragment_dark_mode_"/>
-
-    <fragment
-
-        android:id="@+id/nav_settings"
-        android:name="com.example.infotech.Settings_Fragments"
-        android:label="Profile"
-        tools:layout="@layout/fragment_settings__fragments"/>
-
     <fragment
 
         android:id="@+id/nav_About"
-        android:name="com.example.infotech.Profile_Fragment"
-        android:label="Profile"
+        android:name="com.example.infotech.About_Fragment"
+        android:label="About"
         tools:layout="@layout/fragment_about_"/>
 
-
-    <!-- Action to navigate from Dashboard_Fragment to Darkmode_Fragment -->
-    <action
-        android:id="@+id/action_dashboard_to_darkmode"
-        app:destination="@id/nav_DarkMode" />
-
-    <!-- Action to navigate from Darkmode_Fragment to Dashboard_Fragment -->
-    <action
-        android:id="@+id/action_darkmode_to_dashboard"
-        app:destination="@id/nav_home" />
-
-
-    <!-- Action to navigate from Dashboard_Fragment to Settings_Fragment -->
-    <action
-        android:id="@+id/action_dashboard_to_settings"
-        app:destination="@id/nav_settings" />
-
-    <!-- Action to navigate from Settings_Fragment to Dashboard_Fragment -->
-    <action
-        android:id="@+id/action_settings_to_dashboard"
-        app:destination="@id/nav_home" />
-
-
-
-    <!-- Action to navigate from Dashboard_Fragment to About_Fragment -->
     <action
         android:id="@+id/action_dashboard_to_about"
-        app:destination="@id/nav_activity" />
+        app:destination="@+id/nav_About" />
 
-    <!-- Action to navigate from About_Fragment to Dashboard_Fragment -->
+
     <action
         android:id="@+id/action_about_to_dashboard"
-        app:destination="@id/nav_About" />
+        app:destination="@+id/nav_home" />
+
 
 
 

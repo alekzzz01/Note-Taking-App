@@ -71,7 +71,6 @@
 
             app:layout_constraintBottom_toBottomOf="parent">
 
-
             <androidx.coordinatorlayout.widget.CoordinatorLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -111,19 +110,17 @@
                 <com.google.android.material.floatingactionbutton.FloatingActionButton
                     android:id="@+id/floatingActionButton"
                     android:layout_width="wrap_content"
-
                     android:layout_height="wrap_content"
-
                     android:layout_centerHorizontal="true"
-
                     android:layout_marginBottom="24dp"
-
                     android:contentDescription="TODO"
                     android:src="@drawable/add_icon"
                     app:backgroundTint="@color/primary_color"
                     app:layout_anchor="@id/bottomAppBar"
                     app:tint="@color/white"
                     tools:ignore="SpeakableTextPresentCheck" />
+
+
 
 
             </androidx.coordinatorlayout.widget.CoordinatorLayout>

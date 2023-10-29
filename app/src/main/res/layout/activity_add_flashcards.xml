@@ -73,7 +73,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
-
+                android:padding="16dp"
                 android:background="@drawable/background_note"
                 android:fontFamily="@font/internedium"
                 android:textColor="@color/text_color"
@@ -101,6 +101,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="100dp"
                 android:layout_marginTop="12dp"
+                android:padding="16dp"
                 android:background="@drawable/background_note"
                 android:fontFamily="@font/internedium"
                 android:textColor="@color/text_color"

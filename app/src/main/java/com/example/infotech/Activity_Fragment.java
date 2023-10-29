@@ -16,7 +16,8 @@ import android.widget.LinearLayout;
 
 public class Activity_Fragment extends Fragment {
 
-    LinearLayout NewFC;
+    LinearLayout NewFC, NewNote, ViewNote, ViewFC;
+
 
 
     @Override
@@ -27,6 +28,41 @@ public class Activity_Fragment extends Fragment {
         Context context = getActivity();
 
         NewFC = v.findViewById(R.id.newflashcardbtn);
+        NewNote = v.findViewById(R.id.addNote);
+
+        ViewNote = v.findViewById(R.id.ViewallNote);
+        ViewFC = v.findViewById(R.id.ViewAllFC);
+
+        ViewNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), NotesView_All.class);
+                startActivity(intent);
+            }
+        });
+
+
+        ViewFC.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Flashcardsview_All.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+
+        NewNote.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create an intent to navigate to Notes_Edit and pass an extra parameter
+                Intent intent = new Intent(getActivity(), Notes_Edit.class);
+                intent.putExtra("isNewNote", true);
+                startActivity(intent);
+
+            }
+        });
 
         NewFC.setOnClickListener(new View.OnClickListener() {
             @Override

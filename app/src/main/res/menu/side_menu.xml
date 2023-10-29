@@ -18,23 +18,14 @@
 
 
 
-        <item
-            android:id="@+id/nav_DarkMode"
-
-            android:title="Dark Mode"
-            android:textAppearance="@style/CustomTextAppearance"/>
-
-        <item
-            android:id="@+id/nav_settings"
-
-            android:title="Settings"
-            android:textAppearance="@style/CustomTextAppearance"/>
 
         <item
             android:id="@+id/nav_About"
 
             android:title="About"
             android:textAppearance="@style/CustomTextAppearance"/>
+
+
 
 
 

@@ -4,12 +4,270 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
 
+
     tools:context=".Profile_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Profile" />
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+        
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginTop="24dp"
+            android:orientation="vertical">
+            
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" 
+                android:text="Account" 
+                android:textSize="20sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/intersemibold"
+                
+                
+                
+                />
+            
+            
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="28dp"
+                android:orientation="vertical">
+                
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/profile"
+                    />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Name of the User"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/internedium"
+
+
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Personal Info"
+                        android:textColor="@color/text_color2"
+                        android:textSize="14sp"
+                        android:fontFamily="@font/internedium"
+
+
+                        />
+
+
+
+
+                </LinearLayout>
+
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rightbutton"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+
+
+
+                    />
+                
+                
+                
+                
+            </RelativeLayout>
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="Settings"
+                android:textSize="20sp"
+                android:textColor="@color/text_color"
+                android:fontFamily="@font/intersemibold"
+
+
+
+                />
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="28dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/notifications1"
+                    />
+
+
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="80dp"
+                        android:layout_centerVertical="true"
+                        android:text="Notifications"
+                        android:textColor="@color/text_color"
+                        android:textSize="16sp"
+                        android:fontFamily="@font/internedium"
+
+
+                        />
+
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+
+
+                    android:textColorLink="@color/primary_color" />
+
+
+
+
+            </RelativeLayout>
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="28dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/darkmode"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_centerVertical="true"
+                    android:text="Dark Mode"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/internedium"
+
+
+                    />
+
+                <androidx.appcompat.widget.SwitchCompat
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+
+
+                    />
+
+
+
+            </RelativeLayout>
+
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="28dp"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/developers"
+                    />
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="80dp"
+                    android:layout_centerVertical="true"
+                    android:text="Developers"
+                    android:textColor="@color/text_color"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/internedium"
+
+
+                    />
+
+
+                <ImageButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/rightbutton"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+
+
+
+                    />
+
+
+
+
+            </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+        
+
+
+
+
+
+
+    </ScrollView>
+
 
 </FrameLayout>
