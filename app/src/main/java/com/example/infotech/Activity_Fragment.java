@@ -34,6 +34,7 @@ public class Activity_Fragment extends Fragment {
 
 
                 customDialog.setTitle("Custom Dialog Title");
+                customDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
                  customDialog.show();
             }
         });
