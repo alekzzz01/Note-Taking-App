@@ -47,15 +47,13 @@ public class Register_Page extends AppCompatActivity {
         password = findViewById(R.id.etpassword2);
         repass = findViewById(R.id.etrepass2);
 
-
-
         signInView = findViewById(R.id.SigninView);
 
         // Add a click listener to the signupView
         signInView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // Create an intent to navigate to Signup_Page
+                // Create an intent to navigate to Signin_Page
                 Intent intent = new Intent(Register_Page.this, Signin_Page.class);
                 startActivity(intent);
             }
@@ -68,10 +66,12 @@ public class Register_Page extends AppCompatActivity {
                 String pw = password.getText().toString();
                 String pw2 = repass.getText().toString();
 
-
                 if (TextUtils.isEmpty(email) || TextUtils.isEmpty(pw) || TextUtils.isEmpty(pw2)) {
                     Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
+
+
+
                     auth.createUserWithEmailAndPassword(email, pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
@@ -79,7 +79,8 @@ public class Register_Page extends AppCompatActivity {
                                 saveUserDataToFirebase(email, pw);
                                 Toast.makeText(getApplicationContext(), "Register Successful", Toast.LENGTH_SHORT).show();
 
-                                Intent intent = new Intent(Register_Page.this, Signin_Page.class);
+                                // Navigate to the Information_Page after successful registration
+                                Intent intent = new Intent(Register_Page.this, Information_Page.class);
                                 startActivity(intent);
                                 finish();
                             }
@@ -97,6 +98,5 @@ public class Register_Page extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

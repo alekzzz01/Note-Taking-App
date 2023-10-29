@@ -15,19 +15,20 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.INFOTECH"
         tools:targetApi="31">
-
+        <activity
+            android:name=".GetStarted_Page"
+            android:exported="false" />
         <activity
             android:name=".Notes_Edit"
             android:exported="false" />
-
         <activity
             android:name=".Dashboard_Fragment"
             android:exported="false" />
-
-
-
         <activity
             android:name=".Register_Page"
+            android:exported="false" />
+        <activity
+            android:name=".Information_Page"
             android:exported="false" />
         <activity
             android:name=".MainActivity"

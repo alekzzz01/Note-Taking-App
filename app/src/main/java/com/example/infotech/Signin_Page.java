@@ -22,6 +22,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 public class Signin_Page extends AppCompatActivity {
 
@@ -77,14 +78,25 @@ public class Signin_Page extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if (task.isSuccessful()) {
-                            Toast.makeText(Signin_Page.this, "Logged in Successfuly", Toast.LENGTH_SHORT).show();
+                            FirebaseUser user = auth.getCurrentUser();
+                            if (user != null) {
+                                if (user.getMetadata().getCreationTimestamp() == user.getMetadata().getLastSignInTimestamp()) {
+                                    // The user is new, direct them to GetStarted_Page
+                                    Toast.makeText(Signin_Page.this, "New user, going to Get Started Page", Toast.LENGTH_SHORT).show();
 
-                            Intent intent = new Intent(Signin_Page.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
+                                    Intent intent = new Intent(Signin_Page.this, GetStarted_Page.class);
+                                    startActivity(intent);
+                                } else {
+                                    // The user is not new, direct them to the dashboard (MainActivity)
+                                    Toast.makeText(Signin_Page.this, "Logged in Successfully, going to Dashboard", Toast.LENGTH_SHORT).show();
+
+                                    Intent intent = new Intent(Signin_Page.this, MainActivity.class);
+                                    startActivity(intent);
+                                }
+                                finish();
+                            }
                         } else {
                             Toast.makeText(Signin_Page.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-
                         }
                     }
                 });

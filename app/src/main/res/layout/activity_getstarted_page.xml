@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".GetStarted_Page">
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="64dp"
+            android:layout_marginEnd="64dp"
+            android:background="@drawable/image2"
+            tools:ignore="ContentDescription" />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="56dp"
+            android:text="Welcome  to NoteBond, \n Let’s get you started!"
+            android:textSize="24sp"
+            android:fontFamily="@font/interbold"
+            android:textColor="@color/text_color"
+            android:textAlignment="center"
+
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="Notebond allows you to join any class, take notes \n and create your own set of flashcards!"
+            android:textColor="@color/text_color"
+            android:fontFamily="@font/interregular"
+            android:textAlignment="center"
+            android:lineSpacingExtra="9sp"
+
+
+
+
+
+            />
+
+
+
+
+
+
+
+    </LinearLayout>
+
+
+
+    <Button
+        android:id="@+id/GetStartedBtn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginBottom="32dp"
+
+
+
+        android:layout_marginRight="16dp"
+        android:background="@drawable/button_color"
+
+
+        android:fontFamily="@font/intersemibold"
+        android:text="Get Started"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText,VisualLintButtonSize">
+
+
+    </Button>
+
+</RelativeLayout>
