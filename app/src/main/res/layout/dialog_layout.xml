@@ -9,14 +9,14 @@
         android:id="@+id/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textSize="15dp"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="50dp"
-        android:text="Input your title here"
         android:layout_marginLeft="50dp"
+        android:layout_marginTop="50dp"
         android:layout_marginRight="50dp"
         android:layout_marginBottom="50dp"
-        android:fontFamily="@font/interbold">
-    </TextView>
+        android:fontFamily="@font/interbold"
+        android:text="Input your title here"></TextView>
 
     <EditText
         android:id="@+id/title"
