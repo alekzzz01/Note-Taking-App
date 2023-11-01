@@ -3,6 +3,9 @@ plugins {
     id 'com.google.gms.google-services'
 }
 
+apply plugin: 'com.android.application'
+apply plugin: 'com.google.gms.google-services'
+
 
 android {
     namespace 'com.example.infotech'
@@ -53,7 +56,19 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:20.3.0'
     implementation 'com.google.firebase:firebase-analytics'
     implementation platform('com.google.firebase:firebase-bom:32.4.0')
-    implementation 'io.realm:realm-gradle-plugin:10.10.1'
+
+
+
+
+
+
+
+
+    implementation 'com.google.firebase:firebase-analytics:20.0.0'
+    implementation 'com.google.firebase:firebase-auth:21.0.1' // Example Firebase Auth version
+    implementation 'com.google.firebase:firebase-database:20.0.2' // Example Firebase Realtime Database version
+    implementation 'com.google.firebase:firebase-storage:20.0.0' // Firebase Storage
+
 
 
     testImplementation 'junit:junit:4.13.2'

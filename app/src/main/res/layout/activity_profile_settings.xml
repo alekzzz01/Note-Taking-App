@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Profile_Settings">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <ImageButton
+                android:id="@+id/backButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="16dp"
+
+                android:background="@drawable/back_button" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Account"
+                android:textSize="20sp"
+                android:fontFamily="@font/intersemibold"
+                android:textColor="@color/text_color"
+
+                />
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="130dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="24dp"
+                android:orientation="horizontal"
+                >
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Photo"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/intersemibold"
+                    android:textColor="@color/text_color2"
+
+
+                    />
+
+                <RelativeLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true">
+
+
+
+                    <ImageView
+                        android:id="@+id/profileImageView"
+                        android:layout_width="64dp"
+                        android:layout_height="64dp"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:scaleType="centerCrop"
+                        android:background="@drawable/profile_background" />
+
+                    <Button
+                        android:id="@+id/uploadImageButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentBottom="true"
+
+                        android:background="@android:color/transparent"
+                        android:fontFamily="@font/intersemibold"
+                        android:text="Upload Image"
+                        android:textColor="@color/primary_color"
+
+
+                        android:textSize="16sp" />
+
+
+                </RelativeLayout>
+                            
+                    
+
+
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Name"
+                android:textSize="16sp"
+                android:fontFamily="@font/intersemibold"
+                android:textColor="@color/text_color2"
+
+
+                />
+
+            <TextView
+                android:id="@+id/fullNameTextView"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/background_note"
+
+                android:fontFamily="@font/interregular"
+                android:padding="16dp"
+                android:textColor="@color/text_color"
+
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Date of Birth"
+                android:textSize="16sp"
+                android:fontFamily="@font/intersemibold"
+                android:textColor="@color/text_color2"
+
+
+                />
+
+            <RelativeLayout
+                android:id="@+id/sa"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+                android:background="@drawable/background_note">
+
+                <TextView
+                    android:id="@+id/dobView"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="@font/interregular"
+                    android:hint="dd/mm/yyyy"
+                    android:padding="16dp"
+
+                    android:textColor="@color/text_color"
+
+
+                    android:textSize="20sp" />
+
+                <ImageButton
+                    android:id="@+id/editDateButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/editdate" />
+
+
+            </RelativeLayout>
+
+
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Age"
+                android:textSize="16sp"
+                android:fontFamily="@font/intersemibold"
+                android:textColor="@color/text_color2"
+
+
+                />
+
+            <TextView
+
+                android:id="@+id/ageView"
+                android:layout_width="match_parent"
+                android:layout_height="64dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="16dp"
+
+
+                android:background="@drawable/background_note"
+                android:fontFamily="@font/interregular"
+                android:hint="0"
+                android:padding="16dp"
+
+                android:textColor="@color/text_color"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Gender"
+                android:textSize="16sp"
+                android:fontFamily="@font/intersemibold"
+                android:textColor="@color/text_color2"
+
+
+                />
+
+            <RadioGroup
+                android:id="@+id/genderRadioGroup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
+                android:layout_marginTop="8dp">
+
+                <RadioButton
+                    android:id="@+id/MaleButton"
+                    android:layout_width="100dp"
+                    android:layout_height="wrap_content"
+                    android:text="Male"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/interregular"
+                    android:textColor="@color/text_color2"/>
+
+                <RadioButton
+                    android:id="@+id/FemaleButton"
+                    android:layout_width="120dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="32dp"
+                    android:text="Female"
+                    android:textSize="16sp"
+                    android:fontFamily="@font/interregular"
+                    android:textColor="@color/text_color2"/>
+            </RadioGroup>
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+    </ScrollView>
+
+
+    <Button
+
+        android:id="@+id/saveInfoBtn"
+        android:layout_width="match_parent"
+        android:layout_height="48dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="28dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="32dp"
+
+
+        android:background="@drawable/button_color"
+        android:fontFamily="@font/intersemibold"
+        android:text="Save Info"
+        android:textAllCaps="false"
+        android:textColor="@color/white"
+        android:textSize="16sp"
+        tools:ignore="HardcodedText">
+
+
+    </Button>
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

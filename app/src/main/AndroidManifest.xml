@@ -16,6 +16,9 @@
         android:theme="@style/Theme.INFOTECH"
         tools:targetApi="31">
         <activity
+            android:name=".Profile_Settings"
+            android:exported="false" />
+        <activity
             android:name=".Add_Flashcards"
             android:exported="false" />
         <activity
