@@ -33,7 +33,7 @@ public class Profile_Settings extends AppCompatActivity {
 
     ImageButton backbtn;
 
-    TextView fullNameTextView, dobView, ageView;
+    TextView fullNameTextView, dobView, ageView, emailTextView;
     Button uploadImageButton, saveInfoBtn;
     ImageView profileImageView;
     FirebaseAuth auth;
@@ -51,13 +51,21 @@ public class Profile_Settings extends AppCompatActivity {
 
         backbtn = findViewById(R.id.backButton);
         fullNameTextView = findViewById(R.id.fullNameTextView);
+        emailTextView = findViewById(R.id.emailtextView);
         uploadImageButton = findViewById(R.id.uploadImageButton);
         profileImageView = findViewById(R.id.profileImageView);
         dobView = findViewById(R.id.dobView);
         ageView = findViewById(R.id.ageView);
         saveInfoBtn = findViewById(R.id.saveInfoBtn);
+        ImageButton editDateButton = findViewById(R.id.editDateButton);
+
+
+
 
         RadioGroup genderRadioGroup = findViewById(R.id.genderRadioGroup);
+
+
+
 
 
         FirebaseAuth auth = FirebaseAuth.getInstance();
@@ -107,7 +115,7 @@ public class Profile_Settings extends AppCompatActivity {
         }
 
 
-        saveInfoBtn = findViewById(R.id.saveInfoBtn);
+
 
         saveInfoBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -171,7 +179,6 @@ public class Profile_Settings extends AppCompatActivity {
 
 
 
-        ImageButton editDateButton = findViewById(R.id.editDateButton);
         editDateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -198,6 +205,7 @@ public class Profile_Settings extends AppCompatActivity {
             }
         });
 
+
         // Get the currently logged-in user's UID
         String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
@@ -212,11 +220,13 @@ public class Profile_Settings extends AppCompatActivity {
                     String firstName = dataSnapshot.child("firstName").getValue(String.class);
                     String middleName = dataSnapshot.child("middleName").getValue(String.class);
                     String lastName = dataSnapshot.child("lastName").getValue(String.class);
+                    String email = dataSnapshot.child("email").getValue(String.class);
 
                     // Combine the three name parts into a full name
                     String fullName = firstName + " " + middleName + " " + lastName;
 
                     // Set the full name in the TextView
+                    emailTextView.setText(email);
                     fullNameTextView.setText(fullName);
                 }
             }
@@ -227,6 +237,15 @@ public class Profile_Settings extends AppCompatActivity {
             }
         });
     }
+
+
+
+
+
+
+
+
+
 
 
 
@@ -250,11 +269,14 @@ public class Profile_Settings extends AppCompatActivity {
         Intent cropIntent = new Intent("com.android.camera.action.CROP");
         cropIntent.setDataAndType(sourceUri, "image/*");
         cropIntent.putExtra("crop", "true");
-        cropIntent.putExtra("aspectX", 1);  // Set the desired aspect ratio (e.g., 1 for a square image)
+        cropIntent.putExtra("aspectX", 1);
         cropIntent.putExtra("aspectY", 1);
-        cropIntent.putExtra("outputX", 300);  // Set the desired output size
+        cropIntent.putExtra("outputX", 300);
         cropIntent.putExtra("outputY", 300);
         cropIntent.putExtra("return-data", true);
+
+        // Set the circle shape by adding an extra that specifies the shape
+        cropIntent.putExtra("circleCrop", "true");
 
         // Start the cropping activity
         startActivityForResult(cropIntent, 2);
@@ -267,7 +289,6 @@ public class Profile_Settings extends AppCompatActivity {
             String currentUserId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
             String imageName = "profile_images/" + currentUserId + ".jpg";
-
 
 
             // Reference to the user's data in the Firebase database
@@ -321,28 +342,34 @@ public class Profile_Settings extends AppCompatActivity {
     }
 
     // Calculate the age based on the DOB
+// Modify the calculateAge method to accept the date of birth as a parameter
     private int calculateAge(String dob) {
-        // Split the date of birth into day, month, and year
-        String[] dateParts = dob.split("/");
-        int day = Integer.parseInt(dateParts[0]);
-        int month = Integer.parseInt(dateParts[1]);
-        int year = Integer.parseInt(dateParts[2]);
+        if (dob != null) {
+            // Split the date of birth into day, month, and year
+            String[] dateParts = dob.split("/");
+            int day = Integer.parseInt(dateParts[0]);
+            int month = Integer.parseInt(dateParts[1]);
+            int year = Integer.parseInt(dateParts[2]);
 
-        // Get the current date
-        Calendar currentDate = Calendar.getInstance();
-        int currentYear = currentDate.get(Calendar.YEAR);
-        int currentMonth = currentDate.get(Calendar.MONTH) + 1; // Month is zero-based
-        int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
+            // Get the current date
+            Calendar currentDate = Calendar.getInstance();
+            int currentYear = currentDate.get(Calendar.YEAR);
+            int currentMonth = currentDate.get(Calendar.MONTH) + 1; // Month is zero-based
+            int currentDay = currentDate.get(Calendar.DAY_OF_MONTH);
 
-        // Calculate the age
-        int age = currentYear - year;
+            // Calculate the age
+            int age = currentYear - year;
 
-        // Adjust age if the birthday has not occurred this year yet
-        if (currentMonth < month || (currentMonth == month && currentDay < day)) {
-            age--;
+            // Adjust age if the birthday has not occurred this year yet
+            if (currentMonth < month || (currentMonth == month && currentDay < day)) {
+                age--;
+            }
+
+            return age;
+        } else {
+            // Show a message to the user indicating they need to input their date of birth
+
+            return 0; // Return a default value, or handle this case as needed
         }
-
-        return age;
     }
-
 }

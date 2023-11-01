@@ -39,19 +39,19 @@
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
-
+<!--
                     <ImageButton
 
                         android:layout_width="48dp"
                         android:layout_height="48dp"
                         android:background="@drawable/profile"
 
-                        tools:ignore="SpeakableTextPresentCheck" />
+                        tools:ignore="SpeakableTextPresentCheck" /> -->
 
                     <LinearLayout
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:layout_marginLeft="12dp"
+
                         android:orientation="vertical">
 
                         <TextView
@@ -59,7 +59,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/interbold"
-                            android:text="Hi, Alexander"
+                            android:hint="Hi, Name!"
                             android:textColor="@color/text_color"
                             android:textSize="24sp" />
 

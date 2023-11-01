@@ -129,7 +129,7 @@ public class Dashboard_Fragment extends Fragment {
                 if (firstName != null) {
                     // Set the user's first name in the TextView
                     TextView etFirstName = getView().findViewById(R.id.etFirstName); // Retrieve the TextView
-                    etFirstName.setText("Hi, " + firstName);
+                    etFirstName.setText("Hi, " + firstName + "!");
                 }
             }
 
