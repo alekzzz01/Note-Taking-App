@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    >
+
+
+    <RelativeLayout
+        android:layout_width="300dp"
+        android:layout_height="480dp"
+        android:background="@drawable/background_note"
+
+
+        >
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+
+
+            android:text="Front Questions"
+            android:textColor="@color/text_color"
+            android:textSize="20sp"
+            android:fontFamily="@font/internedium"
+
+
+            />
+
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="24dp"
+
+
+            android:text="TAP TO GET ANSWER*"
+            android:textColor="@color/text_color"
+            android:textSize="16sp"
+            android:fontFamily="@font/interregular"
+
+
+            />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </RelativeLayout>
+
+
+
+
+
+
+
+
+</androidx.cardview.widget.CardView>

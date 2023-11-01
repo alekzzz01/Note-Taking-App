@@ -8,6 +8,7 @@ import android.annotation.SuppressLint;
 
 import android.os.Bundle;
 
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -43,9 +44,9 @@ public class Notes_Edit extends AppCompatActivity {
         ImageButton settingsButton = findViewById(R.id.settingsButton);
         ImageButton backbutton = findViewById(R.id.backButton);
 
-      dateTimeTextView = findViewById(R.id.date_time);
+        dateTimeTextView = findViewById(R.id.date_time);
 
-       Calendar calendar = Calendar.getInstance();
+        Calendar calendar = Calendar.getInstance();
         Date date = calendar.getTime();
         @SuppressLint("SimpleDateFormat") SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy hh:mm a");
         String formattedDate = dateFormat.format(date);
@@ -54,6 +55,16 @@ public class Notes_Edit extends AppCompatActivity {
         saveButton = findViewById(R.id.savebtn);
         titleInput = findViewById(R.id.titleinput);
         descriptionInput = findViewById(R.id.descriptioninput);
+
+
+        // Retrieve the selected note from the intent's extras
+        Note selectedNote = getIntent().getParcelableExtra("selectedNote");
+
+        if (selectedNote != null) {
+            // Populate EditText fields with selected note's data
+            titleInput.setText(selectedNote.getTitle());
+            descriptionInput.setText(selectedNote.getDescription());
+        }
 
 
         // Set an onClickListener for the ImageButton
@@ -100,9 +111,6 @@ public class Notes_Edit extends AppCompatActivity {
         });
 
 
-
-
-
         // Get a reference to the Firebase Database
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
@@ -124,6 +132,7 @@ public class Notes_Edit extends AppCompatActivity {
         Note note = new Note(title, timestamp, description);
 
 
+        // Set an onClickListener for the "Save" button
         saveButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -133,33 +142,58 @@ public class Notes_Edit extends AppCompatActivity {
                 // Get the current user's UID from Firebase Authentication
                 String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                // Get a reference to the "notes" node under the user's UID
-                DatabaseReference userNotesRef = databaseReference.child("users").child(userId).child("notes");
+                if (selectedNote == null) {
+                    // Creating a new note
+                    String title = titleInput.getText().toString();
+                    String description = descriptionInput.getText().toString();
+                    long timestamp = System.currentTimeMillis();
 
-                // Get the title, time, and description from the EditText fields
-                String title = titleInput.getText().toString();
-                String description = descriptionInput.getText().toString();
-                long timestamp = System.currentTimeMillis();
+                    // Create a new Note object
+                    Note note = new Note(title, timestamp, description);
 
-                // Create a Note object
-                Note note = new Note(title, timestamp, description);
-
-                // Save the note to the database under a unique key
-                DatabaseReference newNoteRef = userNotesRef.push();
-                newNoteRef.setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
-                    @Override
-                    public void onComplete(@NonNull Task<Void> task) {
-                        if (task.isSuccessful()) {
-                            // Note saved successfully
-                            Toast.makeText(Notes_Edit.this, "Note saved to Firebase", Toast.LENGTH_SHORT).show();
-                            finish(); // Finish the activity
-                        } else {
-                            // Handle the error, if any
-                            Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                    // Save the new note to the database under a unique key
+                    DatabaseReference newNoteRef = databaseReference.child("users").child(userId).child("notes").push();
+                    newNoteRef.setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(Notes_Edit.this, "Note saved to Firebase", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
                         }
+                    });
+                } else {
+                    // Updating an existing note
+                    String updatedTitle = titleInput.getText().toString();
+                    String updatedDescription = descriptionInput.getText().toString();
+
+                    // Create an updated Note object
+                    Note updatedNote = new Note(selectedNote.getKey(), updatedTitle, selectedNote.getTimestamp(), updatedDescription);
+
+                    // Update the note in the database using its unique key
+                    DatabaseReference updatedNoteRef = databaseReference.child("users").child(userId).child("notes").child(selectedNote.getKey());
+
+
+                    if (selectedNote != null) {
+                        Log.d("Notes_Edit", "Selected note key: " + selectedNote.getKey());
                     }
-                });
+
+                    updatedNoteRef.setValue(updatedNote).addOnCompleteListener(new OnCompleteListener<Void>() {
+                        @Override
+                        public void onComplete(@NonNull Task<Void> task) {
+                            if (task.isSuccessful()) {
+                                Toast.makeText(Notes_Edit.this, "Note updated and saved to Firebase", Toast.LENGTH_SHORT).show();
+                                finish();
+                            } else {
+                                Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
+                }
             }
         });
     }
+
 }

@@ -1,6 +1,8 @@
 package com.example.infotech;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,6 +29,13 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         notifyDataSetChanged(); // Notify the adapter that the dataset has changed
     }
 
+    public Note getItem(int position) {
+        if (position >= 0 && position < noteList.size()) {
+            return noteList.get(position);
+        }
+        return null;
+    }
+
     @NonNull
     @Override
     public NoteViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -35,12 +44,24 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         return new NoteViewHolder(view);
     }
 
+
     @Override
     public void onBindViewHolder(@NonNull NoteViewHolder holder, int position) {
         Note note = noteList.get(position);
-        // Bind data to your list item view here
         holder.bind(note);
+
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Open the Notes_Edit activity for editing when a list item is clicked
+                Context context = holder.itemView.getContext();
+                Intent intent = new Intent(context, Notes_Edit.class);
+                intent.putExtra("selectedNote", note); // Pass the selected note to the edit activity
+                context.startActivity(intent);
+            }
+        });
     }
+
 
     @Override
     public int getItemCount() {
@@ -77,6 +98,8 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         }
 
     }
+
+
 
 
 }

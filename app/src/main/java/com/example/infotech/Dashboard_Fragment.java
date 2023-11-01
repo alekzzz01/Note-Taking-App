@@ -58,6 +58,10 @@ public class Dashboard_Fragment extends Fragment {
         recyclerView.setAdapter(noteAdapter);
 
 
+
+
+
+
         newNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
