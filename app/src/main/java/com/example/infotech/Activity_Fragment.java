@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.LinearLayout;
 
 
@@ -70,12 +71,16 @@ public class Activity_Fragment extends Fragment {
                 Dialog customDialog = new Dialog(context);
                 customDialog.setContentView(R.layout.dialog_layout);
 
+                EditText titlefield = customDialog.findViewById(R.id.title);
                 Button New = customDialog.findViewById(R.id.addtitlebtn);
 
                 New.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
+                        String flashcardSetTitle = titlefield.getText().toString();
+                        customDialog.dismiss();
                         Intent intent = new Intent(context, Add_Flashcards.class);
+                        intent.putExtra("flashcardSetTitle", flashcardSetTitle);
                         context.startActivity(intent);
                     }
                 });

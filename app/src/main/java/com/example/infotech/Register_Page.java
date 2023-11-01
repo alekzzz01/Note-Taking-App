@@ -70,19 +70,30 @@ public class Register_Page extends AppCompatActivity {
                     Toast.makeText(getApplicationContext(), "Please fill all fields", Toast.LENGTH_SHORT).show();
                 } else {
 
-
-
                     auth.createUserWithEmailAndPassword(email, pw).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                         @Override
                         public void onComplete(@NonNull Task<AuthResult> task) {
+                            //EMail Verification Link
                             if (task.isSuccessful()) {
-                                saveUserDataToFirebase(email, pw);
-                                Toast.makeText(getApplicationContext(), "Register Successful", Toast.LENGTH_SHORT).show();
+                               FirebaseUser user = auth.getCurrentUser();
+                               if (user != null) {
+                                   user.sendEmailVerification().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                       @Override
+                                       public void onComplete(@NonNull Task<Void> task) {
+                                           if (task.isSuccessful()) {
+                                               Toast.makeText(getApplicationContext(), "Email verification link sent", Toast.LENGTH_SHORT).show();
+                                               saveUserDataToFirebase(email, pw);
 
-                                // Navigate to the Information_Page after successful registration
-                                Intent intent = new Intent(Register_Page.this, Information_Page.class);
-                                startActivity(intent);
-                                finish();
+                                               // Navigate to the Information_Page after successful registration
+                                               Intent intent = new Intent(Register_Page.this, Information_Page.class);
+                                               startActivity(intent);
+                                               finish();
+                                           } else {
+                                               Toast.makeText(getApplicationContext(), "Failed to send verification link", Toast.LENGTH_SHORT).show();
+                                           }
+                                       }
+                                   });
+                               }
                             }
                         }
 
