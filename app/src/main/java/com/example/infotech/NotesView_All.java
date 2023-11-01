@@ -27,6 +27,8 @@ public class NotesView_All extends AppCompatActivity {
 
     RecyclerView recyclerViewSecond; // Define the second RecyclerView
     NoteAdapterSecond noteAdapterSecond; // Create the second adapter
+
+    ImageButton backbtn;
     List<Note> notesListForSecond; // Create a list for the second adapter
 
     private FirebaseAuth mAuth;
@@ -37,6 +39,7 @@ public class NotesView_All extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_view_all);
         recyclerViewSecond = findViewById(R.id.recyclerview);
+        backbtn =findViewById(R.id.backButton);
         mAuth = FirebaseAuth.getInstance();
 
 
@@ -45,7 +48,19 @@ public class NotesView_All extends AppCompatActivity {
         notesListForSecond = new ArrayList<>();
         noteAdapterSecond = new NoteAdapterSecond(notesListForSecond);
         recyclerViewSecond.setAdapter(noteAdapterSecond);
+
         recyclerViewSecond.setLayoutManager(new LinearLayoutManager(this));
+
+
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Finish the current activity (Notes_Edit) to go back to the previous activity (Dashboard_Fragment)
+                finish();
+            }
+        });
+
 
         // Call the method to retrieve and display user's notes
         retrieveAndDisplayNotes();
