@@ -3,6 +3,7 @@ package com.example.infotech;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.provider.ContactsContract;
 import android.text.TextUtils;
@@ -22,7 +23,6 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Add_Flashcards extends AppCompatActivity {
 
-    int setNumber = 1;
     ImageButton backbtn;
 
     EditText question, answer;
@@ -40,6 +40,8 @@ public class Add_Flashcards extends AppCompatActivity {
         answer = findViewById(R.id.etanswer);
         add = findViewById(R.id.addbtn);
         auth = FirebaseAuth.getInstance();
+        Intent intent = getIntent();
+        String flashcardSetTitle = intent.getStringExtra("flashcardSetTitle");
 
 
 
@@ -84,7 +86,7 @@ public class Add_Flashcards extends AppCompatActivity {
                 FirebaseUser firebaseUser = auth.getCurrentUser();
                 String userID = firebaseUser.getUid();
 
-                DatabaseReference userReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("flashcards").child("set" + setNumber);
+                DatabaseReference userReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("flashcards").child(flashcardSetTitle);
 
                 userReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -98,9 +100,7 @@ public class Add_Flashcards extends AppCompatActivity {
                             newFlashcard.child("Question").setValue(question);
                             newFlashcard.child("Answer").setValue(answer);
                         } else {
-                            //Add 1 in the setNumber and create a new set for new flashcard
-                            setNumber++;
-                            DatabaseReference newSetReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("flashcards").child("set" + setNumber);
+                            DatabaseReference newSetReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("flashcards").child(flashcardSetTitle);
                             DatabaseReference newFlashcardReference = newSetReference.push();
                             newFlashcardReference.child("Question").setValue(question);
                             newFlashcardReference.child("Answer").setValue(answer);
