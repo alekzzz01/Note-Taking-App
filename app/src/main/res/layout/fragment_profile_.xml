@@ -54,15 +54,16 @@
                     android:padding="8dp">
 
                     <TextView
+                        android:id="@+id/etFullName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
+                        android:fontFamily="@font/internedium"
                         android:text="Name of the User"
                         android:textColor="@color/text_color"
-                        android:textSize="16sp"
-                        android:fontFamily="@font/internedium"
 
 
-                        />
+                        android:textSize="16sp" />
+
                     <TextView
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
@@ -81,16 +82,15 @@
 
 
                 <ImageButton
+                    android:id="@+id/profileSettings"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/rightbutton"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
 
 
-
-                    />
+                    android:background="@drawable/rightbutton" />
                 
                 
                 
