@@ -6,10 +6,12 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -23,67 +25,66 @@ import java.util.List;
 
 public class NotesView_All extends AppCompatActivity {
 
-    ImageButton backbtn;
-    RecyclerView recyclerView;
-    NoteAdapter noteAdapter;
-    List<Note> notesList;
+    RecyclerView recyclerViewSecond; // Define the second RecyclerView
+    NoteAdapterSecond noteAdapterSecond; // Create the second adapter
+    List<Note> notesListForSecond; // Create a list for the second adapter
 
-    private FirebaseAuth mAuth; // Firebase Authentication instance
+    private FirebaseAuth mAuth;
+    private DatabaseReference notesReference; // Reference to the user's notes in Firebase
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes_view_all);
-        recyclerView = findViewById(R.id.recyclerview);
-        backbtn = findViewById(R.id.backButton);
+        recyclerViewSecond = findViewById(R.id.recyclerview);
+        mAuth = FirebaseAuth.getInstance();
 
-        mAuth = FirebaseAuth.getInstance(); // Initialize Firebase Authentication
 
-        backbtn.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                finish();
-            }
-        });
 
-        notesList = new ArrayList<>();
-        noteAdapter = new NoteAdapter(notesList);
+        // Set up the second RecyclerView and adapter
+        notesListForSecond = new ArrayList<>();
+        noteAdapterSecond = new NoteAdapterSecond(notesListForSecond);
+        recyclerViewSecond.setAdapter(noteAdapterSecond);
+        recyclerViewSecond.setLayoutManager(new LinearLayoutManager(this));
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        recyclerView.setAdapter(noteAdapter);
+        // Call the method to retrieve and display user's notes
+        retrieveAndDisplayNotes();
 
-        // Fetch notes from Firebase for the current user
-        fetchUserNotes();
+        FirebaseApp.initializeApp(this); // Initialize Firebase
+
     }
 
-    private void fetchUserNotes() {
-        FirebaseUser currentUser = mAuth.getCurrentUser(); // Get the current authenticated user
-        if (currentUser != null) {
-            String currentUserId = currentUser.getUid();
 
-            // Reference to the current user's notes
-            DatabaseReference userNotesRef = FirebaseDatabase.getInstance().getReference("users")
-                    .child(currentUserId)
-                    .child("notes");
+    private void retrieveAndDisplayNotes() {
+        // Get a reference to the Firebase Database
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-            userNotesRef.addValueEventListener(new ValueEventListener() {
-                @Override
-                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                    notesList.clear(); // Clear the existing notes
+        // Get the current user's UID from Firebase Authentication
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-                    for (DataSnapshot noteSnapshot : dataSnapshot.getChildren()) {
-                        Note note = noteSnapshot.getValue(Note.class);
-                        notesList.add(note);
+        // Get a reference to the "notes" node under the user's UID
+        DatabaseReference userNotesRef = databaseReference.child("users").child(userId).child("notes");
+
+        // Retrieve the notes from Firebase
+        userNotesRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Note> noteList = new ArrayList<>();
+                for (DataSnapshot noteSnapshot : dataSnapshot.getChildren()) {
+                    Note note = noteSnapshot.getValue(Note.class);
+                    if (note != null) {
+                        noteList.add(note);
                     }
-
-                    noteAdapter.setNotes(notesList); // Update the adapter with the fetched notes
                 }
 
-                @Override
-                public void onCancelled(@NonNull DatabaseError databaseError) {
-                    Toast.makeText(NotesView_All.this, "Failed to fetch notes from Firebase", Toast.LENGTH_SHORT).show();
-                }
-            });
-        }
+                // Update the RecyclerView adapter with the list of notes
+                noteAdapterSecond.setNotes(noteList);
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle any errors or exceptions
+            }
+        });
     }
 }

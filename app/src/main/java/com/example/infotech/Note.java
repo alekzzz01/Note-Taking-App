@@ -8,7 +8,7 @@ public class Note implements Parcelable {
     private long time;
     private String description;
     private String key;
-    private boolean isSpecial;// Unique key for the note
+
 
     public Note() {
         // Default constructor required for Firebase
@@ -18,7 +18,7 @@ public class Note implements Parcelable {
         this.title = title;
         this.time = time;
         this.description = description;
-        this.isSpecial = isSpecial;
+
     }
 
     public Note(String key, String title, long time, String description) {
@@ -26,7 +26,7 @@ public class Note implements Parcelable {
         this.title = title;
         this.time = time;
         this.description = description;
-        this.isSpecial = isSpecial;
+
     }
 
     public String getTitle() {
@@ -45,9 +45,7 @@ public class Note implements Parcelable {
         return key;
     }
 
-    public boolean isSpecial() {
-        return isSpecial;
-    }
+
 
     // Parcelable implementation
     protected Note(Parcel in) {

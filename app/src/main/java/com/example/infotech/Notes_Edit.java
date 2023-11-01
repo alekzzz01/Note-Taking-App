@@ -148,7 +148,7 @@ public class Notes_Edit extends AppCompatActivity {
                     String description = descriptionInput.getText().toString();
                     long timestamp = System.currentTimeMillis();
 
-                    // Create a new Note object
+                    // Create a new Note SS
                     Note note = new Note(title, timestamp, description);
 
                     // Save the new note to the database under a unique key
