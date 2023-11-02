@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 
 
+import android.app.ProgressDialog;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -21,6 +22,7 @@ import android.widget.Toast;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -30,6 +32,7 @@ import java.util.Date;
 
 
 public class Notes_Edit extends AppCompatActivity {
+    private boolean isButtonClicked = false;
 
     TextView dateTimeTextView;
 
@@ -132,68 +135,92 @@ public class Notes_Edit extends AppCompatActivity {
         Note note = new Note(title, timestamp, description);
 
 
-        // Set an onClickListener for the "Save" button
-        saveButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                // Get a reference to the Firebase Database
-                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = mAuth.getCurrentUser();
+        if (currentUser != null) {
+            Log.d("Notes_Edit.java", "User is authenticated");
+            userId = currentUser.getUid();
+            Log.d("Notes_Edit.java", "User ID: " + userId);
 
-                // Get the current user's UID from Firebase Authentication
-                String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            // Set an onClickListener for the "Save" button
+            saveButton.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Log.d("Notes_Edit.java", "saveButton onClick");
+                    saveButton.setEnabled(false); // Disable the button to prevent multiple clicks
+                    ProgressDialog progressDialog = new ProgressDialog(Notes_Edit.this);
+                    progressDialog.setMessage("Saving...");
+                    progressDialog.show();
 
-                if (selectedNote == null) {
-                    // Creating a new note
-                    String title = titleInput.getText().toString();
-                    String description = descriptionInput.getText().toString();
-                    long timestamp = System.currentTimeMillis();
-
-                    // Create a new Note SS
-                    Note note = new Note(title, timestamp, description);
-
-                    // Save the new note to the database under a unique key
-                    DatabaseReference newNoteRef = databaseReference.child("users").child(userId).child("notes").push();
-                    newNoteRef.setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(Notes_Edit.this, "Note saved to Firebase", Toast.LENGTH_SHORT).show();
-                                finish();
-                            } else {
-                                Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                } else {
-                    // Updating an existing note
-                    String updatedTitle = titleInput.getText().toString();
-                    String updatedDescription = descriptionInput.getText().toString();
-
-                    // Create an updated Note object
-                    Note updatedNote = new Note(selectedNote.getKey(), updatedTitle, selectedNote.getTimestamp(), updatedDescription);
-
-                    // Update the note in the database using its unique key
-                    DatabaseReference updatedNoteRef = databaseReference.child("users").child(userId).child("notes").child(selectedNote.getKey());
-
-
-                    if (selectedNote != null) {
-                        Log.d("Notes_Edit", "Selected note key: " + selectedNote.getKey());
+                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                    String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                    if (userId == null || userId.isEmpty()) {
+                        Log.e("Notes_Edit.java", "User ID is null or empty");
+                        saveButton.setEnabled(true); // Re-enable the button
+                        progressDialog.dismiss(); // Dismiss the dialog
+                        return;
                     }
 
-                    updatedNoteRef.setValue(updatedNote).addOnCompleteListener(new OnCompleteListener<Void>() {
-                        @Override
-                        public void onComplete(@NonNull Task<Void> task) {
-                            if (task.isSuccessful()) {
-                                Toast.makeText(Notes_Edit.this, "Note updated and saved to Firebase", Toast.LENGTH_SHORT).show();
-                                finish();
-                            } else {
-                                Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                    });
-                }
-            }
-        });
-    }
+                    Log.d("Notes_Edit.java", "selectedNote: " + selectedNote);
 
+                    String newTitle = titleInput.getText().toString();
+                    String newDescription = descriptionInput.getText().toString();
+                    long newTimestamp = System.currentTimeMillis();
+
+                    if (selectedNote == null) {
+                        // Create a new Note object if selectedNote is null
+                        Note note = new Note(newTitle, newTimestamp, newDescription);
+
+                        DatabaseReference newNoteRef = databaseReference.child("users").child(userId).child("notes").push();
+                        newNoteRef.setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Notes_Edit.this, "Note saved to Firebase", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                } else {
+                                    Log.e("Notes_Edit.java", "Database operation failed: " + task.getException().getMessage());
+                                    Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                                saveButton.setEnabled(true); // Re-enable the button
+                                progressDialog.dismiss(); // Dismiss the dialog
+                                Log.d("Notes_Edit.java", "Button enabled and dialog dismissed");
+                            }
+                        });
+                    } else {
+                        // Update the selected note's title, description, and timestamp
+                        if (selectedNote.getKey() != null) {
+                            selectedNote.setTitle(newTitle);
+                            selectedNote.setDescription(newDescription);
+                            selectedNote.setTime(newTimestamp);
+
+                            DatabaseReference selectedNoteRef = databaseReference.child("users").child(userId).child("notes").child(selectedNote.getKey());
+                            selectedNoteRef.setValue(selectedNote).addOnCompleteListener(new OnCompleteListener<Void>() {
+                                @Override
+                                public void onComplete(@NonNull Task<Void> task) {
+                                    if (task.isSuccessful()) {
+                                        Toast.makeText(Notes_Edit.this, "Note updated in Firebase", Toast.LENGTH_SHORT).show();
+                                        finish();
+                                    } else {
+                                        Log.e("Notes_Edit.java", "Database operation failed: " + task.getException().getMessage());
+                                        Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                    }
+                                    saveButton.setEnabled(true); // Re-enable the button
+                                    progressDialog.dismiss(); // Dismiss the dialog
+                                    Log.d("Notes_Edit.java", "Button enabled and dialog dismissed");
+                                }
+                            });
+                        } else {
+                            Log.e("Notes_Edit.java", "selectedNote key is null");
+                            saveButton.setEnabled(true);
+                            progressDialog.dismiss();
+                            finish();
+                            Log.d("Notes_Edit.java", "Button enabled and dialog dismissed");
+                        }
+                    }
+                }
+            });
+
+        }
+    }
 }

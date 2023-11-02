@@ -29,6 +29,18 @@ public class Note implements Parcelable {
 
     }
 
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setTime(long time) {
+        this.time = time;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     public String getTitle() {
         return title;
     }
