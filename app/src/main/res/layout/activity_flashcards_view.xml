@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/relative"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -54,15 +55,99 @@
     </RelativeLayout>
 
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerview"
+    <HorizontalScrollView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_centerInParent="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp">
 
-        android:orientation="horizontal"
-        android:paddingRight="16dp"
-        android:scrollbars="horizontal" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:orientation="horizontal">
+
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="350dp"
+                android:layout_height="520dp"
+                android:layout_margin="20dp"
+                android:backgroundTint="@color/white"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="10dp">
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent">
+
+                    <!-- Front of the card -->
+
+                    <LinearLayout
+                        android:id="@+id/front1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/Question1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Question"
+                            android:paddingTop="230dp"
+                            android:textSize="16dp"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/interregular">
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tap view Answer*"
+                            android:paddingTop="200dp"
+                            android:textSize="16dp"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/interregular">
+                        </TextView>
+                    </LinearLayout>
+
+
+                    <!-- Back of the card -->
+
+                    <LinearLayout
+                        android:id="@+id/back1"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:id="@+id/Answer1"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Answer"
+                            android:paddingTop="230dp"
+                            android:textSize="16dp"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/interregular">
+                        </TextView>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Tap view Question*"
+                            android:paddingTop="200dp"
+                            android:textSize="16dp"
+                            android:layout_gravity="center_horizontal"
+                            android:fontFamily="@font/interregular">
+                        </TextView>
+                    </LinearLayout>
+                </FrameLayout>
+            </androidx.cardview.widget.CardView>
+
+
+        </LinearLayout>
+    </HorizontalScrollView>
 
 
 
