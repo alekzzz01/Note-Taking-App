@@ -80,68 +80,19 @@
                     android:layout_width="match_parent"
                     android:layout_height="match_parent">
 
-                    <!-- Front of the card -->
 
-                    <LinearLayout
-                        android:id="@+id/front1"
+                    <include
+                        android:id="@+id/backView"
+                        layout="@layout/frback_view_flashcards"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:layout_height="match_parent" />
 
-                        <TextView
-                            android:id="@+id/Question1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="1st Planet"
-                            android:paddingTop="230dp"
-                            android:textSize="16dp"
-                            android:layout_gravity="center_horizontal"
-                            android:fontFamily="@font/interregular">
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tap view Answer*"
-                            android:paddingTop="200dp"
-                            android:textSize="16dp"
-                            android:layout_gravity="center_horizontal"
-                            android:fontFamily="@font/interregular">
-                        </TextView>
-                    </LinearLayout>
-
-
-                    <!-- Back of the card -->
-
-                    <LinearLayout
-                        android:id="@+id/back1"
+                    <include
+                        android:id="@+id/frontView"
+                        layout="@layout/front_view_flashcards"
                         android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:orientation="vertical"
-                        android:padding="16dp">
+                        android:layout_height="match_parent"/>
 
-                        <TextView
-                            android:id="@+id/Answer1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Mercury"
-                            android:paddingTop="230dp"
-                            android:textSize="16dp"
-                            android:layout_gravity="center_horizontal"
-                            android:fontFamily="@font/interregular">
-                        </TextView>
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="Tap view Question*"
-                            android:paddingTop="200dp"
-                            android:textSize="16dp"
-                            android:layout_gravity="center_horizontal"
-                            android:fontFamily="@font/interregular">
-                        </TextView>
-                    </LinearLayout>
                 </FrameLayout>
             </androidx.cardview.widget.CardView>
 
