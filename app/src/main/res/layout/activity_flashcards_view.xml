@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/relative"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -69,8 +68,9 @@
 
 
             <androidx.cardview.widget.CardView
+                android:id="@+id/card"
                 android:layout_width="350dp"
-                android:layout_height="520dp"
+                android:layout_height="600dp"
                 android:layout_margin="20dp"
                 android:backgroundTint="@color/white"
                 app:cardCornerRadius="20dp"
@@ -93,7 +93,7 @@
                             android:id="@+id/Question1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Question"
+                            android:text="1st Planet"
                             android:paddingTop="230dp"
                             android:textSize="16dp"
                             android:layout_gravity="center_horizontal"
@@ -125,7 +125,7 @@
                             android:id="@+id/Answer1"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Answer"
+                            android:text="Mercury"
                             android:paddingTop="230dp"
                             android:textSize="16dp"
                             android:layout_gravity="center_horizontal"
