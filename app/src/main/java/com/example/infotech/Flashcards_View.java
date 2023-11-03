@@ -64,19 +64,7 @@ public class Flashcards_View extends AppCompatActivity {
                 .child("Science")
                 .child("flashcard1");
 
-        titlename.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                String titlename = snapshot.child("Title").getValue(String.class);
 
-                Title.setText(titlename);
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
 
         database.addValueEventListener(new ValueEventListener() {
             @Override
@@ -84,7 +72,9 @@ public class Flashcards_View extends AppCompatActivity {
                 if (snapshot.exists()){
                     String Question = snapshot.child("Question").getValue(String.class);
                     String Answer = snapshot.child("Answer").getValue(String.class);
+                    String titlename = snapshot.child("Title").getValue(String.class);
 
+                    Title.setText(titlename);
                     Q1.setText(Question);
                     A1.setText(Answer);
                 }
