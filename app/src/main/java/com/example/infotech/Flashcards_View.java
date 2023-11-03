@@ -1,5 +1,6 @@
 package com.example.infotech;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
 
@@ -14,17 +15,25 @@ import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 
 public class Flashcards_View extends AppCompatActivity {
 
     private CardView Card;
+    TextView Q1, A1, Title;
     private View frontView;
     private View backView;
     private boolean isCardFlipped = false;
+    DatabaseReference database, titlename;
+    FirebaseAuth auth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,9 +41,52 @@ public class Flashcards_View extends AppCompatActivity {
         setContentView(R.layout.activity_flashcards_view);
 
         Card = findViewById(R.id.card);
+        Title = findViewById(R.id.title);
         frontView = findViewById(R.id.frontView);
         backView = findViewById(R.id.backView);
-        
+        A1 = findViewById(R.id.answer1);
+        Q1 = findViewById(R.id.question1);
+
+
+        auth = FirebaseAuth.getInstance();
+        FirebaseUser currentUser = auth.getCurrentUser();
+        String userID = currentUser.getUid();
+        database = FirebaseDatabase.getInstance().getReference()
+                .child("users")
+                .child(userID)
+                .child("flashcards")
+                .child("Math")
+                .child("flashcard1");
+
+        titlename = FirebaseDatabase.getInstance().getReference()
+                .child("users")
+                .child(userID)
+                .child("Math")
+                .child("flashcard1");
+
+
+
+        database.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                if (snapshot.exists()){
+                    String Question = snapshot.child("Question").getValue(String.class);
+                    String Answer = snapshot.child("Answer").getValue(String.class);
+                    String titlename = snapshot.child("Title").getValue(String.class);
+
+                    Title.setText(titlename);
+                    Q1.setText(Question);
+                    A1.setText(Answer);
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+
+
         Card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,6 +96,8 @@ public class Flashcards_View extends AppCompatActivity {
 
 
     }
+
+
 
     private void flipCard() {
         float start = isCardFlipped ? 180f : 0f;

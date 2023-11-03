@@ -97,6 +97,7 @@ public class Add_Flashcards extends AppCompatActivity {
                             String flashcardNumber = "flashcard" + (flashcardCount + 1);
 
                             DatabaseReference newFlashcard = userReference.child(flashcardNumber);
+                            newFlashcard.child("Title").setValue(flashcardSetTitle);
                             newFlashcard.child("Question").setValue(question);
                             newFlashcard.child("Answer").setValue(answer);
                         } else {
