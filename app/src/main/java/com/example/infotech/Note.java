@@ -5,7 +5,7 @@ import android.os.Parcelable;
 
 public class Note implements Parcelable {
     private String title;
-    private long time;
+    private long timestamp;
     private String description;
     private String key;
 
@@ -16,7 +16,7 @@ public class Note implements Parcelable {
 
     public Note(String title, long time, String description) {
         this.title = title;
-        this.time = time;
+        this.timestamp = time;
         this.description = description;
 
     }
@@ -24,7 +24,7 @@ public class Note implements Parcelable {
     public Note(String key, String title, long time, String description) {
         this.key = key;
         this.title = title;
-        this.time = time;
+        this.timestamp = time;
         this.description = description;
 
     }
@@ -33,12 +33,16 @@ public class Note implements Parcelable {
         this.title = title;
     }
 
-    public void setTime(long time) {
-        this.time = time;
+    public void setTimestamp(long timestamp) {
+        this.timestamp = timestamp;
     }
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 
     public String getTitle() {
@@ -46,7 +50,7 @@ public class Note implements Parcelable {
     }
 
     public long getTimestamp() {
-        return time;
+        return timestamp;
     }
 
     public String getDescription() {
@@ -62,7 +66,7 @@ public class Note implements Parcelable {
     // Parcelable implementation
     protected Note(Parcel in) {
         title = in.readString();
-        time = in.readLong();
+        timestamp = in.readLong();
         description = in.readString();
         key = in.readString();
     }
@@ -87,7 +91,7 @@ public class Note implements Parcelable {
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(title);
-        dest.writeLong(time);
+        dest.writeLong(timestamp);
         dest.writeString(description);
         dest.writeString(key);
     }

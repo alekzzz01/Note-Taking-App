@@ -2,6 +2,7 @@ package com.example.infotech;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,7 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 public class NoteAdapterSecond extends RecyclerView.Adapter<NoteAdapterSecond.NoteViewHolder> {
     private final List<Note> noteListSecond; // List of Note objects for the second RecyclerView
@@ -67,7 +70,14 @@ public class NoteAdapterSecond extends RecyclerView.Adapter<NoteAdapterSecond.No
 
         public void bind(Note note) {
             titleTextView.setText(note.getTitle());
-            timestampTextView.setText(String.valueOf(note.getTimestamp()));
+
+            // Debug log to check the timestamp
+            Log.d("TimestampDebug", "Timestamp value in bind: " + note.getTimestamp());
+
+            SimpleDateFormat dateFormat = new SimpleDateFormat("MM/dd/yyyy HH:mm:ss", Locale.getDefault());
+            String formattedTimestamp = dateFormat.format(note.getTimestamp());
+            timestampTextView.setText(formattedTimestamp);
         }
+
     }
 }
