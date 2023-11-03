@@ -233,16 +233,15 @@
 
 
                 <ImageButton
+                    android:id="@+id/developerPage"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginEnd="8dp"
-                    android:background="@drawable/rightbutton"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
+                    android:layout_marginEnd="8dp"
 
 
-
-                    />
+                    android:background="@drawable/rightbutton" />
 
 
 

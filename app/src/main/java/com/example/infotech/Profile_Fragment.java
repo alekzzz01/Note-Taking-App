@@ -27,17 +27,30 @@ public class Profile_Fragment extends Fragment {
 
     private ImageButton profileButton;
 
+    private ImageButton developerButton;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_profile_, container, false);
         fullNameTextView = view.findViewById(R.id.etFullName);
         profileButton = view.findViewById(R.id.profileSettings);
+        developerButton = view.findViewById(R.id.developerPage);
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
                 Intent intent = new Intent(getActivity(), Profile_Settings.class);
+                startActivity(intent);
+            }
+        });
+
+
+        developerButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Intent intent = new Intent(getActivity(), Developer_Page.class);
                 startActivity(intent);
             }
         });

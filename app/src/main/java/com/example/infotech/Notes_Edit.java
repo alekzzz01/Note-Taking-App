@@ -1,12 +1,14 @@
 package com.example.infotech;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 
 
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.os.Bundle;
 
 import android.util.Log;
@@ -80,7 +82,6 @@ public class Notes_Edit extends AppCompatActivity {
                 popupMenu.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
                     @Override
                     public boolean onMenuItemClick(MenuItem item) {
-                        // Handle item click actions here
                         if (item.getItemId() == R.id.move) {
                             // Do something for Item 1
                         } else if (item.getItemId() == R.id.ChangeColor) {
@@ -88,44 +89,66 @@ public class Notes_Edit extends AppCompatActivity {
                         } else if (item.getItemId() == R.id.Delete) {
                             // Handle the "Delete" option
                             if (selectedNote != null) {
-                                // Get a reference to the Firebase Database
-                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+                                AlertDialog.Builder builder = new AlertDialog.Builder(Notes_Edit.this);
+                                builder.setTitle("Confirm Deletion");
+                                builder.setMessage("Are you sure you want to delete this note?");
 
-                                FirebaseAuth mAuth = FirebaseAuth.getInstance();
-                                FirebaseUser currentUser = mAuth.getCurrentUser();
-                                if (currentUser != null) {
-                                    String userId = currentUser.getUid();
+                                builder.setPositiveButton("Yes", new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // User confirmed deletion
+                                        // Get a reference to the Firebase Database
+                                        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
-                                    if (userId != null) {
-                                        // Delete the selected note
-                                        DatabaseReference selectedNoteRef = databaseReference
-                                                .child("users")
-                                                .child(userId)
-                                                .child("notes")
-                                                .child(selectedNote.getKey());
+                                        FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                                        FirebaseUser currentUser = mAuth.getCurrentUser();
+                                        if (currentUser != null) {
+                                            String userId = currentUser.getUid();
 
-                                        selectedNoteRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                if (task.isSuccessful()) {
-                                                    Toast.makeText(Notes_Edit.this, "Note deleted from Firebase", Toast.LENGTH_SHORT).show();
-                                                    finish();
-                                                } else {
-                                                    Log.e("Notes_Edit.java", "Database operation failed: " + task.getException().getMessage());
-                                                    Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                                }
+                                            if (userId != null) {
+                                                // Delete the selected note
+                                                DatabaseReference selectedNoteRef = databaseReference
+                                                        .child("users")
+                                                        .child(userId)
+                                                        .child("notes")
+                                                        .child(selectedNote.getKey());
+
+                                                selectedNoteRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                                    @Override
+                                                    public void onComplete(@NonNull Task<Void> task) {
+                                                        if (task.isSuccessful()) {
+                                                            Toast.makeText(Notes_Edit.this, "Note deleted from Firebase", Toast.LENGTH_SHORT).show();
+                                                            finish();
+                                                        } else {
+                                                            Log.e("Notes_Edit.java", "Database operation failed: " + task.getException().getMessage());
+                                                            Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                        }
+                                                    }
+                                                });
                                             }
-                                        });
+                                        }
+                                        dialog.dismiss();
                                     }
-                                }
+                                });
+
+                                builder.setNegativeButton("No", new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialog, int which) {
+                                        // User canceled deletion, do nothing
+                                        dialog.dismiss();
+                                    }
+                                });
+
+                                AlertDialog alertDialog = builder.create();
+                                alertDialog.show();
                             }
                         }
                         return true;
                     }
                 });
 
-                // Show the popup menu
+// Show the popup menu
                 popupMenu.show();
+
             }
         });
 
