@@ -55,13 +55,13 @@ public class Flashcards_View extends AppCompatActivity {
                 .child("users")
                 .child(userID)
                 .child("flashcards")
-                .child("Science")
+                .child("Math")
                 .child("flashcard1");
 
         titlename = FirebaseDatabase.getInstance().getReference()
                 .child("users")
                 .child(userID)
-                .child("Science")
+                .child("Math")
                 .child("flashcard1");
 
 
