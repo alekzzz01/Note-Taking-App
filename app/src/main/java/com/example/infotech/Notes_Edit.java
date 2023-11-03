@@ -32,7 +32,7 @@ import java.util.Date;
 
 
 public class Notes_Edit extends AppCompatActivity {
-    private boolean isButtonClicked = false;
+    private boolean isEditing = false;
 
     TextView dateTimeTextView;
 
@@ -59,7 +59,6 @@ public class Notes_Edit extends AppCompatActivity {
         titleInput = findViewById(R.id.titleinput);
         descriptionInput = findViewById(R.id.descriptioninput);
 
-
         // Retrieve the selected note from the intent's extras
         Note selectedNote = getIntent().getParcelableExtra("selectedNote");
 
@@ -68,7 +67,6 @@ public class Notes_Edit extends AppCompatActivity {
             titleInput.setText(selectedNote.getTitle());
             descriptionInput.setText(selectedNote.getDescription());
         }
-
 
         // Set an onClickListener for the ImageButton
         settingsButton.setOnClickListener(new View.OnClickListener() {
@@ -85,16 +83,42 @@ public class Notes_Edit extends AppCompatActivity {
                         // Handle item click actions here
                         if (item.getItemId() == R.id.move) {
                             // Do something for Item 1
-
-
                         } else if (item.getItemId() == R.id.ChangeColor) {
                             // Do something for Item 2
-
-
                         } else if (item.getItemId() == R.id.Delete) {
-                            // Do something for Item 3
+                            // Handle the "Delete" option
+                            if (selectedNote != null) {
+                                // Get a reference to the Firebase Database
+                                DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
 
+                                FirebaseAuth mAuth = FirebaseAuth.getInstance();
+                                FirebaseUser currentUser = mAuth.getCurrentUser();
+                                if (currentUser != null) {
+                                    String userId = currentUser.getUid();
 
+                                    if (userId != null) {
+                                        // Delete the selected note
+                                        DatabaseReference selectedNoteRef = databaseReference
+                                                .child("users")
+                                                .child(userId)
+                                                .child("notes")
+                                                .child(selectedNote.getKey());
+
+                                        selectedNoteRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                if (task.isSuccessful()) {
+                                                    Toast.makeText(Notes_Edit.this, "Note deleted from Firebase", Toast.LENGTH_SHORT).show();
+                                                    finish();
+                                                } else {
+                                                    Log.e("Notes_Edit.java", "Database operation failed: " + task.getException().getMessage());
+                                                    Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                                }
+                                            }
+                                        });
+                                    }
+                                }
+                            }
                         }
                         return true;
                     }
@@ -113,33 +137,14 @@ public class Notes_Edit extends AppCompatActivity {
             }
         });
 
-
         // Get a reference to the Firebase Database
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
-
-// Get the current user's UID from Firebase Authentication
-        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
-
-// Get a reference to the "notes" node under the user's UID
-        DatabaseReference userNotesRef = databaseReference.child("users").child(userId).child("notes");
-
-// Use push() to automatically generate a unique key for the new note
-        DatabaseReference newNoteRef = userNotesRef.push();
-
-// Get the title, time, and description from the EditText fields
-        String title = titleInput.getText().toString();
-        String description = descriptionInput.getText().toString();
-        long timestamp = System.currentTimeMillis();
-
-// Create a Note object
-        Note note = new Note(title, timestamp, description);
-
 
         FirebaseAuth mAuth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
             Log.d("Notes_Edit.java", "User is authenticated");
-            userId = currentUser.getUid();
+            String userId = currentUser.getUid();
             Log.d("Notes_Edit.java", "User ID: " + userId);
 
             // Set an onClickListener for the "Save" button
@@ -152,7 +157,6 @@ public class Notes_Edit extends AppCompatActivity {
                     progressDialog.setMessage("Saving...");
                     progressDialog.show();
 
-                    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
                     String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
                     if (userId == null || userId.isEmpty()) {
                         Log.e("Notes_Edit.java", "User ID is null or empty");
@@ -167,11 +171,42 @@ public class Notes_Edit extends AppCompatActivity {
                     String newDescription = descriptionInput.getText().toString();
                     long newTimestamp = System.currentTimeMillis();
 
-                    if (selectedNote == null) {
-                        // Create a new Note object if selectedNote is null
+                    if (selectedNote != null) {
+                        // Check if the key is null and generate one if necessary
+                        if (selectedNote.getKey() == null) {
+                            DatabaseReference newNoteRef = databaseReference.child("users").child(userId).child("notes").push();
+                            String noteKey = newNoteRef.getKey();
+                            selectedNote.setKey(noteKey); // Set the key for the note
+                        }
+
+                        selectedNote.setTitle(newTitle);
+                        selectedNote.setDescription(newDescription);
+                        selectedNote.setTimestamp(newTimestamp);
+
+                        DatabaseReference selectedNoteRef = databaseReference.child("users").child(userId).child("notes").child(selectedNote.getKey());
+                        selectedNoteRef.setValue(selectedNote).addOnCompleteListener(new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                if (task.isSuccessful()) {
+                                    Toast.makeText(Notes_Edit.this, "Note updated in Firebase", Toast.LENGTH_SHORT).show();
+                                    finish();
+                                } else {
+                                    Log.e("Notes_Edit.java", "Database operation failed: " + task.getException().getMessage());
+                                    Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                                }
+                                saveButton.setEnabled(true); // Re-enable the button
+                                progressDialog.dismiss(); // Dismiss the dialog
+                                Log.d("Notes_Edit.java", "Button enabled and dialog dismissed");
+                            }
+                        });
+                    } else {
+                        // Save the note
                         Note note = new Note(newTitle, newTimestamp, newDescription);
 
                         DatabaseReference newNoteRef = databaseReference.child("users").child(userId).child("notes").push();
+                        String noteKey = newNoteRef.getKey();
+                        note.setKey(noteKey); // Set the key for the new note
+
                         newNoteRef.setValue(note).addOnCompleteListener(new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
@@ -187,40 +222,10 @@ public class Notes_Edit extends AppCompatActivity {
                                 Log.d("Notes_Edit.java", "Button enabled and dialog dismissed");
                             }
                         });
-                    } else {
-                        // Update the selected note's title, description, and timestamp
-                        if (selectedNote.getKey() != null) {
-                            selectedNote.setTitle(newTitle);
-                            selectedNote.setDescription(newDescription);
-                            selectedNote.setTime(newTimestamp);
-
-                            DatabaseReference selectedNoteRef = databaseReference.child("users").child(userId).child("notes").child(selectedNote.getKey());
-                            selectedNoteRef.setValue(selectedNote).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if (task.isSuccessful()) {
-                                        Toast.makeText(Notes_Edit.this, "Note updated in Firebase", Toast.LENGTH_SHORT).show();
-                                        finish();
-                                    } else {
-                                        Log.e("Notes_Edit.java", "Database operation failed: " + task.getException().getMessage());
-                                        Toast.makeText(Notes_Edit.this, "Error: " + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
-                                    }
-                                    saveButton.setEnabled(true); // Re-enable the button
-                                    progressDialog.dismiss(); // Dismiss the dialog
-                                    Log.d("Notes_Edit.java", "Button enabled and dialog dismissed");
-                                }
-                            });
-                        } else {
-                            Log.e("Notes_Edit.java", "selectedNote key is null");
-                            saveButton.setEnabled(true);
-                            progressDialog.dismiss();
-                            finish();
-                            Log.d("Notes_Edit.java", "Button enabled and dialog dismissed");
-                        }
                     }
                 }
             });
-
         }
     }
+
 }

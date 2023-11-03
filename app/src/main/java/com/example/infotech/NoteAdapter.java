@@ -82,24 +82,26 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
         }
 
         public void bind(Note note) {
-            // Bind the data from the Note object to your views
             titleTextView.setText(note.getTitle());
 
-            // Access the length of the title
-            int maxLength = 500; // 500 letters length
-            int currentLength = note.getDescription().length();
+            String description = note.getDescription();
+            if (description != null) {
+                int maxLength = 500; // 500 letters length
+                int currentLength = description.length();
 
-            // Calculate the percentage
-            int percent = (int) ((currentLength / (float) maxLength) * 100);
+                // Calculate the percentage
+                int percent = (int) ((currentLength / (float) maxLength) * 100);
 
-            // Update the ProgressBar and TextView
-            progressBar.setProgress(percent);
-            percentTextView.setText(String.valueOf(percent) + "%");
+                // Update the ProgressBar and TextView
+                progressBar.setProgress(percent);
+                percentTextView.setText(String.valueOf(percent) + "%");
+            } else {
+                // Handle the case where description is null (e.g., set ProgressBar and TextView to default values)
+                progressBar.setProgress(0);
+                percentTextView.setText("0%");
+            }
         }
-
     }
-
-
-
-
 }
+
+
