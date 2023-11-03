@@ -5,12 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.FirebaseApp;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -29,6 +33,8 @@ public class NotesView_All extends AppCompatActivity {
     NoteAdapterSecond noteAdapterSecond; // Create the second adapter
 
     ImageButton backbtn;
+
+    FloatingActionButton fab;
     List<Note> notesListForSecond; // Create a list for the second adapter
 
     private FirebaseAuth mAuth;
@@ -49,7 +55,36 @@ public class NotesView_All extends AppCompatActivity {
         noteAdapterSecond = new NoteAdapterSecond(notesListForSecond);
         recyclerViewSecond.setAdapter(noteAdapterSecond);
 
+
+
         recyclerViewSecond.setLayoutManager(new LinearLayoutManager(this));
+
+        FloatingActionButton fab = findViewById(R.id.floatingActionButton);
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Create and show the custom dialog
+                Dialog customDialog = new Dialog(NotesView_All.this);
+                customDialog.setContentView(R.layout.fab_dialoglayout);
+
+                // Find the button inside the dialog layout
+                Button addNoteBtn = customDialog.findViewById(R.id.addNotebtn);
+
+                addNoteBtn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        // Open the 'NotesView_All' activity from the dialog
+                        Intent intent = new Intent(NotesView_All.this, Notes_Edit.class);
+                        startActivity(intent);
+                        customDialog.dismiss(); // Close the dialog
+                    }
+                });
+
+                customDialog.setTitle("Custom Dialog Title");
+                customDialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+                customDialog.show(); // Show the custom dialog
+            }
+        });
 
 
 
@@ -59,7 +94,12 @@ public class NotesView_All extends AppCompatActivity {
                 // Finish the current activity (Notes_Edit) to go back to the previous activity (Dashboard_Fragment)
                 finish();
             }
+
+
+
         });
+
+
 
 
         // Call the method to retrieve and display user's notes
@@ -68,6 +108,9 @@ public class NotesView_All extends AppCompatActivity {
         FirebaseApp.initializeApp(this); // Initialize Firebase
 
     }
+
+
+
 
 
     private void retrieveAndDisplayNotes() {
@@ -101,5 +144,11 @@ public class NotesView_All extends AppCompatActivity {
                 // Handle any errors or exceptions
             }
         });
+
+
+
+
     }
+
+
 }

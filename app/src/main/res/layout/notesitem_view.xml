@@ -28,7 +28,7 @@
             android:fontFamily="@font/interregular"
             android:text="Timestamp"
             android:textColor="@color/text_color"
-            android:textSize="16sp" />
+            android:textSize="12sp" />
 
 
 
