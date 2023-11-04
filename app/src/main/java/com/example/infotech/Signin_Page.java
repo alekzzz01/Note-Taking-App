@@ -47,7 +47,7 @@ public class Signin_Page extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
 
-        checkLoginStatus();
+
 
 
 
@@ -120,26 +120,32 @@ public class Signin_Page extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
+
+
     }
 
-    private void checkLoginStatus() {
-        FirebaseUser user = auth.getCurrentUser();
+    // Helper method to redirect the user to the appropriate page
+    private void redirectUser(FirebaseUser user) {
+        long creationTimestamp = user.getMetadata().getCreationTimestamp();
+        long lastSignInTimestamp = user.getMetadata().getLastSignInTimestamp();
 
-        if (user != null) {
-            if (user.getMetadata().getCreationTimestamp() == user.getMetadata().getLastSignInTimestamp()) {
-                // The user is new, direct them to GetStarted_Page
-                Toast.makeText(Signin_Page.this, "New user, going to Get Started Page", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Signin_Page.this, GetStarted_Page.class);
-                startActivity(intent);
-            } else {
-                // The user is not new, direct them to the dashboard (MainActivity)
-                Toast.makeText(Signin_Page.this, "Logged in Successfully, going to Dashboard", Toast.LENGTH_SHORT).show();
-                Intent intent = new Intent(Signin_Page.this, MainActivity.class);
-                startActivity(intent);
-            }
-            finish(); // Close the current activity
+        if (lastSignInTimestamp - creationTimestamp <= 24 * 60 * 60 * 1000) {
+            // The user signed up within the last 24 hours, so show GetStarted_Page
+            Toast.makeText(Signin_Page.this, "New user, going to Get Started Page", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(Signin_Page.this, GetStarted_Page.class);
+            startActivity(intent);
+        } else {
+            // The user is not new or signed up more than 24 hours ago, so go to the dashboard (MainActivity)
+            Toast.makeText(Signin_Page.this, "Logged in Successfully, going to Dashboard", Toast.LENGTH_SHORT).show();
+
+            Intent intent = new Intent(Signin_Page.this, MainActivity.class);
+            startActivity(intent);
         }
+        finish();
     }
+
 
 
 }
