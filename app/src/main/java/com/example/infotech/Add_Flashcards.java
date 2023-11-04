@@ -27,9 +27,12 @@ public class Add_Flashcards extends AppCompatActivity {
 
     EditText question, answer;
     Button add;
-    FirebaseDatabase db;
     FirebaseAuth auth;
     int value = 0;
+
+
+
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,7 +80,9 @@ public class Add_Flashcards extends AppCompatActivity {
                 }
 
             } else {
-                Toast.makeText(getApplicationContext(), "Saved already", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "Max Question is 5 per flashcards only", Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(Add_Flashcards.this, MainActivity.class);
+                startActivity(intent);
             }
 
             }
@@ -86,25 +91,25 @@ public class Add_Flashcards extends AppCompatActivity {
                 FirebaseUser firebaseUser = auth.getCurrentUser();
                 String userID = firebaseUser.getUid();
 
-                DatabaseReference userReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("flashcards").child(flashcardSetTitle);
-
-                userReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                DatabaseReference userReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("flashcards").child(flashcardSetTitle);userReference.addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
                     public void onDataChange(@NonNull DataSnapshot snapshot) {
                         if (snapshot.getChildrenCount() < 5) {
                             //Add new flashcard in existing set
                             long flashcardCount = snapshot.getChildrenCount();
                             String flashcardNumber = "flashcard" + (flashcardCount + 1);
-
                             DatabaseReference newFlashcard = userReference.child(flashcardNumber);
                             newFlashcard.child("Title").setValue(flashcardSetTitle);
                             newFlashcard.child("Question").setValue(question);
                             newFlashcard.child("Answer").setValue(answer);
+
                         } else {
                             DatabaseReference newSetReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("flashcards").child(flashcardSetTitle);
                             DatabaseReference newFlashcardReference = newSetReference.push();
                             newFlashcardReference.child("Question").setValue(question);
                             newFlashcardReference.child("Answer").setValue(answer);
+
+
                         }
                     }
 
@@ -114,7 +119,14 @@ public class Add_Flashcards extends AppCompatActivity {
                     }
                 });
 
+
             }
+
+
         });
+
+
     }
+
+
 }
