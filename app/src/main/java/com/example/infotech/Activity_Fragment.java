@@ -46,7 +46,7 @@ public class Activity_Fragment extends Fragment {
         ViewFC.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getActivity(), Flashcards_View.class);
+                Intent intent = new Intent(getActivity(), Flashcardsview_All.class);
                 startActivity(intent);
             }
         });
