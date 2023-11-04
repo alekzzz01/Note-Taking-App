@@ -1,0 +1,280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginEnd="16dp"
+    android:layout_marginStart="16dp"
+    tools:context=".Lesson_View">
+
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+       >
+
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:layout_marginTop="16dp"
+
+                android:layout_marginBottom="16dp">
+
+                <ImageButton
+                    android:id="@+id/backButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:background="@drawable/back_button"
+                    tools:ignore="TouchTargetSizeCheck" />
+
+
+            </RelativeLayout>
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:fontFamily="@font/intersemibold"
+                android:lineSpacingExtra="8sp"
+                android:text="What is mobile application development"
+                android:textColor="@color/black"
+                android:textSize="24sp"
+
+
+                />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/interregular"
+                android:text="Mobile application development originated in the early 1990s when the first mobile devices were introduced. However, those devices had limited capabilities and could only run simple applications such as calculators and address books. In 1996, the first mobile operating system called Palm OS was launched, which provided mobile app development platforms that enabled developers to create more advanced mobile applications and progressive web apps."
+                android:textColor="@color/black"
+                android:lineSpacingExtra="8sp"
+                android:textSize="16sp"
+                android:layout_marginBottom="48dp"
+                />
+
+
+
+
+
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:text="Lesson 1"
+                android:textSize="24sp"
+                android:textColor="@color/black"
+                android:fontFamily="@font/intersemibold"
+                android:lineSpacingExtra="8sp"
+
+
+                />
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/internedium"
+                android:text="Mobile App Development Process"
+                android:textColor="@color/black"
+                android:lineSpacingExtra="8sp"
+                android:textSize="20sp"
+                android:layout_marginBottom="16dp"
+                />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/interregular"
+                android:text="1. Ideation, Research and Planning -
+The development process starts with planning the whole process and making strategies to achieve the end goal. A clear idea is developed which is discussed with the team, the requirements are decided and noted. If there won't be a proper plan and strategy, this can result in an improper product. "
+                android:textColor="@color/black"
+                android:lineSpacingExtra="8sp"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"
+
+                />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/interregular"
+                android:text="2. UI/UX Design -
+When it comes to mobile apps, the design is crucial to give users a positive user experience. A poorly designed app can drive users away, causing them to switch to competitors and leave your app behind. Therefore, it is important to focus on creating a user-friendly and engaging UI/UX design that provides a smooth experience. This means paying attention to every design element and making sure it is intuitive and easy to use.
+
+Create a flow, of how will the user navigate through your app. Use tools like Canva, and Figma to create a wireframe for your app. The goal should be to create software with rich user interfaces and a scalable design. Research the design of existing apps and then start the design!"
+                android:textColor="@color/black"
+                android:lineSpacingExtra="8sp"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"
+                />
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/interregular"
+                android:text="3. Development -
+One of the most important aspects of this development process is development. During the development phase, the programmers use the ideas and designs created in earlier stages to start writing the code that will make the app work.
+
+This is a challenging process that requires a lot of teamwork, communication, and creative problem-solving as the developers work to create an app that works well and is easy to use. They also make sure the app works quickly and smoothly on a variety of different mobile devices and platforms.
+
+Whether it is a simple or a complex app, it is important to develop the application on a proper development platform. The choice should be according to the end goal which should be decided based on thorough analysis. Version control tools such as Git must be used to maintain code versions and collaborate with the team!"
+                android:textColor="@color/black"
+                android:lineSpacingExtra="8sp"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"
+                />
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/interregular"
+                android:text="3. Testing -
+Once your app is built, it's important to thoroughly test it before launching it to the public. This ensures that the app is stable and secure, and functions properly without any errors or bugs. Testing involves running the app through a series of scenarios and identifying any issues or problems that may arise. The apps are initially tested within the development environment, and afterwards subjected to field testing!
+
+The different types of mobile app testing include Functional Testing, Interruption Testing, Memory testing, Installation testing and Performance testing."
+                android:textColor="@color/black"
+                android:lineSpacingExtra="8sp"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"
+                />
+
+
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/interregular"
+                android:text=""
+                android:textColor="@color/black"
+                android:lineSpacingExtra="8sp"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"
+                />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/interregular"
+                android:text="4. Deployment -
+When you're ready to deploy your app, you need to decide how you're going to make it available to users. This depends on the platform you developed your app for, like iOS or Android. To distribute your app on these platforms, you need to follow certain steps. You can either submit your app to Apple's App Store or Google's Play Store or distribute it privately.
+
+To get your app listed in these stores, you'll need to fill out some forms and have your app reviewed. It is important to note that the mobile applications developed for the App Store have stricter rules and standards than Google Play Store. So if your app is not up to their standards, it may not be accepted for listing.
+
+It is important to follow the guidelines and make sure your app meets the requirements before submitting it for review. Also, understand how the in-app purchases work as they can be a source of income for your application!"
+                android:textColor="@color/black"
+                android:lineSpacingExtra="8sp"
+                android:textSize="16sp"
+                android:layout_marginBottom="16dp"
+                />
+
+
+            <TextView
+
+                android:id="@+id/linkView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:autoLink="web"
+
+                android:fontFamily="@font/interregular"
+                android:lineSpacingExtra="8sp"
+
+                android:textColor="@color/black"
+
+                android:textSize="16sp" />
+
+
+            <TextView
+
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/interregular"
+                android:textColor="@color/black"
+                android:lineSpacingExtra="8sp"
+                android:textSize="16sp"
+
+
+                />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+    </ScrollView>
+
+
+
+
+
+
+
+
+</RelativeLayout>

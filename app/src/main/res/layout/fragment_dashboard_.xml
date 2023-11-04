@@ -112,7 +112,7 @@
                             android:textSize="16sp"
                             tools:ignore="HardcodedText" />
 
-
+<!--
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -129,7 +129,7 @@
                             android:fontFamily="@font/internedium"
                             android:text="Home"
                             android:textColor="#919191"
-                            android:textSize="16sp" />
+                            android:textSize="16sp" /> -->
 
 
                     </LinearLayout>
@@ -240,14 +240,15 @@
                             android:textSize="16sp" />
 
 
-                        <TextView
+          <!--              <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginRight="40dp"
                             android:fontFamily="@font/internedium"
                             android:text="Close Friends"
                             android:textColor="#919191"
-                            android:textSize="16sp" />
+                            android:textSize="16sp" /> -->
+
 
 
                     </LinearLayout>
@@ -450,59 +451,6 @@
 
                 </HorizontalScrollView>
 
-
-                <TextView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginLeft="16dp"
-                    android:layout_marginTop="32dp"
-                    android:layout_marginRight="16dp"
-
-
-                    android:fontFamily="@font/intersemibold"
-
-                    android:text="Lessons"
-                    android:textColor="@color/text_color"
-
-                    android:textSize="20sp"
-                    tools:ignore="HardcodedText" />
-
-
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp">
-
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="40dp"
-                            android:fontFamily="@font/internedium"
-                            android:text="All"
-                            android:textColor="@color/text_color"
-                            android:textSize="16sp"
-                            tools:ignore="HardcodedText" />
-
-
-                    </LinearLayout>
-
-
-                </HorizontalScrollView>
-
-
-                <androidx.recyclerview.widget.RecyclerView
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="16dp"
-                    android:layout_marginEnd="16dp"
-                    android:orientation="horizontal" />
 
 
             </LinearLayout>

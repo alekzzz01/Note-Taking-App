@@ -13,11 +13,13 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 
 
 public class Activity_Fragment extends Fragment {
 
     LinearLayout NewFC, NewNote, ViewNote, ViewFC;
+    RelativeLayout Viewlesson;
 
 
 
@@ -33,6 +35,18 @@ public class Activity_Fragment extends Fragment {
 
         ViewNote = v.findViewById(R.id.ViewallNote);
         ViewFC = v.findViewById(R.id.ViewAllFC);
+
+        Viewlesson = v.findViewById(R.id.lessonView);
+
+
+        Viewlesson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Lesson_View.class);
+                startActivity(intent);
+            }
+        });
+
 
         ViewNote.setOnClickListener(new View.OnClickListener() {
             @Override

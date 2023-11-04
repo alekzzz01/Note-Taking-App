@@ -238,13 +238,9 @@ public class Profile_Settings extends AppCompatActivity {
                     String lastName = dataSnapshot.child("lastName").getValue(String.class);
                     String email = dataSnapshot.child("email").getValue(String.class);
 
-                    // Convert the middleName to uppercase
-                    if (middleName != null) {
-                        middleName = middleName.toUpperCase();
-                    }
 
                     // Combine the three name parts into a full name
-                    String fullName = firstName + " " + middleName + "." + " " + lastName;
+                    String fullName = firstName + " " + middleName + " " + lastName;
 
                     // Set the full name and email in the TextViews
                     emailTextView.setText(email);

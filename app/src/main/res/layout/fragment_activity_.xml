@@ -32,7 +32,7 @@
                 android:text="Notes"
                 android:textSize="20sp"
                 android:textColor="@color/text_color"
-                android:fontFamily="@font/internedium"/>
+                android:fontFamily="@font/intersemibold"/>
 
 
 
@@ -133,7 +133,7 @@
                 android:text="Flashcards"
                 android:textSize="20sp"
                 android:textColor="@color/text_color"
-                android:fontFamily="@font/internedium"/>
+                android:fontFamily="@font/intersemibold"/>
 
 
 
@@ -229,126 +229,151 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
+                android:layout_marginBottom="16dp"
                 android:text="Lessons"
                 android:textSize="20sp"
                 android:textColor="@color/text_color"
-                android:fontFamily="@font/internedium"/>
+                android:fontFamily="@font/intersemibold"/>
 
 
 
-            <LinearLayout
-                android:layout_width="160dp"
-                android:layout_height="180dp"
-                android:layout_marginTop="16dp"
-                android:padding="16dp"
-                android:background="@drawable/background_note"
-                android:layout_marginRight="16dp"
-                android:orientation="vertical"
-                >
+
+        <!--        <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/recyclerview"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+
+                    /> -->
+
+
 
 
                 <RelativeLayout
+                    android:id="@+id/lessonView"
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-
-
-                    >
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-
-                        android:text="Intro"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_color"
-                        android:fontFamily="@font/interregular"
-                        />
-
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_centerVertical="true"
-
-
-                        android:background="@drawable/favorite_icon"/>
-
-
-                </RelativeLayout>
-
-
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
+                    android:layout_height="180dp"
+                    android:background="@drawable/background_note"
+                    android:padding="16dp"
                     android:orientation="vertical"
-
                     >
 
-                    <TextView
+
+                    <RelativeLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
 
 
-                        android:text="Title of the lesson"
-                        android:textSize="12sp"
-                        android:textColor="@color/text_color"
-                        android:fontFamily="@font/intersemibold"
-                        />
 
-                    <TextView
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+
+                            android:text="Intro"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/interregular"
+                            />
+
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+
+
+                            android:background="@drawable/favorite_icon"/>
+
+
+                    </RelativeLayout>
+
+
+
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        android:fontFamily="@font/interregular"
+                        android:layout_centerInParent="true"
+
+                        android:orientation="vertical"
+
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
 
 
-                        android:lineSpacingExtra="4sp"
-                        android:text="Lorem Ipsum has been the industry's standard"
+                            android:text="What is mobile application development"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/intersemibold"
+                            />
 
-                        android:textColor="@color/text_color"
-                        android:textSize="12sp" />
-
-
-
-
-
-                </LinearLayout>
-
-                <RelativeLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/interregular"
 
 
+                            android:lineSpacingExtra="4sp"
+                            android:text="Mobile application development is the process of making software for smartphones......"
 
-                    >
+                            android:textColor="@color/text_color"
+                            android:textSize="12sp" />
 
-                    <TextView
-                        android:layout_width="wrap_content"
+
+
+
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_alignParentLeft="true"
-                        android:layout_alignParentBottom="true"
-
-                        android:text="0 min(s)."
-                        android:textSize="12sp"
-                        android:textColor="@color/text_color"
-                        android:fontFamily="@font/internedium"
-                        />
-
-
-                    <ImageButton
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_alignParentEnd="true"
-                        android:layout_alignParentBottom="true"
 
 
 
-                        android:background="@drawable/play"/>
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentBottom="true"
+
+                            android:text="Join Now!"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/internedium"
+                            />
+
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+
+
+
+                            android:background="@drawable/play"/>
+
+
+                    </RelativeLayout>
+
+
+
+
+
+
+
+
 
 
                 </RelativeLayout>
@@ -359,10 +384,6 @@
 
 
 
-
-
-
-            </LinearLayout>
 
 
 
