@@ -9,8 +9,10 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.bumptech.glide.Glide;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,7 +27,11 @@ public class Profile_Fragment extends Fragment {
     private DatabaseReference userDatabaseRef;
     private FirebaseUser currentUser;
 
+
+    ImageView profileImageView;
+
     private ImageButton profileButton;
+
 
     private ImageButton developerButton;
 
@@ -35,6 +41,7 @@ public class Profile_Fragment extends Fragment {
         fullNameTextView = view.findViewById(R.id.etFullName);
         profileButton = view.findViewById(R.id.profileSettings);
         developerButton = view.findViewById(R.id.developerPage);
+        profileImageView = view.findViewById(R.id.profileImageView);
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -83,6 +90,14 @@ public class Profile_Fragment extends Fragment {
                         }
                         if (lastName != null) {
                             fullName += " " + lastName;
+                        }
+
+                        // Fetch the image URL from the database
+                        String imageUrl = dataSnapshot.child("profileImage").getValue(String.class);
+
+                        if (imageUrl != null) {
+                            // Load the profile image using Glide
+                            Glide.with(Profile_Fragment.this).load(imageUrl).into(profileImageView);
                         }
 
                         fullNameTextView.setText(fullName);

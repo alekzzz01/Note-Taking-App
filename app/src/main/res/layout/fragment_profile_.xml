@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
 
 
     tools:context=".Profile_Fragment">
@@ -38,17 +39,24 @@
 
                 android:layout_marginTop="28dp"
                 android:orientation="vertical">
-                
-                <ImageView
-                    android:layout_width="48dp"
-                    android:layout_height="48dp"
+
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/profileImageView"
+                    android:layout_width="80dp"
+                    android:layout_height="80dp"
                     android:layout_centerVertical="true"
-                    android:background="@drawable/profile"
+                    android:src="@drawable/basti"
+                    app:civ_border_color="@color/black"
+                    app:civ_border_width="2dp"
+
                     />
+
+
 
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
                     android:layout_marginStart="80dp"
                     android:orientation="vertical"
                     android:padding="8dp">

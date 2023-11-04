@@ -27,7 +27,12 @@ import com.google.firebase.database.ValueEventListener;
 import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 
+import com.bumptech.glide.Glide;
+
+
 import java.util.Calendar;
+
+
 
 public class Profile_Settings extends AppCompatActivity {
 
@@ -68,6 +73,8 @@ public class Profile_Settings extends AppCompatActivity {
 
 
 
+
+
         FirebaseAuth auth = FirebaseAuth.getInstance();
         FirebaseUser currentUser = auth.getCurrentUser();
 
@@ -99,6 +106,14 @@ public class Profile_Settings extends AppCompatActivity {
                                 // Select the Female radio button
                                 genderRadioGroup.check(R.id.FemaleButton);
                             }
+                        }
+
+                        // Fetch the image URL from the database
+                        String imageUrl = dataSnapshot.child("profileImage").getValue(String.class);
+
+                        if (imageUrl != null) {
+                            // Load the profile image using Glide
+                            Glide.with(Profile_Settings.this).load(imageUrl).into(profileImageView);
                         }
                     }
                 }
@@ -191,6 +206,7 @@ public class Profile_Settings extends AppCompatActivity {
         uploadImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
                 // Create an intent to pick an image from the gallery
                 Intent intent = new Intent(Intent.ACTION_GET_CONTENT);
                 intent.setType("image/*");
@@ -222,10 +238,15 @@ public class Profile_Settings extends AppCompatActivity {
                     String lastName = dataSnapshot.child("lastName").getValue(String.class);
                     String email = dataSnapshot.child("email").getValue(String.class);
 
-                    // Combine the three name parts into a full name
-                    String fullName = firstName + " " + middleName + " " + lastName;
+                    // Convert the middleName to uppercase
+                    if (middleName != null) {
+                        middleName = middleName.toUpperCase();
+                    }
 
-                    // Set the full name in the TextView
+                    // Combine the three name parts into a full name
+                    String fullName = firstName + " " + middleName + "." + " " + lastName;
+
+                    // Set the full name and email in the TextViews
                     emailTextView.setText(email);
                     fullNameTextView.setText(fullName);
                 }
@@ -241,14 +262,6 @@ public class Profile_Settings extends AppCompatActivity {
 
 
 
-
-
-
-
-
-
-
-
     // Override onActivityResult to handle the image selection
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
@@ -259,27 +272,8 @@ public class Profile_Settings extends AppCompatActivity {
 
             // Upload the image to Firebase Storage and save the URL to the user's database
             uploadImageToFirebaseStorage();
-            startBuiltInCropActivity(imageUri);
+
         }
-    }
-
-
-    private void startBuiltInCropActivity(Uri sourceUri) {
-        // Create an intent for the image cropping activity
-        Intent cropIntent = new Intent("com.android.camera.action.CROP");
-        cropIntent.setDataAndType(sourceUri, "image/*");
-        cropIntent.putExtra("crop", "true");
-        cropIntent.putExtra("aspectX", 1);
-        cropIntent.putExtra("aspectY", 1);
-        cropIntent.putExtra("outputX", 300);
-        cropIntent.putExtra("outputY", 300);
-        cropIntent.putExtra("return-data", true);
-
-        // Set the circle shape by adding an extra that specifies the shape
-        cropIntent.putExtra("circleCrop", "true");
-
-        // Start the cropping activity
-        startActivityForResult(cropIntent, 2);
     }
 
 

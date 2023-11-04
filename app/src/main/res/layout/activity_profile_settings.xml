@@ -65,15 +65,19 @@
                     android:layout_centerInParent="true">
 
 
-
-                    <ImageView
+                    <de.hdodenhof.circleimageview.CircleImageView
                         android:id="@+id/profileImageView"
-                        android:layout_width="64dp"
-                        android:layout_height="64dp"
+                        android:layout_width="80dp"
+                        android:layout_height="80dp"
                         android:layout_alignParentTop="true"
                         android:layout_centerHorizontal="true"
-                        android:scaleType="centerCrop"
-                        android:background="@drawable/profile_background" />
+                        android:src="@drawable/basti"
+                        app:civ_border_color="@color/black"
+                        app:civ_border_width="2dp"
+
+                    />
+
+
 
                     <Button
                         android:id="@+id/uploadImageButton"
@@ -156,7 +160,7 @@
                 android:textColor="@color/text_color"
 
                 android:textSize="20sp" />
-
+<!--
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -200,7 +204,7 @@
 
             </LinearLayout>
 
-
+-->
 
             <TextView
                 android:layout_width="wrap_content"
