@@ -31,13 +31,18 @@ public class FlashcardSetAdapter extends RecyclerView.Adapter<FlashcardSetAdapte
         holder.titleTextView.setText(flashcardSet.getTitle());
         holder.flashcardCountTextView.setText("Flashcards: " + flashcardSet.getFlashcardCount());
 
+
+
         // Set a click listener for the item view
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 // Start the new activity when the item is clicked
                 Intent intent = new Intent(view.getContext(), Flashcards_View.class);
-                // You may also want to pass some data to the next activity using intent.putExtra if needed
+
+                // Pass the flashcardSet data to the next activity
+                intent.putExtra("flashcardSet", flashcardSet);
+
                 view.getContext().startActivity(intent);
             }
         });

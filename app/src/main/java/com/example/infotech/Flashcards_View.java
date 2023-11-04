@@ -2,21 +2,18 @@ package com.example.infotech;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.cardview.widget.CardView;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
-import android.animation.Animator;
-import android.animation.ObjectAnimator;
+import android.content.Intent;
 import android.os.Bundle;
-import android.view.LayoutInflater;
+
+import android.util.Log;
 import android.view.View;
-import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
-import android.widget.FrameLayout;
+
 import android.widget.ImageButton;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -25,17 +22,16 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 
+import java.util.ArrayList;
+import java.util.List;
+
+
 public class Flashcards_View extends AppCompatActivity {
 
-    private CardView Card;
-    TextView Q1, A1, Title;
-    private View frontView;
-    private View backView;
-    private boolean isCardFlipped = false;
+    private static final String TAG = "Flashcards_View"; // Add this line
+
 
     ImageButton backbtn;
-    DatabaseReference database, titlename;
-    FirebaseAuth auth;
 
 
     @Override
@@ -43,12 +39,11 @@ public class Flashcards_View extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcards_view);
 
-        Card = findViewById(R.id.card);
-        Title = findViewById(R.id.title);
-        frontView = findViewById(R.id.frontView);
-        backView = findViewById(R.id.backView);
-        A1 = findViewById(R.id.answer1);
-        Q1 = findViewById(R.id.question1);
+
+
+
+
+
 
         backbtn = findViewById(R.id.backButton);
 
@@ -60,97 +55,77 @@ public class Flashcards_View extends AppCompatActivity {
             }
         });
 
+        // Retrieve the flashcardSet data from the Intent
+        Intent intent = getIntent();
+        if (intent != null) {
+            FlashcardSet flashcardSet = intent.getParcelableExtra("flashcardSet");
 
+            if (flashcardSet != null) {
+                // Now you can access the data in the flashcardSet object
+                String title = flashcardSet.getTitle();
 
-        auth = FirebaseAuth.getInstance();
-        FirebaseUser currentUser = auth.getCurrentUser();
-        String userID = currentUser.getUid();
-        database = FirebaseDatabase.getInstance().getReference()
-                .child("users")
-                .child(userID)
-                .child("flashcards")
-                .child("Math")
-                .child("flashcard1");
+                // Find the TextView in your layout by its ID
+                TextView titleTextView = findViewById(R.id.title); // Replace 'titleTextView' with your TextView ID
 
-        titlename = FirebaseDatabase.getInstance().getReference()
-                .child("users")
-                .child(userID)
-                .child("Math")
-                .child("flashcard1");
+                // Set the text of the TextView to the title
+                titleTextView.setText(title);
 
-
-
-        database.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (snapshot.exists()){
-                    String Question = snapshot.child("Question").getValue(String.class);
-                    String Answer = snapshot.child("Answer").getValue(String.class);
-                    String titlename = snapshot.child("Title").getValue(String.class);
-
-                    Title.setText(titlename);
-                    Q1.setText(Question);
-                    A1.setText(Answer);
-                }
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
 
             }
-        });
-
-
-        Card.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                flipCard();
-            }
-        });
-
-
-    }
-
-
-
-    private void flipCard() {
-        float start = isCardFlipped ? 180f : 0f;
-        float end = isCardFlipped ? 0f : 180f;
-
-        ObjectAnimator rotateAnimator = ObjectAnimator.ofFloat(Card, "rotationY", start, end);
-        rotateAnimator.setDuration(500);
-
-        rotateAnimator.addListener(new Animator.AnimatorListener() {
-            @Override
-            public void onAnimationStart(Animator animator) {}
-
-            @Override
-            public void onAnimationEnd(Animator animator) {
-                isCardFlipped = !isCardFlipped;
-                toggleCardViewsVisibility();
-            }
-
-            @Override
-            public void onAnimationCancel(Animator animator) {}
-
-            @Override
-            public void onAnimationRepeat(Animator animator) {}
-        });
-
-        rotateAnimator.start();
-
-    }
-
-    private void toggleCardViewsVisibility() {
-        if (isCardFlipped) {
-            // Card is flipped to the back, hide the front and show the back
-            findViewById(R.id.frontView).setVisibility(View.GONE);
-            findViewById(R.id.backView).setVisibility(View.VISIBLE);
-        } else {
-            // Card is flipped to the front, hide the back and show the front
-            findViewById(R.id.frontView).setVisibility(View.VISIBLE);
-            findViewById(R.id.backView).setVisibility(View.GONE);
         }
+
+
+        // Initialize RecyclerView with a horizontal LinearLayoutManager
+        RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        LinearLayoutManager layoutManager = new LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false);
+        recyclerView.setLayoutManager(layoutManager);
+
+        // Retrieve flashcards data from Firebase and populate the list
+        List<Flashcard> flashcards = new ArrayList<>();
+
+        // Replace the following code with your Firebase data retrieval logic
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        if (currentUser != null) {
+            String userID = currentUser.getUid();
+            DatabaseReference  flashcardsReference = FirebaseDatabase.getInstance().getReference().child("users").child(userID).child("flashcards");
+
+            flashcardsReference.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                    Log.d(TAG, "onDataChange called");
+
+                    for (DataSnapshot titleSnapshot : dataSnapshot.getChildren()) {
+                        String title = titleSnapshot.getKey(); // Get the title of the flashcard set
+
+                        for (DataSnapshot flashcardSnapshot : titleSnapshot.getChildren()) {
+                            String question = flashcardSnapshot.child("Questions").getValue(String.class);
+                            String answer = flashcardSnapshot.child("Answers").getValue(String.class);
+
+                            Flashcard flashcard = new Flashcard(question, answer);
+                            flashcards.add(flashcard);
+
+                            // Add logging to check the question and answer for each flashcard
+                            Log.d(TAG, "Title: " + title);
+                            Log.d(TAG, "Question: " + question);
+                            Log.d(TAG, "Answer: " + answer);
+                        }
+                    }
+
+                    // Create an adapter and set it to the RecyclerView
+                    FlashcardSetAdapterSecond adapter = new FlashcardSetAdapterSecond(flashcards);
+                    recyclerView.setAdapter(adapter);
+                }
+
+                @Override
+                public void onCancelled(@NonNull DatabaseError databaseError) {
+                    // Handle the error, if any
+                    Log.e(TAG, "Firebase Database Error: " + databaseError.getMessage());
+                }
+            });
+
+        }
+
+
     }
 
 }

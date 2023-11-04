@@ -1,8 +1,11 @@
 package com.example.infotech;
 
-public class FlashcardSet {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class FlashcardSet implements Parcelable {
     private String title;
-    private long flashcardCount; // Change the data type to long
+    private long flashcardCount;
 
     public FlashcardSet() {
         // Default constructor required for Firebase
@@ -13,14 +16,39 @@ public class FlashcardSet {
         this.flashcardCount = flashcardCount;
     }
 
-    // Rest of the class remains the same
+    protected FlashcardSet(Parcel in) {
+        title = in.readString();
+        flashcardCount = in.readLong();
+    }
 
+    public static final Creator<FlashcardSet> CREATOR = new Creator<FlashcardSet>() {
+        @Override
+        public FlashcardSet createFromParcel(Parcel in) {
+            return new FlashcardSet(in);
+        }
+
+        @Override
+        public FlashcardSet[] newArray(int size) {
+            return new FlashcardSet[size];
+        }
+    };
 
     public String getTitle() {
         return title;
     }
 
-    public int getFlashcardCount() {
-        return (int) flashcardCount;
+    public long getFlashcardCount() {
+        return flashcardCount;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(title);
+        dest.writeLong(flashcardCount);
     }
 }

@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -21,6 +22,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Flashcardsview_All extends AppCompatActivity {
+
+
+
 
 
     ImageButton backbtn;
@@ -45,6 +49,11 @@ public class Flashcardsview_All extends AppCompatActivity {
                 finish();
             }
         });
+
+
+
+
+
 
 
         // Initialize your RecyclerView and its adapter
