@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.FrameLayout;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -31,6 +32,8 @@ public class Flashcards_View extends AppCompatActivity {
     private View frontView;
     private View backView;
     private boolean isCardFlipped = false;
+
+    ImageButton backbtn;
     DatabaseReference database, titlename;
     FirebaseAuth auth;
 
@@ -46,6 +49,17 @@ public class Flashcards_View extends AppCompatActivity {
         backView = findViewById(R.id.backView);
         A1 = findViewById(R.id.answer1);
         Q1 = findViewById(R.id.question1);
+
+        backbtn = findViewById(R.id.backButton);
+
+        backbtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Finish the current activity (Notes_Edit) to go back to the previous activity (Dashboard_Fragment)
+                finish();
+            }
+        });
+
 
 
         auth = FirebaseAuth.getInstance();
