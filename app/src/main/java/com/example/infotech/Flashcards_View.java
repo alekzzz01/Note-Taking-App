@@ -98,6 +98,9 @@ public class Flashcards_View extends AppCompatActivity {
                         String title = titleSnapshot.getKey(); // Get the title of the flashcard set
 
                         for (DataSnapshot flashcardSnapshot : titleSnapshot.getChildren()) {
+                            String flashcardID = flashcardSnapshot.getKey(); // Get the flashcard ID
+
+
                             String question = flashcardSnapshot.child("Questions").getValue(String.class);
                             String answer = flashcardSnapshot.child("Answers").getValue(String.class);
 
@@ -105,12 +108,12 @@ public class Flashcards_View extends AppCompatActivity {
                             flashcards.add(flashcard);
 
                             // Add logging to check the question and answer for each flashcard
+                            Log.d(TAG, "Flashcard ID: " + flashcardID);
                             Log.d(TAG, "Title: " + title);
                             Log.d(TAG, "Question: " + question);
                             Log.d(TAG, "Answer: " + answer);
                         }
                     }
-
                     // Create an adapter and set it to the RecyclerView
                     FlashcardSetAdapterSecond adapter = new FlashcardSetAdapterSecond(flashcards);
                     recyclerView.setAdapter(adapter);
