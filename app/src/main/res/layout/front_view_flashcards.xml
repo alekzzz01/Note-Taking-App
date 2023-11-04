@@ -1,66 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    >
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/card"
+    android:layout_width="350dp"
+    android:layout_height="600dp"
+    android:backgroundTint="@color/white"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="10dp">
 
 
-    <RelativeLayout
+    <FrameLayout
+        android:id="@+id/frontView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/question1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textSize="16dp"
+            android:gravity="center"
+            android:fontFamily="@font/interregular" />
+    </FrameLayout>
+
+    <FrameLayout
+        android:id="@+id/backView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="@drawable/background_note"
-
-
-        >
-
+        android:rotationY="180"
+        android:visibility="gone">
 
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_centerInParent="true"
-
-
-            android:text="Front Questions"
-            android:textColor="@color/text_color"
-            android:textSize="20sp"
-            android:fontFamily="@font/internedium"
-
-
-            />
-
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentBottom="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="24dp"
-
-
-            android:text="TAP TO GET ANSWER*"
-            android:textColor="@color/text_color"
-            android:textSize="16sp"
-            android:fontFamily="@font/interregular"
-
-
-            />
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    </RelativeLayout>
-
-
+            android:id="@+id/answer1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:text=""
+            android:textSize="16dp"
+            android:gravity="center"
+            android:fontFamily="@font/interregular" />
+    </FrameLayout>
 
 
 
