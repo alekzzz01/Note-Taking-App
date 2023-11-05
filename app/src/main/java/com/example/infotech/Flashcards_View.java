@@ -114,6 +114,9 @@ public class Flashcards_View extends AppCompatActivity {
                             Log.d(TAG, "Answer: " + answer);
                         }
                     }
+
+                    Log.d(TAG, "Number of Flashcards: " + flashcards.size());
+
                     // Create an adapter and set it to the RecyclerView
                     FlashcardSetAdapterSecond adapter = new FlashcardSetAdapterSecond(flashcards);
                     recyclerView.setAdapter(adapter);
