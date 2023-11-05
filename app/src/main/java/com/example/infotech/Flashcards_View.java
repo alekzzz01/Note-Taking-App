@@ -101,8 +101,8 @@ public class Flashcards_View extends AppCompatActivity {
                             String flashcardID = flashcardSnapshot.getKey(); // Get the flashcard ID
 
 
-                            String question = flashcardSnapshot.child("Questions").getValue(String.class);
-                            String answer = flashcardSnapshot.child("Answers").getValue(String.class);
+                            String question = flashcardSnapshot.child("Question").getValue(String.class);
+                            String answer = flashcardSnapshot.child("Answer").getValue(String.class);
 
                             Flashcard flashcard = new Flashcard(question, answer);
                             flashcards.add(flashcard);
