@@ -76,31 +76,4 @@
     </ScrollView>
 
 
-
-
-
-    <Button
-        android:id="@+id/savebtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="16dp"
-        android:backgroundTint="@color/white"
-
-        android:layout_alignParentBottom="true"
-
-        android:layout_marginBottom="32dp"
-        android:text="Next"
-        android:textColor="@color/text_color"
-        android:fontFamily="@font/intersemibold"
-
-
-        />
-
-
-
-
-
-
-
 </RelativeLayout>
