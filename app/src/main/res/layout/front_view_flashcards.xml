@@ -7,6 +7,9 @@
     android:layout_width="350dp"
     android:layout_height="600dp"
     android:layout_marginEnd="16dp"
+    android:layout_marginStart="28dp"
+    android:layout_marginTop="40dp"
+
     android:backgroundTint="@color/white"
     app:cardCornerRadius="20dp"
     app:cardElevation="10dp">
@@ -36,17 +39,16 @@
             android:id="@+id/backView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:rotationY="180"
-            android:visibility="gone">
+            android:rotationY="180">
 
             <TextView
                 android:id="@+id/answer1"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:textColor="@color/text_color"
-                android:textSize="16dp"
+                android:fontFamily="@font/interregular"
                 android:gravity="center"
-                android:fontFamily="@font/interregular" />
+                android:textColor="@color/text_color"
+                android:textSize="16dp" />
         </FrameLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>

@@ -69,10 +69,11 @@ public class FlashcardSetAdapterSecond extends RecyclerView.Adapter<FlashcardSet
                         questionTextView.setVisibility(View.GONE);
                         answerTextView.setVisibility(View.VISIBLE);
                         cardView.setRotationY(0); // Reset rotation to 0 degrees for the next flip
+
                     }
                 });
             } else {
-                cardView.animate().rotationY(0).setDuration(400).withEndAction(new Runnable() {
+                cardView.animate().rotationY(180).setDuration(400).withEndAction(new Runnable() {
                     @Override
                     public void run() {
                         isFrontVisible = true;
@@ -82,6 +83,9 @@ public class FlashcardSetAdapterSecond extends RecyclerView.Adapter<FlashcardSet
                     }
                 });
             }
+
+            isFrontVisible = !isFrontVisible;
+
         }
 
     }
