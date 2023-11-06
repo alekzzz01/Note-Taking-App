@@ -3,30 +3,29 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/white"
-
     xmlns:app="http://schemas.android.com/apk/res-auto"
 
 
     tools:context=".Profile_Fragment">
 
-
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp">
+        
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-
+            android:layout_marginTop="24dp"
             android:orientation="vertical">
             
             <TextView
-
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" 
                 android:text="Account" 
                 android:textSize="20sp"
                 android:textColor="@color/text_color"
-
                 android:fontFamily="@font/intersemibold"
                 
                 
@@ -66,11 +65,9 @@
                         android:id="@+id/etFullName"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-
                         android:fontFamily="@font/internedium"
                         android:text="Name of the User"
                         android:textColor="@color/text_color"
-
 
 
                         android:textSize="16sp" />
@@ -79,8 +76,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="Personal Info"
-                        android:textColor="@color/text_color"
-
+                        android:textColor="@color/text_color2"
                         android:textSize="14sp"
                         android:fontFamily="@font/internedium"
 
@@ -118,7 +114,6 @@
                 android:text="Settings"
                 android:textSize="20sp"
                 android:textColor="@color/text_color"
-
                 android:fontFamily="@font/intersemibold"
 
 
@@ -149,7 +144,6 @@
                         android:layout_centerVertical="true"
                         android:text="Notifications"
                         android:textColor="@color/text_color"
-
                         android:textSize="16sp"
                         android:fontFamily="@font/internedium"
 
@@ -171,7 +165,7 @@
 
             </RelativeLayout>
 
-<!--
+
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -193,9 +187,8 @@
                     android:layout_height="wrap_content"
                     android:layout_marginStart="80dp"
                     android:layout_centerVertical="true"
-                    android:text="Dark Mode (Not Available)"
+                    android:text="Dark Mode"
                     android:textColor="@color/text_color"
-
                     android:textSize="16sp"
                     android:fontFamily="@font/internedium"
 
@@ -203,7 +196,6 @@
                     />
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/darkModeSwitch"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
@@ -214,7 +206,7 @@
 
 
 
-            </RelativeLayout> -->
+            </RelativeLayout>
 
 
 
@@ -241,7 +233,6 @@
                     android:layout_centerVertical="true"
                     android:text="Developers"
                     android:textColor="@color/text_color"
-
                     android:textSize="16sp"
                     android:fontFamily="@font/internedium"
 
@@ -283,6 +274,7 @@
 
 
 
+    </ScrollView>
 
 
 </FrameLayout>

@@ -3,6 +3,7 @@ package com.example.infotech;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.PorterDuff;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -78,6 +79,7 @@ public class NoteAdapter extends RecyclerView.Adapter<NoteAdapter.NoteViewHolder
             super(itemView);
             titleTextView = itemView.findViewById(R.id.titleoutput); // Example view ID
             progressBar = itemView.findViewById(R.id.progressBar); // Change to your ProgressBar ID
+            progressBar.getProgressDrawable().setColorFilter(0xFF000000, PorterDuff.Mode.SRC_IN);
             percentTextView = itemView.findViewById(R.id.percent);
         }
 

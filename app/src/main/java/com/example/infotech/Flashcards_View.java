@@ -1,18 +1,16 @@
 package com.example.infotech;
 
+import android.content.Intent;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+import android.widget.TextView;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-
-import android.util.Log;
-import android.view.View;
-
-import android.widget.ImageButton;
-import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -38,12 +36,6 @@ public class Flashcards_View extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcards_view);
-
-
-
-
-
-
 
         backbtn = findViewById(R.id.backButton);
 
@@ -99,8 +91,6 @@ public class Flashcards_View extends AppCompatActivity {
 
                         for (DataSnapshot flashcardSnapshot : titleSnapshot.getChildren()) {
                             String flashcardID = flashcardSnapshot.getKey(); // Get the flashcard ID
-
-
                             String question = flashcardSnapshot.child("Question").getValue(String.class);
                             String answer = flashcardSnapshot.child("Answer").getValue(String.class);
 
