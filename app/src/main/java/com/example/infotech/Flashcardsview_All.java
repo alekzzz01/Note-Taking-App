@@ -1,14 +1,14 @@
 package com.example.infotech;
 
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.content.Intent;
-import android.os.Bundle;
-import android.view.View;
-import android.widget.ImageButton;
 
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -22,11 +22,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Flashcardsview_All extends AppCompatActivity {
-
-
-
-
-
     ImageButton backbtn;
 
     List<FlashcardSet> flashcardSets = new ArrayList<>();
@@ -38,8 +33,6 @@ public class Flashcardsview_All extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcardsview_all);
 
-
-
         backbtn = findViewById(R.id.backButton);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
@@ -49,12 +42,6 @@ public class Flashcardsview_All extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-
-
-
 
         // Initialize your RecyclerView and its adapter
         RecyclerView recyclerView = findViewById(R.id.flashcardrecyclerview);
@@ -77,6 +64,9 @@ public class Flashcardsview_All extends AppCompatActivity {
                     long flashcardCount = snapshot.getChildrenCount();
                     FlashcardSet flashcardSet = new FlashcardSet(title, flashcardCount);
                     flashcardSets.add(flashcardSet);
+                }
+                for (FlashcardSet flashcardSet : flashcardSets) {
+                    Log.d("FlashcardSet", "Title: " + flashcardSet.getTitle() + ", Count: " + flashcardSet.getFlashcardCount());
                 }
 
                 adapter.notifyDataSetChanged(); // Notify the adapter that the data has changed

@@ -1,5 +1,6 @@
 package com.example.infotech;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -30,8 +31,13 @@ public class FlashcardSetAdapterSecond extends RecyclerView.Adapter<FlashcardSet
         Flashcard flashcard = flashcards.get(position);
         holder.questionTextView.setText(flashcard.getQuestion());
         holder.answerTextView.setText(flashcard.getAnswer());
-
-
+        if (holder.isFrontVisible) {
+            holder.questionTextView.setVisibility(View.VISIBLE);
+            holder.answerTextView.setVisibility(View.GONE);
+        } else {
+            holder.questionTextView.setVisibility(View.GONE);
+            holder.answerTextView.setVisibility(View.VISIBLE);
+        }
     }
 
     @Override
@@ -61,32 +67,32 @@ public class FlashcardSetAdapterSecond extends RecyclerView.Adapter<FlashcardSet
         }
 
         private void flipCard() {
+            Log.d("FlashcardViewHolder", "flipCard() called");
+            Log.d("FlashcardViewHolder", "Answer: " + answerTextView.getText().toString());
             if (isFrontVisible) {
-                cardView.animate().rotationY(180).setDuration(400).withEndAction(new Runnable() {
+                cardView.animate().rotationYBy(180).setDuration(400).withEndAction(new Runnable() {
                     @Override
                     public void run() {
-                        isFrontVisible = false;
                         questionTextView.setVisibility(View.GONE);
                         answerTextView.setVisibility(View.VISIBLE);
-                        cardView.setRotationY(0); // Reset rotation to 0 degrees for the next flip
-
+                        isFrontVisible = false; // Set isFrontVisible to false when the card is flipped
+                        cardView.setRotationY(0); // Reset rotation after the animation
+                        Log.d("FlashcardViewHolder", "isFrontVisible FIRST flipping: " + isFrontVisible);
                     }
                 });
             } else {
-                cardView.animate().rotationY(180).setDuration(400).withEndAction(new Runnable() {
+                cardView.animate().rotationYBy(-180).setDuration(400).withEndAction(new Runnable() {
                     @Override
                     public void run() {
-                        isFrontVisible = true;
-                        answerTextView.setVisibility(View.GONE);
                         questionTextView.setVisibility(View.VISIBLE);
-                        cardView.setRotationY(0); // Reset rotation to 0 degrees for the next flip
+                        answerTextView.setVisibility(View.GONE);
+                        isFrontVisible = true; // Set isFrontVisible to true when the card is flipped back
+                        cardView.setRotationY(0); // Reset rotation after the animation
+                        Log.d("FlashcardViewHolder", "isFrontVisible SECOND flipping: " + isFrontVisible);
                     }
                 });
             }
-
             isFrontVisible = !isFrontVisible;
-
         }
-
     }
 }
