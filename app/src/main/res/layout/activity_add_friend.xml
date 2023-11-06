@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".Add_Friend">
+
+
+
+
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       >
+
+
+       <androidx.appcompat.widget.SearchView
+           android:id="@+id/searchView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:background="@drawable/searchbg"
+
+
+           app:queryHint="Search by email" />
+
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/userListRecyclerView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="32dp" />
+
+
+         <TextView
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginTop="32dp"
+             android:text="Friend Request"
+             android:textSize="20sp"
+             android:textColor="@color/text_color"
+             android:fontFamily="@font/interregular"/>
+
+
+       <androidx.recyclerview.widget.RecyclerView
+           android:id="@+id/friendRequestsRecyclerView"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="32dp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+   </LinearLayout>
+
+
+
+
+</RelativeLayout>

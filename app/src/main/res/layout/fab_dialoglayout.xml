@@ -6,16 +6,39 @@
     android:padding="16dp">
 
 
-    <Button
-        android:id="@+id/addNotebtn"
-        android:layout_width="200dp"
+    <LinearLayout
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textColor="@color/white"
-        android:layout_centerHorizontal="true"
-        android:text="Add Note"
-        android:fontFamily="@font/internedium" >
+        android:orientation="vertical">
 
-    </Button>
+        <Button
+            android:id="@+id/addNotebtn"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+
+            android:text="Add Note"
+            android:fontFamily="@font/internedium" >
+
+        </Button>
+
+
+        <Button
+            android:id="@+id/addFriend"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+
+            android:text="ADD FRIEND"
+            android:fontFamily="@font/internedium" >
+
+        </Button>
+
+
+
+
+    </LinearLayout>
+
 
 
 

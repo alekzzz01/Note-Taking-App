@@ -65,17 +65,30 @@ public class MainActivity extends AppCompatActivity {
 
                 // Find the button inside the dialog layout
                 Button addNoteBtn = customDialog.findViewById(R.id.addNotebtn);
+                Button addFriend = customDialog.findViewById(R.id.addFriend);
 
 
                 addNoteBtn.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        // Open the 'NotesView_All' activity from the dialog
+
                         Intent intent = new Intent(MainActivity.this, Notes_Edit.class);
                         startActivity(intent);
-                        customDialog.dismiss(); // Close the dialog
+                        customDialog.dismiss();
                     }
                 });
+
+
+                addFriend.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+
+                        Intent intent = new Intent(MainActivity.this, Add_Friend.class);
+                        startActivity(intent);
+                        customDialog.dismiss();
+                    }
+                });
+
 
 
 

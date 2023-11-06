@@ -13,10 +13,11 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-
         android:theme="@style/Theme.INFOTECH"
         tools:targetApi="31">
-
+        <activity
+            android:name=".Add_Friend"
+            android:exported="false" />
         <activity
             android:name=".Lesson_View"
             android:exported="false" />
