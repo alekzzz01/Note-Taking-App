@@ -4,6 +4,7 @@
         <!-- Customize your light theme here. -->
         <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
         <item name="colorPrimary">@color/primary_color</item>
+
     </style>
 
     <style name="Theme.INFOTECH" parent="Base.Theme.INFOTECH" />
@@ -19,9 +20,23 @@
     <style name="DialogAnimation">
         <item name="android:windowEnterAnimation">@anim/slide_in</item>
         <item name="android:windowExitAnimation">@anim/slide_out</item>
+    </style>
+
+
+
+    <!-- Light Theme -->
+    <style name="AppTheme" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Define your dark mode attributes here -->
+        <item name="android:background">#FFFFFF</item>
+        <item name="android:textColor">@color/text_color</item>
 
 
     </style>
+
+
+
+
+
 
 
 </resources>

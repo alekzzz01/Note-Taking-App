@@ -152,13 +152,12 @@
 
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/notif"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
-
-
                     android:layout_centerVertical="true"
+
+
                     android:textColorLink="@color/primary_color" />
 
 
@@ -197,13 +196,13 @@
                     />
 
                 <androidx.appcompat.widget.SwitchCompat
-                    android:id="@+id/mode"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
 
 
-                    android:layout_centerVertical="true" />
+                    />
 
 
 
