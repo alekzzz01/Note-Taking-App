@@ -31,14 +31,13 @@
                 android:textSize="16dp"
                 android:gravity="center"
                 android:fontFamily="@font/interregular" />
-        </FrameLayout>
+
 
         <FrameLayout
             android:id="@+id/backView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:visibility="invisible"
-            android:rotationY="180">
+            android:visibility="visible">
 
             <TextView
                 android:id="@+id/answer1"
@@ -48,6 +47,7 @@
                 android:gravity="center"
                 android:textColor="@color/text_color"
                 android:textSize="16dp" />
+        </FrameLayout>
         </FrameLayout>
     </LinearLayout>
 </androidx.cardview.widget.CardView>
