@@ -4,4 +4,51 @@
         <!-- Customize your dark theme here. -->
         <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
     </style>
+
+
+
+    <!-- Dark Theme -->
+    <style name="AppTheme.Dark" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Define your dark mode attributes here -->
+        <item name="android:background">#232323</item>
+        <item name="android:textColor">#FFFFFF</item>
+        <!-- Add other dark mode specific attributes as needed -->
+
+        <!-- Customize attributes for CoordinatorLayout and BottomAppBar -->
+        <item name="android:windowBackground">#252525</item>
+        <item name="bottomAppBarStyle">@style/BottomAppBar.Dark</item>
+    </style>
+
+    <!-- Style for BottomAppBar in Dark Mode -->
+    <style name="BottomAppBar.Dark" parent="Widget.MaterialComponents.BottomAppBar">
+        <item name="backgroundTint">#252525</item>
+        <item name="fabCradleMargin">15dp</item>
+        <item name="fabCradleRoundedCornerRadius">30dp</item>
+    </style>
+
+
+    <style name="DarkModeLinearLayout">
+        <item name="android:background">#232323</item>
+        <!-- Add any other attributes you want to customize for dark mode here -->
+    </style>
+
+    <style name="DarkModeBottomAppBar">
+        <item name="android:background">#232323</item>
+        <!-- Add any other attributes you want to customize for dark mode here -->
+    </style>
+
+    <style name="DarkModeBottomNavigationView">
+        <item name="android:background">#232323</item>
+        <!-- Add any other attributes you want to customize for dark mode here -->
+    </style>
+
+    <style name="DarkModeFloatingActionButton">
+        <item name="android:background">#232323</item>
+        <!-- Add any other attributes you want to customize for dark mode here -->
+    </style>
+
+
+
+
+
 </resources>

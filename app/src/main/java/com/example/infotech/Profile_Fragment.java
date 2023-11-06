@@ -3,6 +3,7 @@ package com.example.infotech;
 import android.content.Intent;
 import android.os.Bundle;
 
+import androidx.appcompat.widget.SwitchCompat;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
@@ -42,6 +43,10 @@ public class Profile_Fragment extends Fragment {
         profileButton = view.findViewById(R.id.profileSettings);
         developerButton = view.findViewById(R.id.developerPage);
         profileImageView = view.findViewById(R.id.profileImageView);
+
+
+
+
 
         profileButton.setOnClickListener(new View.OnClickListener() {
             @Override

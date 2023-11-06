@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFFFFF"
+android:background="@color/white"
     android:id="@+id/DashboardFragment">
 
 
@@ -59,7 +59,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/interbold"
-                            android:hint="Hi, Name!"
+                            android:text="Hi, Name!"
                             android:textColor="@color/text_color"
                             android:textSize="24sp" />
 
@@ -68,7 +68,8 @@
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/interregular"
                             android:text="Welcome back!"
-                            android:textColor="@color/text_color2"
+                            android:textColor="@color/text_color"
+
                             android:textSize="16sp" />
 
                     </LinearLayout>
@@ -87,6 +88,7 @@
 
                     android:text="Daily Tasks"
                     android:textColor="@color/text_color"
+
 
                     android:textSize="20sp" />
 
@@ -109,6 +111,7 @@
                             android:fontFamily="@font/internedium"
                             android:text="All Notes"
                             android:textColor="@color/text_color"
+
                             android:textSize="16sp"
                             tools:ignore="HardcodedText" />
 
@@ -183,7 +186,7 @@
 
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-
+                                android:background="@color/white"
                                 android:fontFamily="@font/interregular"
                                 android:gravity="center"
                                 android:text="New note"
@@ -212,9 +215,10 @@
 
 
                     android:fontFamily="@font/intersemibold"
+                    android:textColor="@color/text_color"
 
                     android:text="Friends"
-                    android:textColor="@color/text_color"
+
 
                     android:textSize="20sp" />
 
@@ -237,6 +241,7 @@
                             android:fontFamily="@font/internedium"
                             android:text="All"
                             android:textColor="@color/text_color"
+
                             android:textSize="16sp" />
 
 
@@ -293,6 +298,7 @@
                                 android:text="Alexander F."
                                 android:textAlignment="center"
                                 android:textColor="@color/text_color"
+
                                 android:textSize="12sp" />
 
 
@@ -319,9 +325,10 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/internedium"
                                 android:lineSpacingExtra="14sp"
-                                android:text="Alexander F."
+                                android:text="Basti D."
                                 android:textAlignment="center"
                                 android:textColor="@color/text_color"
+
                                 android:textSize="12sp" />
 
 
@@ -330,7 +337,7 @@
                         <LinearLayout
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginEnd="28dp"
+                            android:layout_marginRight="28dp"
                             android:gravity="center"
                             android:orientation="vertical">
 
@@ -341,7 +348,6 @@
                                 android:layout_marginBottom="12dp"
                                 android:background="@drawable/profile"
 
-                                android:importantForAccessibility="no"
                                 tools:ignore="SpeakableTextPresentCheck" />
 
                             <TextView
@@ -349,101 +355,20 @@
                                 android:layout_height="wrap_content"
                                 android:fontFamily="@font/internedium"
                                 android:lineSpacingExtra="14sp"
-                                android:text="Alexander F."
+                                android:text="Noel S."
                                 android:textAlignment="center"
                                 android:textColor="@color/text_color"
+
                                 android:textSize="12sp" />
 
 
                         </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="28dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageButton
-
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile"
-
-                                android:importantForAccessibility="no" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/internedium"
-                                android:lineSpacingExtra="14sp"
-                                android:text="Alexander F."
-                                android:textAlignment="center"
-                                android:textColor="@color/text_color"
-                                android:textSize="12sp" />
 
 
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="28dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageButton
-
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile1"
-
-                                android:importantForAccessibility="no" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/internedium"
-                                android:lineSpacingExtra="14sp"
-                                android:text="Alexander F."
-                                android:textAlignment="center"
-                                android:textColor="@color/text_color"
-                                android:textSize="12sp" />
 
 
-                        </LinearLayout>
 
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="28dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageButton
-
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile1"
-
-                                android:importantForAccessibility="no" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/internedium"
-                                android:lineSpacingExtra="14sp"
-                                android:text="Alexander F."
-                                android:textAlignment="center"
-                                android:textColor="@color/text_color"
-                                android:textSize="12sp"
-                                tools:ignore="HardcodedText" />
-
-
-                        </LinearLayout>
 
 
                     </LinearLayout>
