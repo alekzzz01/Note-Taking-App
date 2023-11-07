@@ -30,7 +30,6 @@
             android:lineSpacingExtra="14sp"
             android:text="Alexander F."
             android:textAlignment="center"
-
             android:textColor="@color/text_color"
             android:textSize="12sp" />
 

@@ -93,7 +93,7 @@ android:background="@color/white"
                     android:textSize="20sp" />
 
 
-                <HorizontalScrollView
+           <!--     <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
@@ -115,7 +115,7 @@ android:background="@color/white"
                             android:textSize="16sp"
                             tools:ignore="HardcodedText" />
 
-<!--
+
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
@@ -132,20 +132,20 @@ android:background="@color/white"
                             android:fontFamily="@font/internedium"
                             android:text="Home"
                             android:textColor="#919191"
-                            android:textSize="16sp" /> -->
+                            android:textSize="16sp" />
 
 
                     </LinearLayout>
 
 
-                </HorizontalScrollView>
+                </HorizontalScrollView>  -->
 
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
                     android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
+                    android:layout_marginTop="8dp"
                     android:layout_marginEnd="16dp">
 
                     <LinearLayout
@@ -223,50 +223,12 @@ android:background="@color/white"
                     android:textSize="20sp" />
 
 
+
                 <HorizontalScrollView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="8dp"
-                    android:layout_marginEnd="16dp">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="40dp"
-                            android:fontFamily="@font/internedium"
-                            android:text="All"
-                            android:textColor="@color/text_color"
-
-                            android:textSize="16sp" />
-
-
-          <!--              <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="40dp"
-                            android:fontFamily="@font/internedium"
-                            android:text="Close Friends"
-                            android:textColor="#919191"
-                            android:textSize="16sp" /> -->
-
-
-
-                    </LinearLayout>
-
-
-                </HorizontalScrollView>
-
-
-                <HorizontalScrollView
-                    android:layout_width="match_parent"
-                    android:layout_height="120dp"
-                    android:layout_marginStart="16dp"
-                    android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp">
 
 
@@ -286,6 +248,15 @@ android:background="@color/white"
                             android:orientation="horizontal"
                             />
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/text_color"
+                            android:textSize="16sp"
+                            android:fontFamily="@font/interregular"
+
+                            />
+
 
 
 
@@ -294,6 +265,172 @@ android:background="@color/white"
 
 
                 </HorizontalScrollView>
+
+
+
+
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="32dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:text="Lessons"
+                    android:textSize="20sp"
+                    android:textColor="@color/text_color"
+                    android:fontFamily="@font/intersemibold"/>
+
+
+
+
+                <!--        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/recyclerview"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+
+                            /> -->
+
+
+
+
+                <RelativeLayout
+                    android:id="@+id/lessonView"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="16dp"
+                    android:background="@drawable/background_note"
+                    android:padding="16dp"
+                    android:orientation="vertical"
+                    >
+
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+
+
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+
+                            android:text="Intro"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/interregular"
+                            />
+
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_centerVertical="true"
+
+
+                            android:background="@drawable/favorite_icon"/>
+
+
+                    </RelativeLayout>
+
+
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_centerInParent="true"
+
+                        android:orientation="vertical"
+
+                        >
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+
+
+                            android:text="What is mobile application development"
+                            android:textSize="18sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/intersemibold"
+                            />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="@font/interregular"
+
+
+                            android:lineSpacingExtra="4sp"
+                            android:text="Mobile application development is the process of making software for smartphones......"
+
+                            android:textColor="@color/text_color"
+                            android:textSize="12sp" />
+
+
+
+
+
+                    </LinearLayout>
+
+                    <RelativeLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+
+
+
+                        >
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_alignParentBottom="true"
+
+                            android:text="Join Now!"
+                            android:textSize="12sp"
+                            android:textColor="@color/text_color"
+                            android:fontFamily="@font/internedium"
+                            />
+
+
+                        <ImageButton
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentEnd="true"
+                            android:layout_alignParentBottom="true"
+
+
+
+                            android:background="@drawable/play"/>
+
+
+                    </RelativeLayout>
+
+
+
+
+
+
+
+
+
+
+                </RelativeLayout>
+
+
+
+
+
 
 
 

@@ -35,6 +35,12 @@ public class Dashboard_Fragment extends Fragment {
     RecyclerView recyclerView;
     NoteAdapter noteAdapter;
 
+    private FriendAdapter friendAdapter;
+
+    RelativeLayout Viewlesson;
+
+
+
 
 
 
@@ -45,12 +51,28 @@ public class Dashboard_Fragment extends Fragment {
         View v = inflater.inflate(R.layout.fragment_dashboard_, container, false);
 
         recyclerView = v.findViewById(R.id.recyclerview);
+        RecyclerView friendsRecyclerView = v.findViewById(R.id.friendRecyclerview);
         newNoteButton = v.findViewById(R.id.addnewnotebtn);
 
-
-
-
         TextView etFirstName = v.findViewById(R.id.etFirstName);
+
+        Viewlesson = v.findViewById(R.id.lessonView);
+
+
+        Viewlesson.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), Lesson_View.class);
+                startActivity(intent);
+            }
+        });
+
+
+
+        // Set up the RecyclerView and adapter for friends
+        friendAdapter = new FriendAdapter(new ArrayList<>());
+        friendsRecyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
+        friendsRecyclerView.setAdapter(friendAdapter);
 
 
 
@@ -59,8 +81,6 @@ public class Dashboard_Fragment extends Fragment {
         noteAdapter = new NoteAdapter(new ArrayList<>()); // Initialize with an empty list
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(noteAdapter);
-
-
 
 
 
@@ -80,7 +100,8 @@ public class Dashboard_Fragment extends Fragment {
         displayUserFirstName();
 
 
-
+// Retrieve and display friends
+        retrieveAndDisplayFriends();
 
         // Retrieve and display notes
         retrieveAndDisplayNotes();
@@ -150,6 +171,65 @@ public class Dashboard_Fragment extends Fragment {
         });
     }
 
+    private void retrieveAndDisplayFriends() {
+        // Get a reference to the Firebase Database
+        DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference();
+
+        // Get the current user's UID from Firebase Authentication
+        String userId = FirebaseAuth.getInstance().getCurrentUser().getUid();
+
+        // Get a reference to the "friends" node under the user's UID
+        DatabaseReference userFriendsRef = databaseReference.child("users").child(userId).child("friends");
+
+        // Retrieve the friend data from Firebase
+        userFriendsRef.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot) {
+                List<Friend> friendsList = new ArrayList<>();
+                for (DataSnapshot friendSnapshot : dataSnapshot.getChildren()) {
+                    String friendUserId = friendSnapshot.getKey();
+                    Friend friend = new Friend(friendUserId, null, null); // Initialize with null for name and profileImageURL
+
+                    // Retrieve the friend's data from the database (replace with the actual database structure)
+                    DatabaseReference friendDataRef = databaseReference.child("users").child(friendUserId);
+                    friendDataRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot friendDataSnapshot) {
+                            if (friendDataSnapshot.exists()) {
+                                // Retrieve the friend's first name, last name, and profile image URL
+                                String friendFirstName = friendDataSnapshot.child("firstName").getValue(String.class);
+                                String friendLastName = friendDataSnapshot.child("lastName").getValue(String.class);
+                                String profileImageURL = friendDataSnapshot.child("profileImage").getValue(String.class);
+
+                                // Combine the first letter of the last name with the first name
+                                String friendName = friendFirstName + " " + friendLastName.charAt(0) + ".";
+
+                                // Update the friend's name and profile image URL
+                                friend.setName(friendName);
+                                friend.setProfileImageURL(profileImageURL);
+
+                                // Add the friend to the list
+                                friendsList.add(friend);
+
+                                // Update the RecyclerView adapter with the list of friends
+                                friendAdapter.setData(friendsList);
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Handle any errors or exceptions
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onCancelled(DatabaseError databaseError) {
+                // Handle any errors or exceptions
+            }
+        });
+    }
 
 
 

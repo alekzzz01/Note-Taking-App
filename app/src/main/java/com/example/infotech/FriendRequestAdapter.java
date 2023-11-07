@@ -13,6 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -65,6 +67,12 @@ public class FriendRequestAdapter extends RecyclerView.Adapter<FriendRequestAdap
             rejectButton = itemView.findViewById(R.id.rejectButton);
         }
 
+        // Add this method to remove an item from the list
+        public void removeItem(int position) {
+            friendRequestList.remove(position);
+            notifyItemRemoved(position);
+        }
+
         public void bind(FriendRequest friendRequest) {
             // Display the sender's name in the TextView
             senderNameTextView.setText(friendRequest.getSenderName());
@@ -79,22 +87,38 @@ public class FriendRequestAdapter extends RecyclerView.Adapter<FriendRequestAdap
 
 
             // Handle the accept button click
+            // Handle the accept button click
             acceptButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // Handle accepting the friend request (e.g., update the database)
                     acceptFriendRequest(friendRequest);
+
+                    // Remove the item from the RecyclerView
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        friendRequestList.remove(position);
+                        notifyItemRemoved(position);
+                    }
                 }
             });
 
-            // Handle the reject button click
+// Handle the reject button click
             rejectButton.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     // Handle rejecting the friend request (e.g., update the database)
                     rejectFriendRequest(friendRequest);
+
+                    // Remove the item from the RecyclerView
+                    int position = getAdapterPosition();
+                    if (position != RecyclerView.NO_POSITION) {
+                        friendRequestList.remove(position);
+                        notifyItemRemoved(position);
+                    }
                 }
             });
+
         }
 
         private void acceptFriendRequest(FriendRequest friendRequest) {
@@ -106,16 +130,43 @@ public class FriendRequestAdapter extends RecyclerView.Adapter<FriendRequestAdap
             DatabaseReference receiverRef = FirebaseDatabase.getInstance().getReference("users").child(friendRequest.getReceiverId());
             receiverRef.child("friends").child(friendRequest.getSenderId()).setValue(true);
 
-            // Optionally, you can provide feedback to the user
-            Toast.makeText(context, "Friend request from " + friendRequest.getSenderName() + " accepted", Toast.LENGTH_SHORT).show();
+            // Remove the friend request node from the database
+            DatabaseReference friendRequestRef = FirebaseDatabase.getInstance().getReference("friendRequests").child(friendRequest.getSenderId()).child(friendRequest.getReceiverId());
+
+            // Add a completion listener
+            friendRequestRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        // Removal was successful
+                        Toast.makeText(context, "Friend request from " + friendRequest.getSenderName() + " accepted", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Removal failed
+                        Toast.makeText(context, "Failed to remove friend request", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
 
         private void rejectFriendRequest(FriendRequest friendRequest) {
-            // Implement the logic to reject the friend request and update the database
-            // You should remove the friend request from the list after rejecting it
+            // Remove the friend request node from the database
+            DatabaseReference friendRequestRef = FirebaseDatabase.getInstance().getReference("friendRequests").child(friendRequest.getSenderId()).child(friendRequest.getReceiverId());
 
-            // Optionally, you can provide feedback to the user
-            Toast.makeText(context, "Friend request from " + friendRequest.getSenderName() + " rejected", Toast.LENGTH_SHORT).show();
+            // Add a completion listener
+            friendRequestRef.removeValue().addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if (task.isSuccessful()) {
+                        // Removal was successful
+                        Toast.makeText(context, "Friend request from " + friendRequest.getSenderName() + " rejected", Toast.LENGTH_SHORT).show();
+                    } else {
+                        // Removal failed
+                        Toast.makeText(context, "Failed to remove friend request", Toast.LENGTH_SHORT);
+                    }
+                }
+            });
         }
+
+
     }
 }

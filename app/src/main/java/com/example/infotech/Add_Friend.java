@@ -9,6 +9,8 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.os.Bundle;
 
 import android.util.Log;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -49,6 +51,9 @@ public class Add_Friend extends AppCompatActivity {
         setContentView(R.layout.activity_add_friend);
 
 
+        ImageButton backbutton = findViewById(R.id.backButton);
+
+
         searchView = findViewById(R.id.searchView);
         userListRecyclerView = findViewById(R.id.userListRecyclerView);
         userList = new ArrayList<>();
@@ -60,6 +65,15 @@ public class Add_Friend extends AppCompatActivity {
 
         // Initialize the Firebase database reference
         usersRef = FirebaseDatabase.getInstance().getReference().child("users");
+
+
+        backbutton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                // Finish the current activity (Notes_Edit) to go back to the previous activity (Dashboard_Fragment)
+                finish();
+            }
+        });
 
 
         // Set a query listener for the SearchView
