@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -26,6 +27,7 @@ public class Add_Flashcards extends AppCompatActivity {
     ImageButton backbtn;
 
     EditText question, answer;
+    TextView fctitle;
     Button add;
     FirebaseAuth auth;
     int value = 0;
@@ -43,12 +45,13 @@ public class Add_Flashcards extends AppCompatActivity {
         answer = findViewById(R.id.etanswer);
         add = findViewById(R.id.addbtn);
         auth = FirebaseAuth.getInstance();
+        fctitle = findViewById(R.id.title);
         Intent intent = getIntent();
         String flashcardSetTitle = intent.getStringExtra("flashcardSetTitle");
-
-
-
         backbtn = findViewById(R.id.backButton);
+
+
+        fctitle.setText(flashcardSetTitle);
 
         backbtn.setOnClickListener(new View.OnClickListener() {
             @Override

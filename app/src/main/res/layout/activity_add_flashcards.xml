@@ -37,13 +37,13 @@
                     tools:ignore="TouchTargetSizeCheck" />
 
                 <TextView
+                    android:id="@+id/title"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_centerHorizontal="true"
-                    android:text="Title of Flashcard"
-                    android:textSize="16sp"
+                    android:fontFamily="@font/internedium"
                     android:textColor="@color/text_color"
-                    android:fontFamily="@font/internedium"/>
+                    android:textSize="16sp" />
 
                 <ImageButton
                     android:id="@+id/settingsButton"
