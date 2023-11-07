@@ -3,12 +3,137 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:paddingStart="16dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="16dp"
     tools:context=".About_Fragment">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="About" />
+        android:layout_height="match_parent" >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent">
+
+                <ImageView
+                    android:id="@+id/menuButton"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:background="@drawable/back_button" />
+
+                <!--   <ImageView
+                       android:id="@+id/settingsButton"
+                       android:layout_width="wrap_content"
+                       android:layout_height="wrap_content"
+                       android:layout_alignParentEnd="true"
+                       android:layout_centerVertical="true"
+                       android:background="@drawable/notification"
+                       tools:ignore="TouchTargetSizeCheck,SpeakableTextPresentCheck" /> -->
+
+
+            </RelativeLayout>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="ABOUT US."
+                android:textColor="@color/black"
+                android:fontFamily="@font/interextrabold"
+                android:textSize="28sp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/interregular"
+                android:text="In a time when technology has spread to every aspect of our lives, educational apps have become indispensable resources for students of all ages. Our app distinguishes out among the rest as a full platform that combines note-taking, flashcards, and texting in a unique way to improve learning. Our application aims to offer a comprehensive and effective response to contemporary learning issues by accommodating the various demands of educators, students, and lifelong learners."
+                android:textColor="@color/text_color2"
+                android:lineSpacingExtra="12sp"
+                android:gravity="center_vertical"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="OUR MISSION."
+                android:textColor="@color/black"
+                android:fontFamily="@font/interextrabold"
+                android:textSize="28sp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/interregular"
+                android:text="Our mission is to empower learners and knowledge seekers by providing a comprehensive and versatile learning platform that seamlessly integrates flashcards and note-taking features. We are committed to enabling users to acquire knowledge, enhance their educational experience, and foster effective communication with peers and mentors. Our mission is to facilitate personal and educational growth by creating an environment where knowledge is easily accessible and collaboration is key.
+"
+                android:textColor="@color/text_color2"
+                android:lineSpacingExtra="12sp"
+                android:gravity="center_vertical"
+                android:textSize="20sp" />
+
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:text="OUR VISION."
+                android:textColor="@color/black"
+                android:fontFamily="@font/interextrabold"
+                android:textSize="28sp"
+
+                />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:fontFamily="@font/interregular"
+                android:text="We aim to lead the global transformation of education through our integrated learning platform. Our goal is to provide a comprehensive educational experience, blending flashcards and personalized note-taking. We envision a dynamic community of learners, making education engaging and universally accessible. By promoting continuous learning, we seek to become the top choice for individuals, students, educators, and professionals worldwide. Through innovation and dedication, we aim to enhance education's quality and global knowledge sharing.
+
+"
+                android:textColor="@color/text_color2"
+                android:lineSpacingExtra="12sp"
+                android:gravity="center_vertical"
+                android:textSize="20sp" />
+
+
+
+
+
+
+
+
+
+        </LinearLayout>
+
+
+
+
+
+
+
+
+
+    </ScrollView>
+
 
 </FrameLayout>
