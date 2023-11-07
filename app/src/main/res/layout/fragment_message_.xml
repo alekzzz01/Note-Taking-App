@@ -49,10 +49,32 @@
         </RelativeLayout>
 
 
-        <androidx.recyclerview.widget.RecyclerView
+     <!--   <androidx.recyclerview.widget.RecyclerView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="32dp"/>
+            android:layout_marginTop="32dp"/> -->
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+
+            android:layout_marginTop="24dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerInParent="true"
+                android:fontFamily="@font/internedium"
+                android:text="Messages is not yet available, wait for the upcoming updates! "
+                android:textAlignment="center"
+                android:textColor="@color/text_color"
+
+
+                android:textSize="24sp" />
+
+
+
+        </RelativeLayout>
 
 
 
