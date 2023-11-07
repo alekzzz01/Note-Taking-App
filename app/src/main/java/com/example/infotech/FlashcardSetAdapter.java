@@ -1,8 +1,5 @@
 package com.example.infotech;
 
-import static androidx.fragment.app.FragmentManager.TAG;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -18,7 +15,8 @@ import java.util.List;
 public class FlashcardSetAdapter extends RecyclerView.Adapter<FlashcardSetAdapter.FlashcardSetViewHolder> {
     private List<FlashcardSet> flashcardSets;
 
-    public FlashcardSetAdapter(List<FlashcardSet> flashcardSets) {
+    public FlashcardSetAdapter(List<FlashcardSet> flashcardSets)
+    {
         this.flashcardSets = flashcardSets;
     }
 
@@ -35,7 +33,8 @@ public class FlashcardSetAdapter extends RecyclerView.Adapter<FlashcardSetAdapte
         holder.titleTextView.setText(flashcardSet.getTitle());
         holder.flashcardCountTextView.setText("Flashcards: " + flashcardSet.getFlashcardCount());
 
-
+        // Log the values to check if they are accurate
+        Log.d("FlashcardSetAdapter", "Title: " + flashcardSet.getTitle() + ", Flashcard Count: " + flashcardSet.getFlashcardCount());
 
         // Set a click listener for the item view
         holder.itemView.setOnClickListener(new View.OnClickListener() {

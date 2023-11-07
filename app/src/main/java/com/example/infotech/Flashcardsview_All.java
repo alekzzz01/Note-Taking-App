@@ -79,10 +79,5 @@ public class Flashcardsview_All extends AppCompatActivity {
         });
 
 
-
-
-
-
-
     }
 }
