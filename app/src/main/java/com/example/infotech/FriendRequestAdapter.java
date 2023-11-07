@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.engine.DiskCacheStrategy;
-
-
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
 
 
 import java.util.List;
@@ -98,8 +98,13 @@ public class FriendRequestAdapter extends RecyclerView.Adapter<FriendRequestAdap
         }
 
         private void acceptFriendRequest(FriendRequest friendRequest) {
-            // Implement the logic to accept the friend request and update the database
-            // You should remove the friend request from the list after accepting it
+            // Update the sender's friend list
+            DatabaseReference senderRef = FirebaseDatabase.getInstance().getReference("users").child(friendRequest.getSenderId());
+            senderRef.child("friends").child(friendRequest.getReceiverId()).setValue(true);
+
+            // Update the receiver's friend list
+            DatabaseReference receiverRef = FirebaseDatabase.getInstance().getReference("users").child(friendRequest.getReceiverId());
+            receiverRef.child("friends").child(friendRequest.getSenderId()).setValue(true);
 
             // Optionally, you can provide feedback to the user
             Toast.makeText(context, "Friend request from " + friendRequest.getSenderName() + " accepted", Toast.LENGTH_SHORT).show();

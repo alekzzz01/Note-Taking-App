@@ -33,7 +33,10 @@ import java.util.List;
 public class Dashboard_Fragment extends Fragment {
     ImageButton newNoteButton;
     RecyclerView recyclerView;
-    NoteAdapter noteAdapter; // Custom RecyclerView adapter for notes
+    NoteAdapter noteAdapter;
+
+
+
 
     ProgressBar PB;
 
@@ -44,12 +47,23 @@ public class Dashboard_Fragment extends Fragment {
         recyclerView = v.findViewById(R.id.recyclerview);
         newNoteButton = v.findViewById(R.id.addnewnotebtn);
 
+
+
+
         TextView etFirstName = v.findViewById(R.id.etFirstName);
+
+
+
 
         // Set up the RecyclerView and adapter
         noteAdapter = new NoteAdapter(new ArrayList<>()); // Initialize with an empty list
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(noteAdapter);
+
+
+
+
+
 
         newNoteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -64,6 +78,9 @@ public class Dashboard_Fragment extends Fragment {
 
 
         displayUserFirstName();
+
+
+
 
         // Retrieve and display notes
         retrieveAndDisplayNotes();
@@ -133,7 +150,11 @@ public class Dashboard_Fragment extends Fragment {
         });
     }
 
+
+
+
 }
+
 
 
 

@@ -84,7 +84,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
             emailTextView.setText(user.getEmail());
 
             Glide.with(context)
-                    .load(user.getProfileImageURL())
+                    .load(user.getprofileImage())
                     .diskCacheStrategy(DiskCacheStrategy.NONE)
                     .skipMemoryCache(true) // Optional: If you don't want to cache images
                     .into(profileImageView);
@@ -99,55 +99,60 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserViewHolder
                 String currentUserId = currentUser.getUid();
                 String currentUserEmail = currentUser.getEmail();
 
-                // Reference to the current user's node in the database
-                DatabaseReference currentUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(currentUserId);
+                // Check if the friend request is not sent to the current user
+                if (!currentUserId.equals(user.getUserId())) {
+                    // Reference to the current user's node in the database
+                    DatabaseReference currentUserRef = FirebaseDatabase.getInstance().getReference().child("users").child(currentUserId);
 
-                currentUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(DataSnapshot dataSnapshot) {
-                        if (dataSnapshot.exists()) {
-                            String firstName = dataSnapshot.child("firstName").getValue(String.class);
-                            String lastName = dataSnapshot.child("lastName").getValue(String.class);
-                            String middleName = dataSnapshot.child("middleName").getValue(String.class);
-                            String profileImage = dataSnapshot.child("profileImage").getValue(String.class);
+                    currentUserRef.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            if (dataSnapshot.exists()) {
+                                String firstName = dataSnapshot.child("firstName").getValue(String.class);
+                                String lastName = dataSnapshot.child("lastName").getValue(String.class);
+                                String middleName = dataSnapshot.child("middleName").getValue(String.class);
+                                String profileImage = dataSnapshot.child("profileImage").getValue(String.class);
 
-                            String fullName = firstName + " " + (middleName != null ? middleName + " " : "") + lastName;
+                                String fullName = firstName + " " + (middleName != null ? middleName + " " : "") + lastName;
 
-                            // Log important information for debugging
-                            Log.d("FriendRequest", "Current User ID: " + currentUserId);
-                            Log.d("FriendRequest", "Receiver User ID: " + user.getUserId());
-                            Log.d("FriendRequest", "Sender's Name: " + user.getEmail());
-                            Log.d("FriendRequest", "Sender's Name: " + fullName);
-                            Log.d("FriendRequest", "Sender's Name: " + profileImage);
+                                // Log important information for debugging
+                                Log.d("FriendRequest", "Current User ID: " + currentUserId);
+                                Log.d("FriendRequest", "Receiver User ID: " + user.getUserId());
+                                Log.d("FriendRequest", "Sender's Name: " + user.getEmail());
+                                Log.d("FriendRequest", "Sender's Name: " + fullName);
+                                Log.d("FriendRequest", "Sender's Name: " + profileImage);
 
-                            // Create a new friend request with the receiverId set to the userId of the search user
-                            FriendRequest friendRequest = new FriendRequest(currentUserId, user.getUserId(), fullName, currentUserEmail, profileImage);
+                                // Create a new friend request with the receiverId set to the userId of the search user
+                                FriendRequest friendRequest = new FriendRequest(currentUserId, user.getUserId(), fullName, currentUserEmail, profileImage);
 
-                            // Log the content of the FriendRequest object
-                            Log.d("FriendRequest", "Friend Request Object: " + friendRequest.getSenderId() + ", " + friendRequest.getReceiverId() + ", " + friendRequest.getSenderName());
+                                // Log the content of the FriendRequest object
+                                Log.d("FriendRequest", "Friend Request Object: " + friendRequest.getSenderId() + ", " + friendRequest.getReceiverId() + ", " + friendRequest.getSenderName());
 
-                            // Store the friend request in the Firebase Realtime Database
-                            DatabaseReference friendRequestsRef = FirebaseDatabase.getInstance().getReference().child("friend_requests");
-                            String requestId = friendRequestsRef.push().getKey();
-                            friendRequestsRef.child(requestId).setValue(friendRequest);
+                                // Store the friend request in the Firebase Realtime Database
+                                DatabaseReference friendRequestsRef = FirebaseDatabase.getInstance().getReference().child("friend_requests");
+                                String requestId = friendRequestsRef.push().getKey();
+                                friendRequestsRef.child(requestId).setValue(friendRequest);
 
-                            // Optionally, you can provide feedback to the user (e.g., a Toast message) to confirm the request was sent
-                            Toast.makeText(context, "Friend request sent to " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                                // Optionally, you can provide feedback to the user (e.g., a Toast message) to confirm the request was sent
+                                Toast.makeText(context, "Friend request sent to " + user.getEmail(), Toast.LENGTH_SHORT).show();
+                            }
                         }
-                    }
 
-                    @Override
-                    public void onCancelled(DatabaseError databaseError) {
-                        // Handle the database error
-                        Log.e("FriendRequest", "Error reading user data: " + databaseError.getMessage());
-                    }
-                });
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+                            // Handle the database error
+                            Log.e("FriendRequest", "Error reading user data: " + databaseError.getMessage());
+                        }
+                    });
+                } else {
+                    // Handle the case where the user is trying to send a request to themselves
+                    Toast.makeText(context, "You cannot send a friend request to yourself.", Toast.LENGTH_SHORT).show();
+                }
             } else {
                 // Handle the case where the user is not signed in or there is no current user
                 Toast.makeText(context, "You are not signed in. Please log in.", Toast.LENGTH_SHORT).show();
             }
         }
-
     }
 
 }

@@ -264,108 +264,27 @@ android:background="@color/white"
 
                 <HorizontalScrollView
                     android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
+                    android:layout_height="120dp"
                     android:layout_marginStart="16dp"
                     android:layout_marginTop="24dp"
                     android:layout_marginEnd="16dp">
+
+
 
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:orientation="horizontal">
 
-                        <LinearLayout
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/friendRecyclerview"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginRight="28dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
 
-                            <ImageButton
-
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile"
-
-                                tools:ignore="SpeakableTextPresentCheck" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/internedium"
-                                android:lineSpacingExtra="14sp"
-                                android:text="Alexander F."
-                                android:textAlignment="center"
-                                android:textColor="@color/text_color"
-
-                                android:textSize="12sp" />
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="28dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageButton
-
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile"
-
-                                tools:ignore="SpeakableTextPresentCheck" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/internedium"
-                                android:lineSpacingExtra="14sp"
-                                android:text="Basti D."
-                                android:textAlignment="center"
-                                android:textColor="@color/text_color"
-
-                                android:textSize="12sp" />
-
-
-                        </LinearLayout>
-
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginRight="28dp"
-                            android:gravity="center"
-                            android:orientation="vertical">
-
-                            <ImageButton
-
-                                android:layout_width="48dp"
-                                android:layout_height="48dp"
-                                android:layout_marginBottom="12dp"
-                                android:background="@drawable/profile"
-
-                                tools:ignore="SpeakableTextPresentCheck" />
-
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:fontFamily="@font/internedium"
-                                android:lineSpacingExtra="14sp"
-                                android:text="Noel S."
-                                android:textAlignment="center"
-                                android:textColor="@color/text_color"
-
-                                android:textSize="12sp" />
-
-
-                        </LinearLayout>
-
-
-
+                            android:scrollbars="horizontal"
+                            android:orientation="horizontal"
+                            />
 
 
 

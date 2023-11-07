@@ -64,7 +64,7 @@ public class User {
         this.middleName = middleName;
     }
 
-    public String getProfileImageURL() {
+    public String getprofileImage() {
         return profileImage;
     }
 

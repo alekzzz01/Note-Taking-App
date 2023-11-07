@@ -21,7 +21,11 @@ import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 
 public class Add_Friend extends AppCompatActivity {
@@ -91,11 +95,12 @@ public class Add_Friend extends AppCompatActivity {
 
 
     public void searchUsers(String query) {
-        // Clear the previous search results
         userList.clear();
         userAdapter.notifyDataSetChanged();
 
-        // Query Firebase for users with emails matching the search query
+        // Use a HashMap to store unique users based on userId
+        Map<String, User> uniqueUsersMap = new HashMap<>();
+
         usersRef.orderByChild("email").startAt(query).endAt(query + "\uf8ff")
                 .addListenerForSingleValueEvent(new ValueEventListener() {
                     @Override
@@ -107,18 +112,31 @@ public class Add_Friend extends AppCompatActivity {
                                 // Add the user ID to the user object
                                 user.setUserId(snapshot.getKey());
 
-                                userList.add(user);
+                                // Check if the user ID is already in the HashMap
+                                if (!uniqueUsersMap.containsKey(user.getUserId())) {
+                                    uniqueUsersMap.put(user.getUserId(), user);
+                                    Log.d("SearchUsers", "Added user: " + user.getUserId());
+                                } else {
+                                    Log.d("SearchUsers", "Duplicate user skipped: " + user.getUserId());
+                                }
                             }
                         }
+
+                        // Convert the HashMap values to a List and add them to userList
+                        userList.addAll(uniqueUsersMap.values());
                         userAdapter.notifyDataSetChanged();
+                        Log.d("SearchUsers", "Data retrieval and update complete.");
                     }
 
                     @Override
                     public void onCancelled(@NonNull DatabaseError databaseError) {
                         Toast.makeText(Add_Friend.this, "Search failed: " + databaseError.getMessage(), Toast.LENGTH_SHORT).show();
+                        Log.e("SearchUsers", "Search failed: " + databaseError.getMessage());
                     }
                 });
     }
+
+
 
 
     private void loadFriendRequests() {

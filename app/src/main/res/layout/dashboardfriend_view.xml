@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    xmlns:tools="http://schemas.android.com/tools">
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginRight="28dp"
+        android:gravity="center"
+        android:orientation="vertical">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileImageView"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_marginBottom="8dp"
+            android:layout_centerVertical="true"
+            android:src="@drawable/basti"
+            />
+
+
+        <TextView
+            android:id="@+id/fullNameTextView"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/internedium"
+            android:lineSpacingExtra="14sp"
+            android:text="Alexander F."
+            android:textAlignment="center"
+
+            android:textColor="@color/text_color"
+            android:textSize="12sp" />
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>

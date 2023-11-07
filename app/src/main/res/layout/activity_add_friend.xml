@@ -17,10 +17,22 @@
        >
 
 
+       <TextView
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+
+           android:text="Add a friend"
+           android:textSize="20sp"
+           android:textColor="@color/text_color"
+
+           android:fontFamily="@font/intersemibold"/>
+
+
        <androidx.appcompat.widget.SearchView
            android:id="@+id/searchView"
            android:layout_width="match_parent"
            android:layout_height="wrap_content"
+           android:layout_marginTop="16dp"
            android:background="@drawable/searchbg"
 
 
@@ -38,10 +50,10 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content"
              android:layout_marginTop="32dp"
-             android:text="Friend Request"
+             android:text="Friend Request:"
              android:textSize="20sp"
              android:textColor="@color/text_color"
-             android:fontFamily="@font/interregular"/>
+             android:fontFamily="@font/internedium"/>
 
 
        <androidx.recyclerview.widget.RecyclerView
